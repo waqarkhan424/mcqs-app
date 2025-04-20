@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.onepaper.site
+
+# Sitemaps
+Sitemap: https://www.onepaper.site/sitemap.xml
