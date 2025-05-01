@@ -43,6 +43,7 @@ const categories = [
 const pastPapers = [
     { key: "fia", label: "FIA", icon: BadgeCheck, color: "text-emerald-600" },
     { key: "ib", label: "Intelligence Bureau", icon: BadgeCheck, color: "text-lime-600" },
+    { key: "asf", label: "ASF", icon: BadgeCheck, color: "text-yellow-600" },
     { key: "nab", label: "NAB", icon: BadgeCheck, color: "text-green-600" },
     { key: "anti-corruption", label: "Anti-Corruption", icon: BadgeCheck, color: "text-pink-600" },
     { key: "education", label: "Education Department", icon: BadgeCheck, color: "text-cyan-600" },

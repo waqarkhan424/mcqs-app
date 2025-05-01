@@ -156,6 +156,15 @@ export const categoryTopics: Record<string, string[]> = {
         "Police Constable (BS-07)"
     ],
 
+    "asf": [
+        "Assistant Director (BS-17)",
+        "Inspector (BS-16)",
+        "ASI (Assistant Sub Inspector, BS-11)",
+        "Corporal (BS-07)",
+        "Clerk (BS-09)"
+    ],
+
+
     "ib": [
         "Intelligence Officer (BS-17)",
         "Inspector (BS-16)",
