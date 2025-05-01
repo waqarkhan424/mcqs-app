@@ -9,32 +9,100 @@ export default function McqsUploader() {
 
     const handleUpload = async () => {
         setLoading(true);
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+
         const mcqs = [
 
+            // {
+            //     question: "Who is considered the father of Public Administration?",
+            //     options: ["Henry Fayol", "Frederick Taylor", "Woodrow Wilson", "Max Weber"],
+            //     correctAnswer: "Woodrow Wilson",
+            //     category: "general-knowledge",
+            //     topic: "public-administration-mcqs"
+            // },
+            // {
+            //     question: "Which approach to Public Administration emphasizes structure and rules?",
+            //     options: ["Behavioral Approach", "Classical Approach", "Human Relations Approach", "Modern Approach"],
+            //     correctAnswer: "Classical Approach",
+            //     category: "general-knowledge",
+            //     topic: "public-administration-mcqs"
+            // },
+            // {
+            //     question: "POSDCORB is a concept in Public Administration given by:",
+            //     options: ["Luther Gulick", "Herbert Simon", "Chester Barnard", "Henri Fayol"],
+            //     correctAnswer: "Luther Gulick",
+            //     category: "general-knowledge",
+            //     topic: "public-administration-mcqs"
+            // },
+            // {
+            //     question: "Which thinker is associated with the bureaucratic theory?",
+            //     options: ["Karl Marx", "Max Weber", "Frederick Taylor", "Woodrow Wilson"],
+            //     correctAnswer: "Max Weber",
+            //     category: "general-knowledge",
+            //     topic: "public-administration-mcqs"
+            // },
+            // {
+            //     question: "What is the smallest prime number?",
+            //     options: ["0", "1", "2", "3"],
+            //     correctAnswer: "2",
+            //     category: "general-knowledge",
+            //     topic: "number-system-mcqs"
+            // },
+
+
+
+
+
+
+
+
+
             {
-                question: "60% of a number is added to 120, the result is the same number. Find the number?",
-                options: ["300", "200", "400", "500"],
-                correctAnswer: "300",
-                solution: `Let the number be x\n0.6x + 120 = x\nx - 0.6x = 120\n0.4x = 120\nx = 120 ÷ 0.4\nx = 300\nAnswer: 300`,
-                category: "percentage"
+                question: "Who is known as the founder of Public Administration?",
+                options: ["Max Weber", "Frederick Taylor", "Woodrow Wilson", "Henry Fayol"],
+                correctAnswer: "Woodrow Wilson",
+                category: "general-knowledge",
+                topic: "public-administration-mcqs"
+            },
+            {
+                question: "Which administrative theory is focused on rules and hierarchy?",
+                options: ["Human Relations", "Modern", "Classical", "Behavioral"],
+                correctAnswer: "Classical Approach",
+                category: "general-knowledge",
+                topic: "public-administration-mcqs"
+            },
+            {
+                question: "Who developed the concept of POSDCORB?",
+                options: ["Henri Fayol", "Luther Gulick", "Peter Drucker", "Herbert Simon"],
+                correctAnswer: "Luther Gulick",
+                category: "general-knowledge",
+                topic: "public-administration-mcqs"
+            },
+            {
+                question: "Which scholar gave the theory of bureaucracy?",
+                options: ["Frederick Taylor", "Karl Marx", "Max Weber", "Luther Gulick"],
+                correctAnswer: "Max Weber",
+                category: "general-knowledge",
+                topic: "public-administration-mcqs"
             },
 
 
             {
-                question: "What is the capital of France?",
-                options: ["Paris", "Berlin", "Madrid", "London"],
-                correctAnswer: "Paris",
-                category: "geometry"
+                question: "What is the smallest old number?",
+                options: ["0", "1", "2", "3"],
+                correctAnswer: "2",
+                category: "general-knowledge",
+                topic: "number-system-mcqs"
+            }
 
-            },
-            {
-                question: "What is 2 + 2?",
-                options: ["3", "4", "5", "6"],
-                correctAnswer: "4",
-                category: "discount"
 
-            },
         ];
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
 
         await upload_mcqs(mcqs);
         setLoading(false);

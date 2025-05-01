@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "onepaper - Math MCQs",
-  description: "Important Math MCQs for one paper exams",
+  title: "OnePaper - MCQs for Government Job Tests",
+  description: "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
   other: {
     "google-site-verification": "sYocTKrMYA2RYVes1Peb7lhogRKIBKqAupUjtEiJa1w"
   }
@@ -34,23 +34,27 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-
-
       <head>
+        <link rel="icon" href="/onepaper.png" type="image/png" />
+
+
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
           crossOrigin="anonymous"></script>
       </head>
 
 
-
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <SiteHeader />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
         <SiteFooter />
-
       </body>
+
+
+
     </html>
   );
 }
