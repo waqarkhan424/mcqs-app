@@ -18,18 +18,15 @@ export default function McqsUploader() {
 
 
 
-
-
-
-
-
             {
-                question: "Who is known as the founder of Public Administration?",
-                options: ["Max Weber", "Frederick Taylor", "Woodrow Wilson", "Henry Fayol"],
-                correctAnswer: "Woodrow Wilson",
-                category: "general-knowledge",
-                topic: "public-administration-mcqs"
-            },
+                question: "What term denotes a person living permanently in one region?",
+                options: ["Resident", "Native", "Domicile", "Subject"],
+                correctAnswer: "Resident",
+                category: "english",
+                topic: "one-word-substitutes"
+            }
+
+
 
 
 

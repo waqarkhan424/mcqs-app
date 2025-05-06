@@ -1,15 +1,19 @@
 export const categoryTopics: Record<string, string[]> = {
     "english": [
-        "Synonyms",
-        "Antonyms",
-        "Correct Prepositions",
-        "Sentence Correction",
-        "Tenses (Present, Past, Future)",
-        "Active & Passive Voice",
-        "Direct & Indirect Speech",
-        "Vocabulary Usage",
-        "Fill in the Blanks",
-        "Common Errors in Grammar"
+
+
+        "One Word Substitutes",
+
+        // "Synonyms",
+        // "Antonyms",
+        // "Correct Prepositions",
+        // "Sentence Correction",
+        // "Tenses (Present, Past, Future)",
+        // "Active & Passive Voice",
+        // "Direct & Indirect Speech",
+        // "Vocabulary Usage",
+        // "Fill in the Blanks",
+        // "Common Errors in Grammar"
     ],
     "general-knowledge": [
         "World Capitals and Countries",
