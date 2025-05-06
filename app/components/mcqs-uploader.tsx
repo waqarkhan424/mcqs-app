@@ -17,14 +17,8 @@ export default function McqsUploader() {
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+            { question: "Which language is spoken by the largest population in Pakistan?", options: ["Urdu", "Punjabi", "Sindhi", "Saraiki"], correctAnswer: "Urdu", category: "general-knowledge", topic: "languages" },
 
-            {
-                question: "What term denotes a person living permanently in one region?",
-                options: ["Resident", "Native", "Domicile", "Subject"],
-                correctAnswer: "Resident",
-                category: "english",
-                topic: "one-word-substitutes"
-            }
 
 
 

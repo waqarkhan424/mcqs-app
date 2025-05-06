@@ -42,7 +42,7 @@ export default async function McqsByTopic(props: Props) {
 
             <div className="bg-muted p-4 text-left rounded-lg">
                 <Typography variant="h2" className="capitalize">
-                    {originalTopic || decodedTopic.replace(/-/g, " ")} MCQs
+                    {originalTopic || decodedTopic.replace(/-/g, " ")}
                 </Typography>
             </div>
 

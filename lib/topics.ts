@@ -2,7 +2,7 @@ export const categoryTopics: Record<string, string[]> = {
     "english": [
 
 
-        "One Word Substitutes",
+        "One Word Substitutes MCQs"
 
         // "Synonyms",
         // "Antonyms",
@@ -16,28 +16,32 @@ export const categoryTopics: Record<string, string[]> = {
         // "Common Errors in Grammar"
     ],
     "general-knowledge": [
-        "World Capitals and Countries",
-        "Famous World Organizations",
-        "Important Inventions",
-        "World History Facts",
-        "Oceans, Rivers, and Mountains",
-        "Important Books and Authors",
-        "Nobel Prize Winners",
-        "First in the World",
-        "World Important Days",
-        "Geography of the World"
+
+        "Languages MCQs"
+        // "World Capitals and Countries",
+        // "Famous World Organizations",
+        // "Important Inventions",
+        // "World History Facts",
+        // "Oceans, Rivers, and Mountains",
+        // "Important Books and Authors",
+        // "Nobel Prize Winners",
+        // "First in the World",
+        // "World Important Days",
+        // "Geography of the World"
     ],
     "current-affairs": [
-        "Pakistan Current Affairs",
-        "International Events",
-        "World Leaders & Elections",
-        "Global Summits & Conferences",
-        "Sports Events",
-        "Important Deaths & Appointments",
-        "New Laws and Agreements",
-        "Pakistan Budget & Economy",
-        "UN and OIC Activities",
-        "Recent Scientific Achievements"
+        "Pakistan Current Affairs – November 2024"
+
+        // "Pakistan Current Affairs",
+        // "International Events",
+        // "World Leaders & Elections",
+        // "Global Summits & Conferences",
+        // "Sports Events",
+        // "Important Deaths & Appointments",
+        // "New Laws and Agreements",
+        // "Pakistan Budget & Economy",
+        // "UN and OIC Activities",
+        // "Recent Scientific Achievements"
     ],
     "pakistan-studies": [
         "Pakistan Independence Movement",
