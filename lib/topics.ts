@@ -45,16 +45,18 @@ export const categoryTopics: Record<string, string[]> = {
         // "Recent Scientific Achievements"
     ],
     "pakistan-studies": [
-        "Pakistan Independence Movement",
-        "1940 Resolution",
-        "Constitution of 1973",
-        "Prime Ministers of Pakistan",
-        "Geography of Pakistan",
-        "Provinces and Capitals",
-        "National Heroes",
-        "National Symbols",
-        "Important Events in History",
-        "Pak-India History"
+
+        "Pakistan Universities MCQs"
+        // "Pakistan Independence Movement",
+        // "1940 Resolution",
+        // "Constitution of 1973",
+        // "Prime Ministers of Pakistan",
+        // "Geography of Pakistan",
+        // "Provinces and Capitals",
+        // "National Heroes",
+        // "National Symbols",
+        // "Important Events in History",
+        // "Pak-India History"
     ],
     "islamic-studies": [
         "Pillars of Islam",
@@ -69,52 +71,57 @@ export const categoryTopics: Record<string, string[]> = {
         "Fasting, Hajj, and Zakat"
     ],
     "mathematics": [
-        "Percentages",
-        "Ratio and Proportion",
-        "Profit and Loss",
-        "Time and Work",
-        "Average",
-        "Number Series",
-        "Age Problems",
-        "Simple Interest",
-        "HCF and LCM",
-        "Speed, Time, and Distance"
+        "Geometry MCQs with Answers"
+        // "Percentages",
+        // "Ratio and Proportion",
+        // "Profit and Loss",
+        // "Time and Work",
+        // "Average",
+        // "Number Series",
+        // "Age Problems",
+        // "Simple Interest",
+        // "HCF and LCM",
+        // "Speed, Time, and Distance"
     ],
     "everyday-science": [
-        "Human Body",
-        "Solar System",
-        "Electricity & Magnetism",
-        "Inventions in Science",
-        "Diseases and Vaccines",
-        "Chemistry in Daily Life",
-        "Biology Basics",
-        "Environment and Pollution",
-        "Scientific Instruments",
-        "Plants and Photosynthesis"
+        "Planets MCQs with Answers"
+        // "Human Body",
+        // "Solar System",
+        // "Electricity & Magnetism",
+        // "Inventions in Science",
+        // "Diseases and Vaccines",
+        // "Chemistry in Daily Life",
+        // "Biology Basics",
+        // "Environment and Pollution",
+        // "Scientific Instruments",
+        // "Plants and Photosynthesis"
     ],
     "computer": [
-        "Basic Computer Terminology",
-        "MS Word Shortcuts",
-        "MS Excel Shortcuts",
-        "MS PowerPoint Basics",
-        "Internet & Web",
-        "Email and Browsers",
-        "Hardware vs Software",
-        "Storage Devices",
-        "Networking Basics",
-        "Keyboard Shortcuts"
+        "Artificial Intelligence MCQs with Answers"
+        // "Basic Computer Terminology",
+        // "MS Word Shortcuts",
+        // "MS Excel Shortcuts",
+        // "MS PowerPoint Basics",
+        // "Internet & Web",
+        // "Email and Browsers",
+        // "Hardware vs Software",
+        // "Storage Devices",
+        // "Networking Basics",
+        // "Keyboard Shortcuts"
     ],
     "iq": [
-        "Number Series",
-        "Alphabet Series",
-        "Odd One Out",
-        "Analogy (A is to B...)",
-        "Coding-Decoding",
-        "Direction Sense",
-        "Blood Relations",
-        "Logical Puzzle Questions",
-        "Calendar or Clock Questions",
-        "Pattern Matching"
+        "Direction Sense MCQs"
+
+        // "Number Series",
+        // "Alphabet Series",
+        // "Odd One Out",
+        // "Analogy (A is to B...)",
+        // "Coding-Decoding",
+        // "Direction Sense",
+        // "Blood Relations",
+        // "Logical Puzzle Questions",
+        // "Calendar or Clock Questions",
+        // "Pattern Matching"
     ],
 
     "fia": [
