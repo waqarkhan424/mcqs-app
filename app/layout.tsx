@@ -36,19 +36,7 @@ export default function RootLayout({
 
       <head>
 
-        {/* <link rel="icon" href="/onepaper.png" type="image/png" /> */}
-
-
-
-        {/* Favicon and logo metadata */}
-        <link rel="icon" href="/onepaper.png" sizes="48x48" type="image/png" />
-        <link rel="apple-touch-icon" href="/onepaper.png" />
-        <link rel="shortcut icon" href="/onepaper.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
-
-
-
+        <link rel="icon" href="/onepaper.png" type="image/png" />
 
 
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
