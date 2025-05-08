@@ -4,59 +4,23 @@ export const categoryTopics: Record<string, string[]> = {
 
         "One Word Substitutes MCQs"
 
-        // "Synonyms",
-        // "Antonyms",
-        // "Correct Prepositions",
-        // "Sentence Correction",
-        // "Tenses (Present, Past, Future)",
-        // "Active & Passive Voice",
-        // "Direct & Indirect Speech",
-        // "Vocabulary Usage",
-        // "Fill in the Blanks",
-        // "Common Errors in Grammar"
+
     ],
     "general-knowledge": [
 
         "Languages MCQs"
-        // "World Capitals and Countries",
-        // "Famous World Organizations",
-        // "Important Inventions",
-        // "World History Facts",
-        // "Oceans, Rivers, and Mountains",
-        // "Important Books and Authors",
-        // "Nobel Prize Winners",
-        // "First in the World",
-        // "World Important Days",
-        // "Geography of the World"
+
     ],
     "current-affairs": [
 
         "Pakistan Current Affairs MCQs November 2024"
 
-        // "Pakistan Current Affairs",
-        // "International Events",
-        // "World Leaders & Elections",
-        // "Global Summits & Conferences",
-        // "Sports Events",
-        // "Important Deaths & Appointments",
-        // "New Laws and Agreements",
-        // "Pakistan Budget & Economy",
-        // "UN and OIC Activities",
-        // "Recent Scientific Achievements"
+
     ],
     "pakistan-studies": [
 
         "Pakistan Universities MCQs"
-        // "Pakistan Independence Movement",
-        // "1940 Resolution",
-        // "Constitution of 1973",
-        // "Prime Ministers of Pakistan",
-        // "Geography of Pakistan",
-        // "Provinces and Capitals",
-        // "National Heroes",
-        // "National Symbols",
-        // "Important Events in History",
-        // "Pak-India History"
+
     ],
     "islamic-studies": [
         "Pillars of Islam",
@@ -72,56 +36,21 @@ export const categoryTopics: Record<string, string[]> = {
     ],
     "mathematics": [
         "Geometry MCQs with Answers"
-        // "Percentages",
-        // "Ratio and Proportion",
-        // "Profit and Loss",
-        // "Time and Work",
-        // "Average",
-        // "Number Series",
-        // "Age Problems",
-        // "Simple Interest",
-        // "HCF and LCM",
-        // "Speed, Time, and Distance"
+
+
     ],
     "everyday-science": [
         "Planets MCQs with Answers"
-        // "Human Body",
-        // "Solar System",
-        // "Electricity & Magnetism",
-        // "Inventions in Science",
-        // "Diseases and Vaccines",
-        // "Chemistry in Daily Life",
-        // "Biology Basics",
-        // "Environment and Pollution",
-        // "Scientific Instruments",
-        // "Plants and Photosynthesis"
+
     ],
     "computer": [
         "Artificial Intelligence MCQs with Answers"
-        // "Basic Computer Terminology",
-        // "MS Word Shortcuts",
-        // "MS Excel Shortcuts",
-        // "MS PowerPoint Basics",
-        // "Internet & Web",
-        // "Email and Browsers",
-        // "Hardware vs Software",
-        // "Storage Devices",
-        // "Networking Basics",
-        // "Keyboard Shortcuts"
+
     ],
     "iq": [
         "Direction Sense MCQs"
 
-        // "Number Series",
-        // "Alphabet Series",
-        // "Odd One Out",
-        // "Analogy (A is to B...)",
-        // "Coding-Decoding",
-        // "Direction Sense",
-        // "Blood Relations",
-        // "Logical Puzzle Questions",
-        // "Calendar or Clock Questions",
-        // "Pattern Matching"
+
     ],
 
     "fia": [
@@ -206,13 +135,6 @@ export const categoryTopics: Record<string, string[]> = {
         "Clerk (BS-11)"
     ],
 
-    "education": [
-        "Assistant Professor (BS-18)",
-        "Lecturer (BS-17)",
-        "Subject Specialist (BS-17)",
-        "Headmaster/Headmistress (BS-17)",
-        "School Teacher (BS-14)"
-    ],
 
 
 

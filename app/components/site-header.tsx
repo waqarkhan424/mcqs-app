@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import Typography from "@/components/ui/typography";
+// import Typography from "@/components/ui/typography";
+import Image from "next/image";
 
 export default function SiteHeader() {
     return (
@@ -10,12 +11,21 @@ export default function SiteHeader() {
             <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
 
-                    <Typography
+                    {/* <Typography
                         variant="h2"
                         className="text-2xl font-extrabold tracking-tight text-primary font-serif"
                     >
                         one<span className="text-muted-foreground">paper</span>
-                    </Typography>
+                    </Typography> */}
+
+
+                    <Image
+                        src="/onepaper1.png"
+                        alt="OnePaper Logo"
+                        width={112}
+                        height={40}
+                        priority
+                    />
 
                 </Link>
                 <nav>
