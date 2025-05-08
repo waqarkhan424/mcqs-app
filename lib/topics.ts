@@ -23,16 +23,7 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "islamic-studies": [
-        "Pillars of Islam",
-        "Names of Prophets",
-        "Important Islamic Battles",
-        "Islamic Months and Events",
-        "Life of Prophet Muhammad (PBUH)",
-        "Quran Surahs and Verses",
-        "Books of Allah",
-        "Companions of the Prophet",
-        "Caliphs of Islam",
-        "Fasting, Hajj, and Zakat"
+        "World Religions MCQs"
     ],
     "mathematics": [
         "Geometry MCQs with Answers"
@@ -54,14 +45,9 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
     "fia": [
-        "Assistant Director (BS-17)",
-        "Inspector Investigation (BS-16)",
-        "Assistant (BS-15)",
-        "Sub Inspector (BS-14)",
-        "UDC (Upper Division Clerk, BS-11)",
-        "ASI (Assistant Sub Inspector, BS-09)",
-        "LDC (Lower Division Clerk, BS-09)",
-        "Constable (BS-05)"
+
+        "Assistant Director FIA Past Papers"
+
     ],
 
 
@@ -102,21 +88,12 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
     "asf": [
-        "Assistant Director (BS-17)",
-        "Inspector (BS-16)",
-        "ASI (Assistant Sub Inspector, BS-11)",
-        "Corporal (BS-07)",
-        "Clerk (BS-09)"
+        "ASF Assistant Director Past Paper 2024"
     ],
 
 
     "ib": [
-        "Intelligence Officer (BS-17)",
-        "Inspector (BS-16)",
-        "Assistant (BS-15)",
-        "Sub Inspector (BS-14)",
-        "UDC (Upper Division Clerk, BS-11)",
-        "LDC (Lower Division Clerk, BS-09)"
+        "IB Tech Past Paper 2022"
     ],
 
     "nab": [
