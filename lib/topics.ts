@@ -3,7 +3,14 @@ export const categoryTopics: Record<string, string[]> = {
 
 
         "One Word Substitutes MCQs",
-        "Spelling Correction MCQs"
+        "Spelling Correction MCQs",
+        "Active and Passive Voice MCQs",
+        "Idioms and Phrases MCQs",
+        "English Preposition MCQs",
+        "Abbreviations MCQs",
+        "FPSC English MCQs",
+        "English Grammar MCQs"
+
 
     ],
     "general-knowledge": [
