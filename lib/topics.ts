@@ -2,8 +2,8 @@ export const categoryTopics: Record<string, string[]> = {
     "english": [
 
 
-        "One Word Substitutes MCQs"
-
+        "One Word Substitutes MCQs",
+        "Spelling Correction MCQs"
 
     ],
     "general-knowledge": [
