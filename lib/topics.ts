@@ -15,7 +15,13 @@ export const categoryTopics: Record<string, string[]> = {
     ],
     "general-knowledge": [
 
-        "Languages MCQs"
+        "Languages MCQs",
+        "Environmental Science MCQs",
+        "Olympic Games MCQs",
+        "Cricket MCQs with Answers",
+        "Vitamins MCQs with Answers",
+        "Pakistan General Knowledge MCQs",
+        "Airline MCQs"
 
     ],
     "current-affairs": [
