@@ -26,7 +26,12 @@ export const categoryTopics: Record<string, string[]> = {
     ],
     "current-affairs": [
 
-        "Pakistan Current Affairs MCQs November 2024"
+        "Pakistan Current Affairs MCQs November 2024",
+        "Pakistan Current Affairs MCQs October 2024",
+        "Pakistan Current Affairs September 2024",
+        "World Current Affairs November 2024",
+        "International Current Affairs MCQs October 2024",
+        "World Current Affairs September 2024"
 
 
     ],
