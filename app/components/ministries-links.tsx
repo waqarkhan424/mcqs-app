@@ -13,7 +13,7 @@ export default function MinistriesLinks() {
                 Browse Ministries
             </Typography>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                {ministries.map((m) => (
+                {/* {ministries.map((m) => (
                     <Card
                         key={m.slug}
                         onClick={() => router.push(`/ministries/${m.slug}`)}
@@ -24,7 +24,33 @@ export default function MinistriesLinks() {
                             {m.name}
                         </CardContent>
                     </Card>
+                ))} */}
+
+
+
+
+
+                {ministries.map((m) => (
+                    <Card
+                        key={m.slug}
+                        className="bg-green-50 transition rounded-xl border-none shadow-sm"
+                    >
+                        <CardContent className="p-5">
+                            <Link
+                                href={`/ministries/${m.slug}`}
+                                className="flex items-center gap-3 font-medium text-green-700 underline underline-offset-2"
+
+                            >
+                                {m.name}
+                            </Link>
+                        </CardContent>
+                    </Card>
                 ))}
+
+
+
+
+
             </div>
         </div>
     )
