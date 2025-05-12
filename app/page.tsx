@@ -1,6 +1,7 @@
 import McqsUploader from "./components/mcqs-uploader";
 import CategoryLinks from "./components/category-links";
 import Typography from "@/components/ui/typography";
+import MinistriesLinks from "./components/ministries-links";
 
 
 export default function Home() {
@@ -18,6 +19,9 @@ export default function Home() {
       </div>
 
       <CategoryLinks />
+
+      <MinistriesLinks />
+
 
       {/* <McqsUploader /> */}
 
