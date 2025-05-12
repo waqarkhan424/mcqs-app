@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import Typography from "@/components/ui/typography"
 import { ministries } from "@/lib/ministries"
+import Link from "next/link"
 
 export default function MinistriesLinks() {
     const router = useRouter()

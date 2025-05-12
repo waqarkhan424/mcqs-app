@@ -1,9 +1,10 @@
 
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
+import Link from "next/link";
+
 
 
 
@@ -57,7 +58,6 @@ const pastPapers = [
 
 
 export default function CategoryLinks() {
-    const router = useRouter();
 
     return (
 
@@ -73,16 +73,19 @@ export default function CategoryLinks() {
                     {categories.map((cat) => {
                         const Icon = cat.icon;
                         return (
-                            <Card
-                                key={cat.key}
-                                onClick={() => router.push(`/category/${cat.key}`)}
-                                className="cursor-pointer bg-yellow-50 transition rounded-xl border-none shadow-sm"
-                            >
-                                <CardContent className="p-5 flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2">
-                                    <Icon className={`w-5 h-5 ${cat.color}`} />
-                                    {cat.label} MCQs
+
+                            <Card key={cat.key} className="bg-yellow-50 transition rounded-xl border-none shadow-sm">
+                                <CardContent className="p-5">
+                                    <Link
+                                        href={`/category/${cat.key}`}
+                                        className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                    >
+                                        <Icon className={`w-5 h-5 ${cat.color}`} />
+                                        {cat.label} MCQs
+                                    </Link>
                                 </CardContent>
                             </Card>
+
                         );
                     })}
                 </div>
@@ -97,16 +100,19 @@ export default function CategoryLinks() {
                     {pastPapers.map((paper) => {
                         const Icon = paper.icon;
                         return (
-                            <Card
-                                key={paper.key}
-                                onClick={() => router.push(`/category/${paper.key}`)}
-                                className="cursor-pointer bg-blue-50 transition rounded-xl border-none shadow-sm"
-                            >
-                                <CardContent className="p-5 flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2">
-                                    <Icon className={`w-5 h-5 ${paper.color}`} />
-                                    {paper.label}
+
+                            <Card key={paper.key} className="bg-blue-50 transition rounded-xl border-none shadow-sm">
+                                <CardContent className="p-5">
+                                    <Link
+                                        href={`/category/${paper.key}`}
+                                        className="flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2"
+                                    >
+                                        <Icon className={`w-5 h-5 ${paper.color}`} />
+                                        {paper.label}
+                                    </Link>
                                 </CardContent>
                             </Card>
+
                         );
                     })}
                 </div>
