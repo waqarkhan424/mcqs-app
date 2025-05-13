@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import Typography from "@/components/ui/typography"
 import { Department } from "@/lib/ministries"
 
 export default function MinistryDepartmentLinks({
@@ -10,7 +11,12 @@ export default function MinistryDepartmentLinks({
     departments: Department[]
 }) {
     return (
-        <div className="space-y-3">
+        <div className="space-y-4">
+            <Typography variant="p" affects="muted" size="sm">
+                Each department is labeled with its type (e.g., Authority, Commission, Directorate).
+                This helps you understand its role in the government.
+            </Typography>
+
             <ol className="list-decimal pl-5 space-y-2">
                 {departments.map((dept, idx) => (
                     <li key={idx}>
@@ -21,9 +27,10 @@ export default function MinistryDepartmentLinks({
                             >
                                 {dept.name}
                             </Link>
-                            <div className="text-sm text-muted-foreground pl-1">
+
+                            <Typography variant="p" affects="muted" size="sm" className="pl-1">
                                 {dept.type}
-                            </div>
+                            </Typography>
                         </div>
                     </li>
                 ))}
