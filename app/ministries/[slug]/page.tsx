@@ -1,41 +1,26 @@
 import { ministries } from "@/lib/ministries"
 import { notFound } from "next/navigation"
-import { Card, CardContent } from "@/components/ui/card"
 import Typography from "@/components/ui/typography"
-import Link from "next/link"
-
-
+import MinistryDepartmentLinks from "@/app/components/ministry-department-links"
 
 export default async function MinistryPage({ params }: { params: { slug: string } }) {
     const { slug } = await params
-
     const ministry = ministries.find((m) => m.slug === slug)
 
     if (!ministry) return notFound()
 
     return (
-        <div className="px-4 pt-12 max-w-5xl mx-auto space-y-6">
-            <Typography variant="h2">{ministry.name}</Typography>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-
-                {ministry.departments.map((d) => (
-                    <Link
-                        key={d.slug}
-                        href={`/ministries/${slug}/${d.slug}`}
-                        passHref
-                    >
-                        <Card className="cursor-pointer">
-                            <CardContent>
-                                <Typography variant="h3">{d.name}</Typography>
-                                <Typography className="text-sm text-muted-foreground">
-                                    {d.type}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Link>
-                ))}
-
+        <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-5xl mx-auto space-y-6">
+            <div className="border-b pb-4 space-y-2">
+                <Typography variant="h2" className="capitalize">
+                    {ministry.name}
+                </Typography>
+                <Typography variant="p" className="text-muted-foreground">
+                    Select a department below to explore. Each one plays a vital role in Pakistan’s governance.
+                </Typography>
             </div>
+
+            <MinistryDepartmentLinks slug={slug} departments={ministry.departments} />
         </div>
     )
 }
