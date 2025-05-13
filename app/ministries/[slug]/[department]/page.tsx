@@ -2,7 +2,11 @@ import { ministries } from "@/lib/ministries"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
 
-export default async function DepartmentPage({ params }: { params: { slug: string; department: string } }) {
+export default async function DepartmentPage({
+    params,
+}: {
+    params: { slug: string; department: string }
+}) {
     const { slug, department } = await params
 
     const ministry = ministries.find((m) => m.slug === slug)
@@ -20,7 +24,8 @@ export default async function DepartmentPage({ params }: { params: { slug: strin
                         <tr className="bg-muted">
                             <th className="border px-3 py-2 text-center">BPS</th>
                             <th className="border px-3 py-2 text-left">Post Title</th>
-                            <th className="border px-3 py-2 text-left">Entry / Promotion</th>
+                            <th className="border px-3 py-2 text-left">Degree Required</th>
+                            <th className="border px-3 py-2 text-left">Age Limit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +33,8 @@ export default async function DepartmentPage({ params }: { params: { slug: strin
                             <tr key={i} className={i % 2 === 0 ? "" : "bg-muted/20"}>
                                 <td className="border px-3 py-2 text-center">{p.bps}</td>
                                 <td className="border px-3 py-2 text-left">{p.title}</td>
-                                <td className="border px-3 py-2 text-left">{p.entry}</td>
+                                <td className="border px-3 py-2 text-left">{p.degree}</td>
+                                <td className="border px-3 py-2 text-left">{p.age}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -37,4 +43,3 @@ export default async function DepartmentPage({ params }: { params: { slug: strin
         </div>
     )
 }
-
