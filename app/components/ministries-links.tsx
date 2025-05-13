@@ -25,7 +25,7 @@ const ministryData: Record<
 export default function MinistriesLinks() {
 
     return (
-        <div className="px-4 py-8 max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto px-4 py-8">
             <Typography variant="h2" className="mb-6 text-center">
                 Browse Ministries
             </Typography>
