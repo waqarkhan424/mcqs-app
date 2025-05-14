@@ -32,10 +32,10 @@ export default async function DepartmentPage({
                     <tbody>
                         {dept.posts.map((p, i) => (
                             <tr key={i} className={i % 2 === 0 ? "" : "bg-muted/20"}>
-                                <td className="border px-3 py-2 text-center">{p.bps}</td>
-                                <td className="border px-3 py-2 text-left">{p.title}</td>
-                                <td className="border px-3 py-2 text-left">{p.degree}</td>
-                                <td className="border px-3 py-2 text-left">{p.age}</td>
+                                <td className="border px-3 py-2 text-center">{p.bs}</td>
+                                <td className="border px-3 py-2 text-left">{p.postName}</td>
+                                <td className="border px-3 py-2 text-left">{p.qualification}</td>
+                                <td className="border px-3 py-2 text-left">{p.ageLimit}</td>
                             </tr>
                         ))}
                     </tbody>
