@@ -15,7 +15,7 @@ export default async function DepartmentPage({
     if (!ministry || !dept) return notFound()
 
     return (
-        <div className="px-4 pt-12 max-w-4xl mx-auto space-y-6">
+        <div className="px-4 pt-12 pb-20 max-w-4xl mx-auto space-y-6">
             <Typography variant="h2">{dept.name}</Typography>
 
             <div className="overflow-x-auto">

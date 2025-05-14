@@ -19,7 +19,6 @@ export type Ministry = {
 }
 
 export const ministries: Ministry[] = [
-
     {
         name: "Ministry of Interior",
         slug: "interior",
@@ -30,34 +29,82 @@ export const ministries: Ministry[] = [
                 type: "Department",
                 posts: [
                     {
-                        bs: "01–04",
-                        postName: "Naib Qasid, Sweeper, Cook, Driver",
-                        qualification: "Primary to Middle",
+                        bs: "01",
+                        postName: "Naib Qasid, Chowkidar, Sweeper",
+                        qualification: "Primary pass",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "04",
+                        postName: "Driver / Staff Car Driver (LTV licence)",
+                        qualification: "Primary pass; valid LTV licence",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "05",
+                        postName: "Dispatch Rider; Constable Driver",
+                        qualification: "Matric (2nd Class); valid motorcycle licence",
                         ageLimit: "18–25",
                     },
                     {
                         bs: "07",
                         postName: "Constable",
-                        qualification: "Matric",
+                        qualification: "Matric with at least 50% marks",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "09",
+                        postName: "Lower Division Clerk (LDC)",
+                        qualification: "Matric; typing speed 30 W.P.M.",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "11",
+                        postName: "Upper Division Clerk (UDC)",
+                        qualification: "Intermediate",
                         ageLimit: "18–25",
                     },
                     {
                         bs: "14",
-                        postName: "Assistant Sub-Inspector (ASI)",
-                        qualification: "Bachelor’s",
-                        ageLimit: "20–28",
+                        postName: "Sub-Inspector Investigation (SI)",
+                        qualification: "Bachelor’s (2nd Class/Grade C)",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "14",
+                        postName: "Stenotypist",
+                        qualification: "Intermediate + shorthand & 40 W.P.M. typing",
+                        ageLimit: "18–25",
+                    },
+                    {
+                        bs: "15",
+                        postName: "Assistant",
+                        qualification: "Bachelor’s (2nd Class/Grade C)",
+                        ageLimit: "18–28",
                     },
                     {
                         bs: "16",
-                        postName: "Sub-Inspector (SI)",
-                        qualification: "Bachelor’s",
-                        ageLimit: "21–30",
+                        postName: "Inspector Investigation",
+                        qualification: "Bachelor’s (2nd Class/Grade C)",
+                        ageLimit: "20–28 (plus 5 years general relaxation)",
                     },
                     {
                         bs: "17",
-                        postName: "Assistant Director",
-                        qualification: "Master’s or 16 years education",
-                        ageLimit: "22–30",
+                        postName: "Assistant Director Investigation",
+                        qualification: "Master’s (2nd Class/Grade C)",
+                        ageLimit: "22–28 (plus 5 yrs relaxation)",
+                    },
+                    {
+                        bs: "17",
+                        postName: "Assistant Director Legal",
+                        qualification: "LLB + 2 yrs post-LLB experience",
+                        ageLimit: "22–30 (plus 5 yrs relaxation)",
+                    },
+                    {
+                        bs: "18",
+                        postName: "Deputy Director",
+                        qualification: "Master’s degree",
+                        ageLimit: "25–33",
                     },
                 ],
             },
