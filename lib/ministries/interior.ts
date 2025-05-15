@@ -28,5 +28,26 @@ export const interior: Ministry = {
                 { bs: "18", postName: "Deputy Director", qualification: "Master’s degree", ageLimit: "25–35" },
             ],
         },
+
+
+
+        { name: "National Database and Registration Authority (NADRA)", slug: "nadra", type: "Authority", posts: [] },
+        { name: "Directorate General of Immigration & Passports (DGIP)", slug: "dgip", type: "Directorate", posts: [] },
+        { name: "Islamabad Capital Territory (ICT) Police", slug: "ict-police", type: "Department", posts: [] },
+        { name: "Pakistan Rangers (Punjab & Sindh)", slug: "pakistan-rangers", type: "Force", posts: [] },
+        { name: "Frontier Corps (FC) KP and Balochistan", slug: "frontier-corps", type: "Force", posts: [] },
+        { name: "Anti-Narcotics Force (ANF)", slug: "anf", type: "Force", posts: [] },
+        { name: "National Counter Terrorism Authority (NACTA)", slug: "nacta", type: "Authority", posts: [] },
+        { name: "Directorate General Civil Defence", slug: "civil-defence", type: "Directorate", posts: [] },
+        { name: "Frontier Constabulary", slug: "frontier-constabulary", type: "Force", posts: [] },
+        { name: "Pakistan Coast Guards", slug: "coast-guards", type: "Force", posts: [] },
+        { name: "Gilgit-Baltistan Scouts", slug: "gb-scouts", type: "Force", posts: [] },
+        { name: "Chitral Scouts", slug: "chitral-scouts", type: "Force", posts: [] },
+        { name: "Exit Control List (ECL) Wing", slug: "ecl", type: "Wing", posts: [] },
+        { name: "National Police Bureau (NPB)", slug: "npb", type: "Bureau", posts: [] },
+        { name: "National Police Academy", slug: "police-academy", type: "Academy", posts: [] },
+        { name: "National Academy for Prisons Administration (NAPA)", slug: "napa", type: "Academy", posts: [] },
+
+
     ],
 };
