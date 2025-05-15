@@ -29,7 +29,7 @@ import { privatisation } from "./privatisation";
 import { railways } from "./railways";
 import { religiousAffairs } from "./religious-affairs";
 import { scienceTech } from "./science-tech";
-import { safar } from "./safar";
+import { statesFrontierRegions } from "./states-frontier-regions";
 import { waterResources } from "./water-resources";
 
 export const ministries = [
@@ -62,6 +62,6 @@ export const ministries = [
     railways,
     religiousAffairs,
     scienceTech,
-    safar,
+    statesFrontierRegions,
     waterResources,
 ];
