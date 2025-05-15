@@ -2,12 +2,14 @@ import { ministries } from "@/lib/ministries"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
 
-export default async function DepartmentPage({
-    params,
-}: {
-    params: { slug: string; department: string }
-}) {
-    const { slug, department } = params
+
+interface Props {
+    params: Promise<{ slug: string; department: string }>
+}
+
+export default async function DepartmentPage(props: Props) {
+
+    const { slug, department } = await props.params
 
     const ministry = ministries.find((m) => m.slug === slug)
     const dept = ministry?.departments.find((d) => d.slug === department)

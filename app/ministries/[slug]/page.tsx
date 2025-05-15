@@ -3,8 +3,13 @@ import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
 import MinistryDepartmentLinks from "@/app/components/ministry-department-links"
 
-export default async function MinistryPage({ params }: { params: { slug: string } }) {
-    const { slug } = await params
+interface Props {
+    params: Promise<{ slug: string }>
+}
+
+export default async function MinistryPage(props: Props) {
+    const { slug } = await props.params
+
     const ministry = ministries.find((m) => m.slug === slug)
 
     if (!ministry) return notFound()
