@@ -31,7 +31,7 @@ export default async function DepartmentPage(props: Props) {
                     <thead>
                         <tr className="bg-gray-100 text-gray-700 text-left">
                             <th className="border px-4 py-3 text-center">BPS</th>
-                            <th className="border px-4 py-3">Post Title</th>
+                            <th className="border px-4 py-3">Post Name</th>
                             <th className="border px-4 py-3">Qualification</th>
                             <th className="border px-4 py-3">Age Limit</th>
                         </tr>
