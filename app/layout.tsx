@@ -21,7 +21,11 @@ export const metadata: Metadata = {
   description: "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
   other: {
     "google-site-verification": "sYocTKrMYA2RYVes1Peb7lhogRKIBKqAupUjtEiJa1w"
-  }
+  },
+
+  icons: {
+    icon: "/onepaper.png", // Next.js will inject a <link rel="icon"> for you
+  },
 };
 
 
@@ -36,7 +40,9 @@ export default function RootLayout({
 
       <head>
 
-        <link rel="icon" href="/onepaper.png" type="image/png" />
+        {/* favicon using your 28×28 PNG */}
+
+        <link rel="icon" href="/onepaper.png" type="image/png" sizes="28x28" />
 
 
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
