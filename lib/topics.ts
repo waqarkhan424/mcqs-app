@@ -104,13 +104,11 @@ export const categoryTopics: Record<string, string[]> = {
         "PAF Intelligence Verbal MCQs",
         "PAF Intelligence MCQs",
         "Verbal Intelligence MCQs",
-        "Verbal Intelligence MCQs",
         "Verbal Intelligence For PMA Long Course MCQs",
         "Verbal Intelligence For Army MCQs",
         "Verbal Intelligence for AFNS MCQs",
         "Verbal Intelligence For Navy MCQs",
         "Verbal Intelligence Pak Army MCQs",
-        "Verbal Intelligence MCQs",
         "PAF Intelligence Verbal MCQs",
         "ISSB Verbal Intelligence MCQs"
 
