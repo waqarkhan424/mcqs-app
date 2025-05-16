@@ -88,8 +88,6 @@ export const categoryTopics: Record<string, string[]> = {
         "Computer Graphics MCQs",
         "Parallel and Distributed Computing MCQs",
         "Basic Computer MCQs",
-        "Computer Shortcut Keys A to Z PDF",
-        "Computer MCQs"
 
     ],
     "iq": [
