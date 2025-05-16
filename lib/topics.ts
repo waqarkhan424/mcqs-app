@@ -38,11 +38,23 @@ export const categoryTopics: Record<string, string[]> = {
     ],
     "pakistan-studies": [
 
-        "Pakistan Universities MCQs"
+        "Pakistan Universities MCQs",
+        "History of Khilji Dynasty MCQs",
+        "Indus Valley Civilization MCQs",
+        "Muhammad Ghori History MCQs",
+        "Pakistan Government Institutions MCQs",
+        "Natural Resources of Pakistan MCQs",
+        "MCQs on Political Parties"
 
     ],
     "islamic-studies": [
-        "World Religions MCQs"
+        "World Religions MCQs",
+        "Basic Islamic Studies MCQs",
+        "Islamic Studies MCQs",
+        "Holy Books MCQs with Answers",
+        "PPSC PMS Islamic Study Past Paper 2022 MCQs",
+        "Islamiat General Knowledge",
+        "First in Islam MCQs"
     ],
     "mathematics": [
         "Geometry MCQs with Answers"
