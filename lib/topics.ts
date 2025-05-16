@@ -48,13 +48,14 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "islamic-studies": [
-        "World Religions MCQs",
-        "Basic Islamic Studies MCQs",
-        "Islamic Studies MCQs",
-        "Holy Books MCQs with Answers",
-        "PPSC PMS Islamic Study Past Paper 2022 MCQs",
-        "Islamiat General Knowledge",
-        "First in Islam MCQs"
+        "MCQs in Previous Papers One",
+        "MCQs in Previous Papers Two",
+        "MCQs in Previous Papers Three",
+        "MCQs in Previous Papers Four",
+        "MCQs in Previous Papers Five",
+        "MCQs in Previous Papers Six",
+        "MCQs in Previous Papers Seven",
+
     ],
     "mathematics": [
         "Geometry MCQs with Answers"
