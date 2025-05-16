@@ -58,16 +58,38 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "mathematics": [
-        "Geometry MCQs with Answers"
+        "Geometry MCQs with Answers",
+        "Discount MCQs",
+        "Simple and Compound Interest MCQs",
+        "Partnership MCQs with Answers",
+        "Time and Work MCQs",
+        "Time and Distance MCQs",
+        "Ratio and Proportion Questions"
 
 
     ],
     "everyday-science": [
-        "Planets MCQs with Answers"
+        "Planets MCQs with Answers",
+        "Vitamins MCQs with Answers",
+        "Everyday Science Questions Answers",
 
     ],
     "computer": [
-        "Artificial Intelligence MCQs with Answers"
+        "Artificial Intelligence MCQs with Answers",
+        "Machine Learning MCQs with Answers",
+        "Basic Internet MCQs with Answers",
+        "Computer Hardware MCQs",
+        "Computer Abbreviations A to Z PDF MCQs",
+        "IT MCQs",
+        "MS PowerPoint MCQs",
+        "MS Excel MCQs",
+        "MS Word MCQs",
+        "MS Office MCQs",
+        "Computer Graphics MCQs",
+        "Parallel and Distributed Computing MCQs",
+        "Basic Computer MCQs",
+        "Computer Shortcut Keys A to Z PDF",
+        "Computer MCQs"
 
     ],
     "iq": [

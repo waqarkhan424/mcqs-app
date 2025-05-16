@@ -21,12 +21,12 @@ export default function McqsUploader() {
 
             [
                 {
-                    question: "Bernardo Arévalo assumed office as the 52nd President of ____ in January 2024.",
-                    options: ["Guatemala", "Luxembourg", "Congo", "None"],
-                    correctAnswer: "Guatemala",
-                    category: "asf",
-                    topic: "asf-assistant-director-past-paper-2024"
-                },
+                    "category": "islamic-studies",
+                    "topic": "basic-islamic-studies-mcqs",
+                    "question": "Which act will Muslims be questioned about first on Judgement Day?",
+                    "options": ["Prayer", "Charity", "Fasting", "Pilgrimage"],
+                    "correctAnswer": "Prayer"
+                }
 
             ];
 
