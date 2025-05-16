@@ -91,8 +91,28 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "iq": [
-        "Direction Sense MCQs"
-
+        "Direction Sense MCQs",
+        "Verbal Intelligence Series Completion MCQs",
+        "Arithmetic Reasoning MCQs",
+        "Logical Sequence of Words MCQs",
+        "Intelligence Blood Relation MCQs",
+        "Verbal Analogy MCQs",
+        "Verbal Reasoning MCQs",
+        "PAF Intelligence MCQs",
+        "PAF Verbal MCQs",
+        "PAF MCQs",
+        "PAF Intelligence Verbal MCQs",
+        "PAF Intelligence MCQs",
+        "Verbal Intelligence MCQs",
+        "Verbal Intelligence MCQs",
+        "Verbal Intelligence For PMA Long Course MCQs",
+        "Verbal Intelligence For Army MCQs",
+        "Verbal Intelligence for AFNS MCQs",
+        "Verbal Intelligence For Navy MCQs",
+        "Verbal Intelligence Pak Army MCQs",
+        "Verbal Intelligence MCQs",
+        "PAF Intelligence Verbal MCQs",
+        "ISSB Verbal Intelligence MCQs"
 
     ],
 
