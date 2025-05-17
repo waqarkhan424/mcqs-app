@@ -113,7 +113,15 @@ export const categoryTopics: Record<string, string[]> = {
 
     "fia": [
 
-        "Assistant Director FIA Past Papers"
+        "Assistant Director FIA Past Papers",
+        "FIA Inspector Past Paper 26 7 2022 BATCH-1 MCQs",
+        "FIA Inspector Past Paper 2019 BATCH-1 MCQs",
+        "FIA Inspector Past Paper 20 August 2023(BATCH - 1) MCQs",
+        "FIA UDC Solved paper Held ON 15.12.2021 MCQs",
+        "FIA LDC past Papers Held ON 14.12.2021 MCQs",
+        "Assistant Director FIA (2020)"
+
+
 
     ],
 
@@ -155,12 +163,25 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
     "asf": [
-        "ASF Assistant Director Past Paper 2024"
+        "ASF Assistant Director Past Paper 2024",
+        "ASF Assistant Director Past Papers 2020 MCQs",
+        "ASF UDC Past Paper",
+        "ASF ASI Past Papers 2022 MCQs",
+        "ASF ASI Corporal 5 Years Past Papers",
+        "ASF LDC Past Paper 18-12-2023 Solved MCQs",
+        "ASF AD Past Paper 24-10-2022 BATCH-2 Test Solved MCQs"
+
     ],
 
 
     "ib": [
-        "IB Tech Past Paper 2022"
+        "IB Tech Past Paper 2022",
+        "Stenotypist IB Past Paper 26th July 2022",
+        "Assistant Director IB Past Papers",
+        "IB GD-7 Past Paper Held On 15 09 2019 MCQs",
+        "IB OM 7 Past Paper Held On 28 07 2022 MCQs",
+        "IB Data Entry Operators Syllabus 2022 Held On 26 07 2022 MCQs",
+        "IB GD 11 Past Papers 2019 MCQs"
     ],
 
     "nab": [
