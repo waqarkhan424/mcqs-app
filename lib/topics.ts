@@ -119,7 +119,7 @@ export const categoryTopics: Record<string, string[]> = {
         "FIA Inspector Past Paper 20 August 2023(BATCH - 1) MCQs",
         "FIA UDC Solved paper Held ON 15.12.2021 MCQs",
         "FIA LDC past Papers Held ON 14.12.2021 MCQs",
-        "Assistant Director FIA (2020)"
+        "Assistant Director FIA (2020) MCQs"
 
 
 
