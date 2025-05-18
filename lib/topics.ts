@@ -185,11 +185,11 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
     "nab": [
-        "Assistant Director (BS-17)",
-        "Investigation Officer (BS-16)",
-        "Assistant Private Secretary (BS-16)",
-        "Stenotypist (BS-14)",
-        "Clerk (BS-11)"
+        "NAB Data Control Assistant Past Paper 2021 MCQs",
+        "NAB Stenotypest Past Paper 2021 MCQs",
+        "FPSC AD NAB Past Paper 2020 BATCH - II Solved MCQs",
+        "FPSC AD NAB Past Paper 2020 BATCH - I Solved MCQs",
+        "Assistant Director NAB Past paper 24 -09 - 2020(BATCH-04) Test Solved MCQs"
     ],
 
     "anti-corruption": [
