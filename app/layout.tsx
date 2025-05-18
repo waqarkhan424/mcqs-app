@@ -26,6 +26,38 @@ export const metadata: Metadata = {
   icons: {
     icon: "/onepaper.png", // Next.js will inject a <link rel="icon"> for you
   },
+
+
+
+  // Open Graph metadata
+  openGraph: {
+    type: "website",
+    url: "https://www.onepaper.site/",
+    title: "OnePaper – MCQs for Government Job Tests",
+    description:
+      "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
+    siteName: "OnePaper",
+    images: [
+      {
+        url: "https://www.onepaper.site/onepaper.png",
+        width: 1200,
+        height: 630,
+        alt: "OnePaper logo",
+      },
+    ],
+  },
+
+  // Twitter Card metadata
+  twitter: {
+    card: "summary_large_image",
+    title: "OnePaper – MCQs for Government Job Tests",
+    description:
+      "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
+    images: ["https://www.onepaper.site/onepaper.png"],
+  },
+
+
+
 };
 
 
@@ -44,7 +76,7 @@ export default function RootLayout({
 
         <link rel="icon" href="/onepaper.png" type="image/png" sizes="28x28" />
 
-
+        {/* Google Ads script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
           crossOrigin="anonymous"></script>
       </head>
