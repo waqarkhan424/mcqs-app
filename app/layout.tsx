@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://www.onepaper.site/onepaper.png",
+        // url: "https://www.onepaper.site/og-image.png",
         width: 1200,
         height: 630,
         alt: "OnePaper logo",
@@ -54,6 +55,8 @@ export const metadata: Metadata = {
     description:
       "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
     images: ["https://www.onepaper.site/onepaper.png"],
+    // images: ["https://www.onepaper.site/og-image.png"],
+
   },
 
 
