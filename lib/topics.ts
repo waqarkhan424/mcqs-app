@@ -184,8 +184,6 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
     "nadra": [
-        "NADRA Junior Executive Syllabus 2025",
-        "NADRA Jobs Tests Syllabus",
         "NADRA Data Entry Operator Past Papers 2023",
         "NADRA Junior Executive Past Paper"
     ],
