@@ -126,42 +126,6 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
 
-    "ppsc": [
-        "Lecturer (BS-17)",
-        "Tehsildar (BS-16)",
-        "Sub Inspector (BS-14)",
-        "Assistant (BS-16)",
-        "Excise Inspector (BS-16)",
-        "Junior Clerk (BS-11)",
-        "ASI (Assistant Sub Inspector, BS-11)",
-        "Research Officer (BS-17)",
-        "District Food Controller (BS-17)",
-        "Agriculture Officer (BS-17)",
-        "Labour Inspector (BS-14)"
-    ],
-
-    "fpsc": [
-        "Lecturer (BS-17)",
-        "Assistant Private Secretary (BS-16)",
-        "Appraising Officer (BS-16)",
-        "Preventive Officer (BS-16)"
-    ],
-
-    "spsc": [
-        "Lecturer (BS-17)",
-        "Assistant (BS-16)",
-        "Sub Inspector (BS-14)",
-        "Medical Officer (BS-17)",
-        "Assistant Director (BS-17)"
-    ],
-
-    "police": [
-        "Inspector (BS-16)",
-        "Sub Inspector (BS-14)",
-        "ASI (Assistant Sub Inspector, BS-11)",
-        "Police Constable (BS-07)"
-    ],
-
     "asf": [
         "ASF Assistant Director Past Paper 2024",
         "ASF Assistant Director Past Papers 2020 MCQs",
@@ -192,13 +156,40 @@ export const categoryTopics: Record<string, string[]> = {
         "Assistant Director NAB Past paper 24 -09 - 2020(BATCH-04) Test Solved MCQs"
     ],
 
-    "anti-corruption": [
-        "Assistant Director Investigation (BS-17)",
-        "Inspector (BS-16)",
-        "Sub Inspector (BS-14)",
-        "Assistant (BS-16)",
-        "Clerk (BS-11)"
+
+    "tehsildar": [
+        "English PPSC Tehsildar Past Papers Morning and Evening",
+        "GK Past Papers of Tehsildar PPSC – Morning and Evening"
     ],
+
+    "naib-tehsildar": [
+        "Naib Tehsildar Past Paper English – Morning and Evening",
+        "Naib Tehsildar Past Paper GK – Morning Evening Paper"
+    ],
+
+    "punjab-police": [
+        "Punjab Highway Patrolling Police Paper 23 -06-2024",
+        "Punjab Police Constable Past Paper 2020 Download PDF MCQs",
+        "ASI Punjab Police Paper 2021(Service Quota) MCQs",
+        "Punjab Police Wireless Operator Past Paper 2022 MCQs",
+        "Punjab Police Junior Clerk Past Paper 2022 MCQs",
+        "Traffic Assistant Punjab Police Paper 2020 MCQs",
+        "Punjab Police Sub Inspector Past Papers"
+    ],
+
+    "kpk-police": [
+        "KPK Police Constable ETEA Solved MCQs Paper 2023",
+        "ETEA KPK Police Constable Past Paper 2022",
+        "KPK Police Constable Past Paper 2021"
+    ],
+
+    "nadra": [
+        "NADRA Junior Executive Syllabus 2025",
+        "NADRA Jobs Tests Syllabus",
+        "NADRA Data Entry Operator Past Papers 2023",
+        "NADRA Junior Executive Past Paper"
+    ],
+
 
 
 
