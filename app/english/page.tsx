@@ -68,7 +68,7 @@ export default function EnglishGrammarPage() {
                             <Card key={topic.name} className={`${section.bgColor} transition rounded-xl border-none shadow-sm`}>
                                 <CardContent className="p-5">
                                     <Link
-                                        href={`/english/${topic.name}`}
+                                        href={`/english/${topic.name.toLowerCase().replace(/\s+/g, "-")}`}
                                         className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
                                     >
                                         <BookText className={`w-5 h-5 ${topic.color}`} />
