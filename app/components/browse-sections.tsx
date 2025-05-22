@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function BrowseSections() {
     return (
-        <div className="max-w-5xl mx-auto px-4 py-12 space-y-10">
+        <div className="max-w-5xl mx-auto px-4 py-8 space-y-12">
             <Typography variant="h2" className="text-center">
                 Browse Sections
             </Typography>
