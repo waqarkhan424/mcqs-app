@@ -62,7 +62,7 @@ export default function CategoryLinks() {
     return (
 
 
-        <div className="max-w-5xl mx-auto px-4 py-8 space-y-12">
+        <div className="max-w-5xl mx-auto px-4 space-y-12">
 
             <div>
                 <Typography variant="h2" className="mb-6 text-center">
