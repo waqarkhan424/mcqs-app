@@ -21,7 +21,7 @@ export default function BrowseSections() {
 
                 <Card className="bg-green-50 transition rounded-xl border-none shadow-sm">
                     <CardContent className="p-5">
-                        <Link href="/category/english" className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2">
+                        <Link href="/english" className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2">
                             English Grammar
                         </Link>
                     </CardContent>
