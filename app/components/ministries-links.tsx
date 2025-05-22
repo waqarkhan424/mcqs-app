@@ -9,12 +9,18 @@ import Link from "next/link"
 export default function MinistriesLinks() {
 
     return (
-        <div className="max-w-5xl mx-auto px-4 py-8">
-            <Typography variant="h2" className="mb-6 text-center">
+        <div className="max-w-3xl mx-auto px-4 py-8">
+            <Typography variant="h2" className="text-center">
                 Browse Ministries
             </Typography>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"> */}
+
+
+            <Typography variant="p" className="text-muted-foreground text-center mt-2 mb-6">
+                Select a ministry to explore departments and posts.
+            </Typography>
+
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                 {ministries.map((m) => {
 
