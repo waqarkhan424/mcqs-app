@@ -20,11 +20,7 @@ export default async function GrammarTopicPage(props: Props) {
                 {topicData.title} – Complete Guide
             </Typography>
 
-            <div className="space-y-3 text-[16px] leading-7 text-gray-800">
-                {topicData.content.map((line, idx) => (
-                    <p key={idx}>• {line}</p>
-                ))}
-            </div>
+            {topicData.content}
         </div>
     );
 }
