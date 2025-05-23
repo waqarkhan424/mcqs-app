@@ -2,7 +2,7 @@ import Typography from "@/components/ui/typography";
 
 export default function NounsContent() {
     return (
-        <div className="space-y-6  leading-7">
+        <div className="space-y-6 leading-7">
             <Typography variant="h3">What is a Noun?</Typography>
             <p>A noun is a word that names something. It can be the name of a person, place, thing, or idea.</p>
             <p>You can touch, see, feel, or think about the thing a noun describes.</p>
