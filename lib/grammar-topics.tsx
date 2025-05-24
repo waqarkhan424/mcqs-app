@@ -17,6 +17,16 @@ import SubjectVerbAgreementContent from "@/app/english/components/intermediate-g
 import ModalsContent from "@/app/english/components/intermediate-grammar/modals-content";
 import ConditionalsContent from "@/app/english/components/intermediate-grammar/conditionals-content";
 
+
+import GerundsAndInfinitivesContent from "@/app/english/components/advanced-grammar/gerunds-and-infinitives-content";
+import ClausesContent from "@/app/english/components/advanced-grammar/clauses-content";
+import PhrasesContent from "@/app/english/components/advanced-grammar/phrases-content";
+import ReportedSpeechContent from "@/app/english/components/advanced-grammar/reported-speech-content";
+import ParallelismContent from "@/app/english/components/advanced-grammar/parallelism-content";
+import InversionContent from "@/app/english/components/advanced-grammar/inversion-content";
+import EmphasisCleftSentencesContent from "@/app/english/components/advanced-grammar/emphasis-cleft-sentences-content";
+
+
 export const grammarTopicsData: Record<string, { title: string; content: React.ReactNode }> = {
     //  Basic Grammar Topics
     "nouns": {
@@ -86,4 +96,36 @@ export const grammarTopicsData: Record<string, { title: string; content: React.R
         title: "Conditionals",
         content: <ConditionalsContent />,
     },
+
+    //  Advanced Grammar Topics
+    "gerunds-and-infinitives": {
+        title: "Gerunds and Infinitives",
+        content: <GerundsAndInfinitivesContent />,
+    },
+    "clauses": {
+        title: "Clauses",
+        content: <ClausesContent />,
+    },
+    "phrases": {
+        title: "Phrases",
+        content: <PhrasesContent />,
+    },
+    "reported-speech": {
+        title: "Reported Speech",
+        content: <ReportedSpeechContent />,
+    },
+    "parallelism": {
+        title: "Parallelism",
+        content: <ParallelismContent />,
+    },
+    "inversion": {
+        title: "Inversion",
+        content: <InversionContent />,
+    },
+    "emphasis-and-cleft-sentences": {
+        title: "Emphasis and Cleft Sentences",
+        content: <EmphasisCleftSentencesContent />,
+    },
+
+
 };
