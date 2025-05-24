@@ -24,8 +24,7 @@ import PhrasesContent from "@/app/english/components/advanced-grammar/phrases-co
 import ReportedSpeechContent from "@/app/english/components/advanced-grammar/reported-speech-content";
 import ParallelismContent from "@/app/english/components/advanced-grammar/parallelism-content";
 import InversionContent from "@/app/english/components/advanced-grammar/inversion-content";
-import EmphasisCleftSentencesContent from "@/app/english/components/advanced-grammar/emphasis-cleft-sentences-content";
-
+import EmphasisAndCleftSentencesContent from "@/app/english/components/advanced-grammar/emphasis-and-cleft-sentences-content";
 
 export const grammarTopicsData: Record<string, { title: string; content: React.ReactNode }> = {
     //  Basic Grammar Topics
@@ -98,6 +97,7 @@ export const grammarTopicsData: Record<string, { title: string; content: React.R
     },
 
     //  Advanced Grammar Topics
+
     "gerunds-and-infinitives": {
         title: "Gerunds and Infinitives",
         content: <GerundsAndInfinitivesContent />,
@@ -124,7 +124,7 @@ export const grammarTopicsData: Record<string, { title: string; content: React.R
     },
     "emphasis-and-cleft-sentences": {
         title: "Emphasis and Cleft Sentences",
-        content: <EmphasisCleftSentencesContent />,
+        content: <EmphasisAndCleftSentencesContent />,
     },
 
 
