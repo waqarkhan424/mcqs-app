@@ -41,8 +41,10 @@ export const metadata: Metadata = {
       {
         // url: "https://www.onepaper.site/onepaper.png",
         url: "https://www.onepaper.site/og-image.png",
-        width: 1200,
-        height: 630,
+        // width: 1200,
+        // height: 630,
+        width: 384,
+        height: 384,
         alt: "OnePaper logo",
       },
     ],
