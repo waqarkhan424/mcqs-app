@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import { Nunito_Sans } from "next/font/google";
 import SiteHeader from "./components/site-header";
 import SiteFooter from "./components/site-footer";
 import "./globals.css";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 
 const nunitoSans = Nunito_Sans({
@@ -80,7 +71,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <html lang="en">
     <html lang="en" className={nunitoSans.className}>
 
 
@@ -97,9 +87,6 @@ export default function RootLayout({
 
       <body className="antialiased flex flex-col min-h-screen">
 
-        {/* <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-      > */}
 
         <SiteHeader />
         <main className="flex-grow">
