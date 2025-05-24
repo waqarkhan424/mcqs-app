@@ -1,12 +1,13 @@
-import NounsContent from "@/app/english/components/nouns-content";
-import PronounsContent from "@/app/english/components/pronouns-content";
-import VerbsContent from "@/app/english/components/verbs-content";
-import AdjectivesContent from "@/app/english/components/adjectives-content";
-import AdverbsContent from "@/app/english/components/adverbs-content";
-import PrepositionsContent from "@/app/english/components/prepositions-content";
-import ConjunctionsContent from "@/app/english/components/conjunctions-content";
-import InterjectionsContent from "@/app/english/components/interjections-content";
-import ArticlesContent from "@/app/english/components/articles-content";
+import NounsContent from "@/app/english/components/basic-grammar/nouns-content";
+import PronounsContent from "@/app/english/components/basic-grammar/pronouns-content";
+import VerbsContent from "@/app/english/components/basic-grammar/verbs-content";
+import AdjectivesContent from "@/app/english/components/basic-grammar/adjectives-content";
+import AdverbsContent from "@/app/english/components/basic-grammar/adverbs-content";
+import PrepositionsContent from "@/app/english/components/basic-grammar/prepositions-content";
+import ConjunctionsContent from "@/app/english/components/basic-grammar/conjunctions-content";
+import InterjectionsContent from "@/app/english/components/basic-grammar/interjections-content";
+import ArticlesContent from "@/app/english/components/basic-grammar/articles-content";
+
 
 export const grammarTopicsData: Record<string, { title: string; content: React.ReactNode }> = {
     nouns: {
