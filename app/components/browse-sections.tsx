@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
-import { Landmark, BookType } from "lucide-react";
+import { Landmark, BookType, BookOpenText } from "lucide-react";
 import Link from "next/link";
 
 
@@ -19,6 +19,13 @@ const sections = [
         icon: BookType,
         color: "text-green-600",
     },
+    {
+        label: "Vocabulary",
+        href: "/vocabulary",
+        icon: BookOpenText,
+        color: "text-rose-600",
+    },
+
 ];
 
 
@@ -30,7 +37,8 @@ export default function BrowseSections() {
                 Browse Sections
             </Typography>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"> */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
 
                 {sections.map((section) => {
                     const Icon = section.icon;

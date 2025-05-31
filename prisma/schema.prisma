@@ -18,3 +18,13 @@ model Question {
   category      String?
   topic         String?
 }
+
+
+model Vocabulary {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  word         String
+  definition   String
+  urduMeaning  String
+  example      String
+  topic        String
+}
