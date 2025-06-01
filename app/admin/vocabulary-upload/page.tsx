@@ -11,13 +11,19 @@ export default function VocabularyUploadPage() {
     const [input, setInput] = useState("");
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
+    const [feedback, setFeedback] = useState<{
+        inserted: number;
+        insertedWords: string[];
+        skipped: string[];
+    } | null>(null);
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
-        await add_bulk_vocabulary(formData);
+        const result = await add_bulk_vocabulary(formData);
         setLoading(false);
         setInput("");
         setTopic("");
+        setFeedback(result);
     }
 
     return (
@@ -51,6 +57,32 @@ export default function VocabularyUploadPage() {
                     {loading ? "Uploading..." : "Submit Vocabulary"}
                 </Button>
             </form>
+
+            {feedback && (
+                <div className="mt-6 space-y-4">
+                    {feedback.inserted > 0 && (
+                        <div className="text-green-700 space-y-1">
+                            <Typography variant="h4">Successfully added {feedback.inserted} words:</Typography>
+                            <ul className="list-disc list-inside">
+                                {feedback.insertedWords.map((word, index) => (
+                                    <li key={index}>{word}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {feedback.skipped.length > 0 && (
+                        <div className="text-red-600 space-y-1">
+                            <Typography variant="h4"> Skipped {feedback.skipped.length} duplicate words:</Typography>
+                            <ul className="list-disc list-inside">
+                                {feedback.skipped.map((word, index) => (
+                                    <li key={index}>{word}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }
