@@ -41,7 +41,7 @@ export default function VocabularyPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 {vocabularyTopics.map(({ name, slug, icon: Icon, color }) => (
-                    <Card key={slug} className="bg-yellow-50 transition rounded-xl border-none shadow-sm">
+                    <Card key={slug} className="bg-blue-50 transition rounded-xl border-none shadow-sm">
                         <CardContent className="p-5">
                             <Link
                                 href={`/vocabulary/${slug}`}
