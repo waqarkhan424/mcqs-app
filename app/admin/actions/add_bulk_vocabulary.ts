@@ -9,18 +9,25 @@ export async function add_bulk_vocabulary(formData: FormData) {
 
     if (!raw || !topic) return;
 
-    const blocks = raw
-        .split(/\n{2,}/) // split by 2 or more newlines
-        .map(block => block.trim())
-        .filter(block => block);
+    const lines = raw
+        .split("\n")
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 
-    const entries = blocks.map(block => {
-        const lines = block.split("\n").map(line => line.trim());
-        const [word, definition, urduMeaning, example] = lines;
-        return { word, definition, urduMeaning, example, topic };
-    }).filter(entry => entry.word && entry.definition && entry.urduMeaning && entry.example);
+    const entries = [];
+    for (let i = 0; i < lines.length; i += 4) {
+        const word = lines[i];
+        const definition = lines[i + 1];
+        const urduMeaning = lines[i + 2];
+        const example = lines[i + 3];
 
-    await prisma.vocabulary.createMany({ data: entries });
+        if (word && definition && urduMeaning && example) {
+            entries.push({ word, definition, urduMeaning, example, topic });
+        }
+    }
 
-    revalidatePath("/admin/vocabulary-upload");
+    if (entries.length > 0) {
+        await prisma.vocabulary.createMany({ data: entries });
+        revalidatePath("/admin/vocabulary-upload");
+    }
 }

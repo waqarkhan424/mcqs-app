@@ -1,17 +1,24 @@
-import { notFound } from "next/navigation";
 import Typography from "@/components/ui/typography";
+import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 
+import {
+    Card,
+    CardHeader,
+    CardTitle,
+    CardContent,
+} from "@/components/ui/card";
+
 interface Props {
-    params: { topic: string };
+    params: Promise<{ topic: string }>;
 }
 
-export default async function VocabularyTopicPage({ params }: Props) {
-    const { topic } = params;
+export default async function VocabularyTopicPage(props: Props) {
+    const { topic } = await props.params;
 
     const words = await prisma.vocabulary.findMany({
         where: {
-            topic: topic,
+            topic,
         },
     });
 
@@ -23,14 +30,24 @@ export default async function VocabularyTopicPage({ params }: Props) {
                 {topic.replace(/-/g, " ")} Vocabulary
             </Typography>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
                 {words.map((word) => (
-                    <div key={word.id} className="p-4 border border-gray-200 rounded-md bg-white">
-                        <Typography variant="h3">{word.word}</Typography>
-                        <p className="text-sm text-gray-700">{word.definition}</p>
-                        <p className="text-sm text-green-700">{word.urduMeaning}</p>
-                        <p className="text-sm text-blue-700 italic">{word.example}</p>
-                    </div>
+                    <Card key={word.id}>
+                        <CardHeader className="pb-0">
+                            <CardTitle className="text-xl">{word.word}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-2 pt-0">
+                            <Typography variant="p" size="md" color="muted-foreground">
+                                {word.definition}
+                            </Typography>
+                            <Typography variant="p" size="md" color="success">
+                                {word.urduMeaning}
+                            </Typography>
+                            <Typography variant="p" size="md" color="primary" className="italic">
+                                {word.example}
+                            </Typography>
+                        </CardContent>
+                    </Card>
                 ))}
             </div>
         </div>
