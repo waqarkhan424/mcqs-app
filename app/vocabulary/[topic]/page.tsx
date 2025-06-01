@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { notFound } from "next/navigation";
 import Typography from "@/components/ui/typography";
 import prisma from "@/lib/prisma";
