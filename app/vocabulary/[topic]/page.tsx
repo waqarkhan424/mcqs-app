@@ -2,50 +2,53 @@ import prisma from "@/lib/prisma";
 import Typography from "@/components/ui/typography";
 import SearchBox from "@/app/vocabulary/components/search-box";
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardHeader, CardTitle, CardContent, } from "@/components/ui/card";
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select";
 import { vocabularyTopics } from "@/lib/vocabulary-topics";
+import { Prisma } from "@prisma/client";
 
 interface Props {
-    params: { topic: string };
-    searchParams: { page?: string; perPage?: string; search?: string };
+    params: Promise<{ topic: string }>;
+    searchParams: Promise<{ page?: string; perPage?: string; search?: string; }>;
 }
 
 export default async function VocabularyTopicPage({ params, searchParams }: Props) {
-    const topic = params.topic;
-    const page = parseInt(searchParams.page || "1", 10);
-    const perPage = parseInt(searchParams.perPage || "10", 10);
-    const skip = (page - 1) * perPage;
-    const search = searchParams.search?.toLowerCase() || "";
+    const { topic } = await params;
+    const { page = "1", perPage = "10", search = "" } = await searchParams;
 
-    let whereCondition: any;
+    const pageNumber = parseInt(page, 10);
+    const perPageNumber = parseInt(perPage, 10);
+    const skip = (pageNumber - 1) * perPageNumber;
 
-    //  1. If search is active, search globally
-    if (search) {
-        whereCondition = {
-            word: {
-                contains: search,
-                mode: "insensitive"
+    const searchTerm = search.toLowerCase();
+
+
+    const whereCondition =
+        searchTerm.length > 0
+            ? {
+                word: {
+                    contains: searchTerm,
+                    mode: Prisma.QueryMode.insensitive,
+                    // mode: "insensitive",
+                },
             }
-        };
-    } else {
-        //  2. Else, restrict to current topic
-        whereCondition = { topic };
-    }
+            : { topic };
+
+
 
     const [words, totalCount] = await Promise.all([
         prisma.vocabulary.findMany({
             where: whereCondition,
             skip,
-            take: perPage
+            take: perPageNumber,
         }),
         prisma.vocabulary.count({
-            where: whereCondition
-        })
+            where: whereCondition,
+        }),
     ]);
 
-    const totalPages = Math.ceil(totalCount / perPage);
+    const totalPages = Math.ceil(totalCount / perPageNumber);
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6">
@@ -57,7 +60,8 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                         <li key={t.slug}>
                             <Link
                                 href={`/vocabulary/${t.slug}`}
-                                className={`block px-3 py-1.5 rounded-md font-medium hover:bg-muted transition ${topic === t.slug ? "bg-primary text-white" : "text-blue-600"}`}
+                                className={`block px-3 py-1.5 rounded-md font-medium hover:bg-muted transition ${topic === t.slug ? "bg-primary text-white" : "text-blue-600"
+                                    }`}
                             >
                                 {t.name}
                             </Link>
@@ -68,9 +72,9 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
 
             {/* Main Content */}
             <main className="space-y-6">
-                {search ? (
+                {searchTerm ? (
                     <Typography variant="h3" className="text-center">
-                        Search results for "{search}"
+                        Search results for "{searchTerm}"
                     </Typography>
                 ) : (
                     <Typography variant="h2" className="capitalize text-center">
@@ -78,21 +82,23 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                     </Typography>
                 )}
 
-                <SearchBox defaultValue={searchParams.search || ""} topic={topic} />
+                <SearchBox defaultValue={searchTerm} topic={topic} />
 
                 <div className="flex items-center justify-between">
                     <Typography variant="p" className="text-muted-foreground text-sm">
-                        Showing {skip + 1} – {Math.min(skip + perPage, totalCount)} of {totalCount}
+                        Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
                     </Typography>
 
-                    <Select defaultValue={String(perPage)}>
+                    <Select defaultValue={String(perPageNumber)}>
                         <SelectTrigger className="w-[140px]">
                             <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                             {[10, 20, 50].map((value) => (
                                 <SelectItem key={value} value={String(value)}>
-                                    <Link href={`/vocabulary/${topic}?page=1&perPage=${value}${search ? `&search=${search}` : ""}`}>
+                                    <Link
+                                        href={`/vocabulary/${topic}?page=1&perPage=${value}${searchTerm ? `&search=${searchTerm}` : ""}`}
+                                    >
                                         {value} / page
                                     </Link>
                                 </SelectItem>
@@ -117,6 +123,8 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                                     <p className="text-lg text-green-700">{word.urduMeaning}</p>
                                     <p className="text-lg text-blue-700 italic">{word.example}</p>
 
+
+
                                     {/* <Typography variant="p" size="lg" color="muted-foreground">
                                     {word.definition}
                                 </Typography>
@@ -137,9 +145,12 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
 
                 <Pagination>
                     <PaginationContent>
-                        {page > 1 && (
+                        {pageNumber > 1 && (
                             <PaginationItem>
-                                <PaginationPrevious href={`/vocabulary/${topic}?page=${page - 1}&perPage=${perPage}${search ? `&search=${search}` : ""}`} />
+                                <PaginationPrevious
+                                    href={`/vocabulary/${topic}?page=${pageNumber - 1}&perPage=${perPageNumber}${searchTerm ? `&search=${searchTerm}` : ""
+                                        }`}
+                                />
                             </PaginationItem>
                         )}
 
@@ -148,8 +159,9 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                             return (
                                 <PaginationItem key={pageNum}>
                                     <PaginationLink
-                                        href={`/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}${search ? `&search=${search}` : ""}`}
-                                        isActive={page === pageNum}
+                                        href={`/vocabulary/${topic}?page=${pageNum}&perPage=${perPageNumber}${searchTerm ? `&search=${searchTerm}` : ""
+                                            }`}
+                                        isActive={pageNumber === pageNum}
                                     >
                                         {pageNum}
                                     </PaginationLink>
@@ -157,9 +169,12 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                             );
                         })}
 
-                        {page < totalPages && (
+                        {pageNumber < totalPages && (
                             <PaginationItem>
-                                <PaginationNext href={`/vocabulary/${topic}?page=${page + 1}&perPage=${perPage}${search ? `&search=${search}` : ""}`} />
+                                <PaginationNext
+                                    href={`/vocabulary/${topic}?page=${pageNumber + 1}&perPage=${perPageNumber}${searchTerm ? `&search=${searchTerm}` : ""
+                                        }`}
+                                />
                             </PaginationItem>
                         )}
                     </PaginationContent>
