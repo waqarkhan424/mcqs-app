@@ -37,13 +37,13 @@ export default async function VocabularyTopicPage(props: Props) {
                             <CardTitle className="text-xl">{word.word}</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-2 pt-0">
-                            <Typography variant="p" size="md" color="muted-foreground">
+                            <Typography variant="p" size="lg" color="muted-foreground">
                                 {word.definition}
                             </Typography>
-                            <Typography variant="p" size="md" color="success">
+                            <Typography variant="p" size="lg" color="success">
                                 {word.urduMeaning}
                             </Typography>
-                            <Typography variant="p" size="md" color="primary" className="italic">
+                            <Typography variant="p" size="lg" color="primary" className="italic">
                                 {word.example}
                             </Typography>
                         </CardContent>
