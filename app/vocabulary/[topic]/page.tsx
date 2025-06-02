@@ -1,37 +1,52 @@
 
-import Typography from "@/components/ui/typography";
-import { notFound } from "next/navigation";
-import prisma from "@/lib/prisma";
 
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import prisma from "@/lib/prisma";
+import Typography from "@/components/ui/typography";
 import {
     Card,
     CardHeader,
     CardTitle,
     CardContent,
 } from "@/components/ui/card";
-import Link from "next/link";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 interface Props {
-    params: Promise<{ topic: string }>;
-    searchParams?: { page?: string };
+    params: { topic: string };
+    searchParams: { page?: string; perPage?: string };
 }
 
 export default async function VocabularyTopicPage({ params, searchParams }: Props) {
-    const { topic } = await params;
+    const topic = params.topic;
 
-    const currentPage = parseInt(searchParams?.page || "1", 10);
-    const perPage = 10;
-    const skip = (currentPage - 1) * perPage;
+    const page = parseInt(searchParams.page || "1", 10);
+    const perPage = parseInt(searchParams.perPage || "10", 10);
+    const skip = (page - 1) * perPage;
 
-    // Get current page words + total count
     const [words, totalCount] = await Promise.all([
         prisma.vocabulary.findMany({
             where: { topic },
             skip,
             take: perPage,
-            orderBy: { word: "asc" },
         }),
-        prisma.vocabulary.count({ where: { topic } }),
+        prisma.vocabulary.count({
+            where: { topic },
+        }),
     ]);
 
     if (!words || words.length === 0) return notFound();
@@ -39,10 +54,31 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
     const totalPages = Math.ceil(totalCount / perPage);
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-10 space-y-8">
+        <div className="max-w-4xl mx-auto px-4 py-10 space-y-6">
             <Typography variant="h2" className="capitalize text-center">
                 {topic.replace(/-/g, " ")} Vocabulary
             </Typography>
+
+            <div className="flex items-center justify-between">
+                <Typography variant="p" className="text-muted-foreground text-sm">
+                    Showing {skip + 1} – {Math.min(skip + perPage, totalCount)} of {totalCount}
+                </Typography>
+
+                <Select defaultValue={String(perPage)}>
+                    <SelectTrigger className="w-[140px]">
+                        <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                        {[10, 20, 50].map((value) => (
+                            <SelectItem key={value} value={String(value)}>
+                                <Link href={`/vocabulary/${topic}?page=1&perPage=${value}`}>
+                                    {value} / page
+                                </Link>
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
 
             <div className="space-y-6">
                 {words.map((word) => (
@@ -52,9 +88,12 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                         </CardHeader>
                         <CardContent className="space-y-2 pt-0">
 
+
                             <p className="text-lg text-gray-700">{word.definition}</p>
                             <p className="text-lg text-green-700">{word.urduMeaning}</p>
                             <p className="text-lg text-blue-700 italic">{word.example}</p>
+
+
                             {/* <Typography variant="p" size="lg" color="muted-foreground">
                                 {word.definition}
                             </Typography>
@@ -69,23 +108,34 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
                 ))}
             </div>
 
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                        <Link
-                            key={pageNum}
-                            href={`/vocabulary/${topic}?page=${pageNum}`}
-                            className={`px-4 py-2 rounded border ${pageNum === currentPage
-                                ? "bg-blue-600 text-white"
-                                : "bg-white text-blue-600 border-blue-600"
-                                }`}
-                        >
-                            {pageNum}
-                        </Link>
-                    ))}
-                </div>
-            )}
+            {/* Pagination UI */}
+            <Pagination>
+                <PaginationContent>
+                    {page > 1 && (
+                        <PaginationItem>
+                            <PaginationPrevious href={`/vocabulary/${topic}?page=${page - 1}&perPage=${perPage}`} />
+                        </PaginationItem>
+                    )}
+                    {[...Array(totalPages)].map((_, i) => {
+                        const pageNum = i + 1;
+                        return (
+                            <PaginationItem key={pageNum}>
+                                <PaginationLink
+                                    href={`/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}`}
+                                    isActive={page === pageNum}
+                                >
+                                    {pageNum}
+                                </PaginationLink>
+                            </PaginationItem>
+                        );
+                    })}
+                    {page < totalPages && (
+                        <PaginationItem>
+                            <PaginationNext href={`/vocabulary/${topic}?page=${page + 1}&perPage=${perPage}`} />
+                        </PaginationItem>
+                    )}
+                </PaginationContent>
+            </Pagination>
         </div>
     );
 }
