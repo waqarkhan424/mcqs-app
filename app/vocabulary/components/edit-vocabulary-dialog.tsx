@@ -60,10 +60,10 @@ export default function EditVocabularyDialog({ wordData, onConfirm, disabled, ch
                 </div>
 
                 <DialogFooter className="mt-4">
-                    <Button variant="outline" onClick={() => setOpen(false)}>
+                    <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
                         Cancel
                     </Button>
-                    <Button onClick={handleUpdate} disabled={disabled}>
+                    <Button size="sm" onClick={handleUpdate} disabled={disabled}>
                         {disabled ? "Saving..." : "Save"}
                     </Button>
                 </DialogFooter>

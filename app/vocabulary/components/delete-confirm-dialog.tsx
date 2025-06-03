@@ -5,6 +5,7 @@ import {
     DialogTrigger,
     DialogContent,
     DialogHeader,
+    DialogDescription,
     DialogTitle,
     DialogFooter,
 } from "@/components/ui/dialog";
@@ -23,13 +24,16 @@ export default function DeleteConfirmDialog({ onConfirm, disabled, children, }: 
                     <DialogTitle>Delete Word</DialogTitle>
                 </DialogHeader>
 
-                <p className="text-sm text-gray-600">Are you sure you want to delete this word? This action cannot be undone.</p>
+                <DialogDescription>
+                    Are you sure you want to delete this word? This action cannot be undone.
+                </DialogDescription>
+
 
                 <DialogFooter className="mt-4">
-                    <Button variant="outline" onClick={() => setOpen(false)}>
+                    <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
                         Cancel
                     </Button>
-                    <Button variant="destructive" onClick={() => { setOpen(false); onConfirm(); }} disabled={disabled}>
+                    <Button size="sm" variant="destructive" onClick={() => { setOpen(false); onConfirm(); }} disabled={disabled}>
                         {disabled ? "Deleting..." : "Delete"}
                     </Button>
                 </DialogFooter>
