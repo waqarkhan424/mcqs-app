@@ -46,7 +46,7 @@ export default function VocabularyCard({ word }: { word: any }) {
                 <CardTitle className="text-xl">{word.word}</CardTitle>
 
 
-                <div className="flex justify-end gap-2">
+                {/* <div className="flex justify-end gap-2">
                     <EditVocabularyDialog wordData={word} disabled={isPending} onConfirm={handleEdit}>
                         <Button size="sm" variant="outline" disabled={isPending}>
                             Edit
@@ -58,7 +58,7 @@ export default function VocabularyCard({ word }: { word: any }) {
                             {isPending ? "Deleting..." : "Delete"}
                         </Button>
                     </DeleteConfirmDialog>
-                </div>
+                </div> */}
 
 
 
