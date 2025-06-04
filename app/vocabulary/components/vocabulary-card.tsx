@@ -63,6 +63,7 @@ export default function VocabularyCard({ word }: { word: any }) {
 
 
 
+
             </CardHeader>
 
             <CardContent className="space-y-2 pt-0">
