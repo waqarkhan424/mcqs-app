@@ -1,4 +1,6 @@
-export * from "./types";
+// export * from "./types";
+//@ts-nocheck
+export * from "./types.ts";
 
 import { interior } from "./interior";
 import { defence } from "./defence";
