@@ -1,35 +1,44 @@
-// scripts/seedMinistries.ts
-import { ministries } from "@/lib/ministries/ministries"; // update path if different
-
-
+//@ts-nocheck
+import { ministries } from "@/lib/ministries"; // make sure index.ts exports all ministry objects
 import prisma from "@/lib/prisma";
 
 async function seedMinistries() {
-    for (const ministry of ministries) {
-        const created = await prisma.ministry.create({
-            data: {
-                name: ministry.name,
-                slug: ministry.slug,
-                departments: {
-                    create: ministry.departments.map((d) => ({
-                        name: d.name,
-                        slug: d.slug,
-                        type: d.type,
-                    })),
+    try {
+        for (const ministry of ministries) {
+            // Check if ministry already exists
+            const existing = await prisma.ministry.findUnique({
+                where: { slug: ministry.slug },
+            });
+
+            if (existing) {
+                console.log(`⏩ Skipped (already exists): ${ministry.name}`);
+                continue;
+            }
+
+            // Create new ministry with departments
+            const created = await prisma.ministry.create({
+                data: {
+                    name: ministry.name,
+                    slug: ministry.slug,
+                    departments: {
+                        create: ministry.departments.map((department) => ({
+                            name: department.name,
+                            slug: department.slug,
+                            type: department.type,
+                        })),
+                    },
                 },
-            },
-        });
+            });
 
-        console.log(`✅ Inserted: ${created.name}`);
+            console.log(`✅ Inserted: ${created.name}`);
+        }
+
+        console.log("🎉 All ministries seeded successfully!");
+    } catch (error) {
+        console.error("❌ Error seeding ministries:", error);
+    } finally {
+        await prisma.$disconnect();
     }
-
-    console.log("🎉 All ministries seeded successfully!");
 }
 
-seedMinistries()
-    .catch((error) => {
-        console.error("❌ Error seeding ministries:", error);
-    })
-    .finally(() => {
-        prisma.$disconnect();
-    });
+seedMinistries();
