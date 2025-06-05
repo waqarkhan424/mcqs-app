@@ -7,7 +7,8 @@
     "build": "prisma generate && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:grammar": "ts-node --loader ts-node/esm scripts/seedGrammar.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
