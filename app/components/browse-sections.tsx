@@ -13,12 +13,7 @@ const sections = [
         icon: Landmark,
         color: "text-purple-600",
     },
-    {
-        label: "English Grammar",
-        href: "/english",
-        icon: BookType,
-        color: "text-green-600",
-    },
+
     {
         label: "Vocabulary",
         href: "/vocabulary",
@@ -37,8 +32,8 @@ export default function BrowseSections() {
                 Browse Sections
             </Typography>
 
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-5"> */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"> */}
 
                 {sections.map((section) => {
                     const Icon = section.icon;

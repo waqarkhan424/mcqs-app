@@ -1,4 +1,3 @@
-import McqsUploader from "./components/mcqs-uploader";
 import CategoryLinks from "./components/category-links";
 import Typography from "@/components/ui/typography";
 import BrowseSections from "./components/browse-sections";
@@ -22,7 +21,6 @@ export default function Home() {
 
       <BrowseSections />
 
-      {/* <McqsUploader /> */}
 
     </div>
 
