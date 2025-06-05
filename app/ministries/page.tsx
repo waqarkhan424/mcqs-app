@@ -1,17 +1,6 @@
-
-// import MinistriesLinks from "@/app/components/ministries-links";
-
-// export default function MinistriesPage() {
-//     return <MinistriesLinks />;
-// }
-
-// "use client"
-//@ts-nocheck
-
 import { Card, CardContent } from "@/components/ui/card"
 import { ministryData } from "@/lib/ministry-icons"
 import Typography from "@/components/ui/typography"
-// import { ministries } from "@/lib/ministries"
 import Link from "next/link"
 import { get_ministries } from "./actions/get_ministries"
 

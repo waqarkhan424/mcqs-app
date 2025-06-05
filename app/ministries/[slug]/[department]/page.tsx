@@ -1,4 +1,3 @@
-// import { ministries } from "@/lib/ministries"
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
@@ -11,13 +10,6 @@ interface Props {
 export default async function DepartmentPage(props: Props) {
 
     const { slug, department } = await props.params
-
-    // const ministry = ministries.find((m) => m.slug === slug)
-    // const dept = ministry?.departments.find((d) => d.slug === department)
-
-    // if (!ministry || !dept) return notFound()
-
-
 
 
     const dept = await prisma.department.findFirst({
@@ -34,10 +26,6 @@ export default async function DepartmentPage(props: Props) {
     });
 
     if (!dept) return notFound();
-
-
-
-
 
 
     return (

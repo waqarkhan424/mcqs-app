@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "mcqs-app",
   "version": "0.1.0",
   "private": true,
@@ -8,8 +7,7 @@
     "build": "prisma generate && next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint",
-    "seed:ministries": "node --loader ts-node/esm scripts/seedMinistries.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",

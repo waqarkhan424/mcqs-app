@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import Typography from "@/components/ui/typography"
-import { Department } from "@/lib/ministries"
+import { Department } from "@/lib/types/ministry"
 
 export default function MinistryDepartmentLinks({
     slug,

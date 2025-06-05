@@ -1,5 +1,3 @@
-// import { ministries } from "@/lib/ministries"
-//@ts-nocheck
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
@@ -12,9 +10,6 @@ interface Props {
 export default async function MinistryPage(props: Props) {
     const { slug } = await props.params
 
-    // const ministry = ministries.find((m) => m.slug === slug)
-
-    // if (!ministry) return notFound()
 
     const ministry = await prisma.ministry.findUnique({
         where: { slug },
