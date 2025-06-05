@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { ministries } from "../lib/ministries/index.ts";
-import prisma from "../lib/prisma";
+import prisma from "../lib/prisma.ts";
 
 async function seedMinistries() {
     try {
