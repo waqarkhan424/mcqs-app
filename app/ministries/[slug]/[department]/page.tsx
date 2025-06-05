@@ -1,4 +1,5 @@
-import { ministries } from "@/lib/ministries"
+// import { ministries } from "@/lib/ministries"
+import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
 
@@ -11,10 +12,33 @@ export default async function DepartmentPage(props: Props) {
 
     const { slug, department } = await props.params
 
-    const ministry = ministries.find((m) => m.slug === slug)
-    const dept = ministry?.departments.find((d) => d.slug === department)
+    // const ministry = ministries.find((m) => m.slug === slug)
+    // const dept = ministry?.departments.find((d) => d.slug === department)
 
-    if (!ministry || !dept) return notFound()
+    // if (!ministry || !dept) return notFound()
+
+
+
+
+    const dept = await prisma.department.findFirst({
+        where: {
+            slug: department,
+            ministry: {
+                slug,
+            },
+        },
+        include: {
+            posts: true,
+            ministry: true,
+        },
+    });
+
+    if (!dept) return notFound();
+
+
+
+
+
 
     return (
         <div className="px-4 pt-12 pb-20 max-w-3xl mx-auto space-y-6 text-[16px] leading-7 text-gray-800">

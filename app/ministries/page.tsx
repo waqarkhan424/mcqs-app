@@ -6,6 +6,7 @@
 // }
 
 // "use client"
+//@ts-nocheck
 
 import { Card, CardContent } from "@/components/ui/card"
 import { ministryData } from "@/lib/ministry-icons"

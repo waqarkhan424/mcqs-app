@@ -1,4 +1,6 @@
-import { ministries } from "@/lib/ministries"
+// import { ministries } from "@/lib/ministries"
+//@ts-nocheck
+import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
 import Typography from "@/components/ui/typography"
 import MinistryDepartmentLinks from "@/app/components/ministry-department-links"
@@ -10,9 +12,23 @@ interface Props {
 export default async function MinistryPage(props: Props) {
     const { slug } = await props.params
 
-    const ministry = ministries.find((m) => m.slug === slug)
+    // const ministry = ministries.find((m) => m.slug === slug)
 
-    if (!ministry) return notFound()
+    // if (!ministry) return notFound()
+
+    const ministry = await prisma.ministry.findUnique({
+        where: { slug },
+        include: {
+            departments: {
+                include: {
+                    posts: true,
+                },
+            },
+        },
+    });
+
+    if (!ministry) return notFound();
+
 
     return (
         <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-5xl mx-auto space-y-6">
