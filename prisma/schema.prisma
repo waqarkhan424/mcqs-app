@@ -30,19 +30,35 @@ model Vocabulary {
 }
 
 
+
+
 model Ministry {
-  id         String      @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  slug       String      @unique
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String       @unique
   departments Department[]
 }
 
 model Department {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  slug       String
-  type       String
-  ministryId String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  slug      String
+  type      String
+  posts     Post[]
+
   ministry   Ministry @relation(fields: [ministryId], references: [id])
+  ministryId String   @db.ObjectId
 }
+
+model Post {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  bs            String
+  postName      String
+  qualification String
+  ageLimit      String
+
+  department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String     @db.ObjectId
+}
+
 

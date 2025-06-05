@@ -1,11 +1,16 @@
-//@ts-nocheck
+// File: scripts/seedMinistries.ts
+
+// Disable type‐checking because we'll import raw JSON‐like objects
+// from ../lib/ministries/index.ts
+// @ts-nocheck
+
 import { ministries } from "../lib/ministries/index.ts";
 import prisma from "../lib/prisma.ts";
 
 async function seedMinistries() {
     try {
         for (const ministry of ministries) {
-            // Check if ministry already exists
+            // 1. Check if this ministry (by slug) already exists
             const existing = await prisma.ministry.findUnique({
                 where: { slug: ministry.slug },
             });
@@ -15,7 +20,7 @@ async function seedMinistries() {
                 continue;
             }
 
-            // Create new ministry with departments
+            // 2. Create the ministry, with nested departments and posts
             const created = await prisma.ministry.create({
                 data: {
                     name: ministry.name,
@@ -25,6 +30,14 @@ async function seedMinistries() {
                             name: department.name,
                             slug: department.slug,
                             type: department.type,
+                            posts: {
+                                create: department.posts.map((post) => ({
+                                    bs: post.bs,
+                                    postName: post.postName,
+                                    qualification: post.qualification,
+                                    ageLimit: post.ageLimit,
+                                })),
+                            },
                         })),
                     },
                 },
