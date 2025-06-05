@@ -2,8 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ministryData } from "@/lib/ministry-icons"
 import Typography from "@/components/ui/typography"
 import Link from "next/link"
-import { get_ministries } from "./actions/get_ministries"
-
+import { get_ministries } from "../actions/get_ministries"
 
 export default async function MinistriesPage() {
 

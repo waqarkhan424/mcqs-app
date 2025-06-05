@@ -1,4 +1,3 @@
-//@ts-nocheck
 import prisma from "@/lib/prisma";
 
 export async function get_ministries() {
