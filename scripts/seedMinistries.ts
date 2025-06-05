@@ -1,6 +1,6 @@
 //@ts-nocheck
-import { ministries } from "@/lib/ministries"; // make sure index.ts exports all ministry objects
-import prisma from "@/lib/prisma";
+import { ministries } from "../lib/ministries";
+import prisma from "../lib/prisma";
 
 async function seedMinistries() {
     try {
