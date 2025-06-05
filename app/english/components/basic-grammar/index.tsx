@@ -1,12 +1,4 @@
-// export { default as NounsContent } from "./nouns-content";
-// export { default as PronounsContent } from "./pronouns-content";
-// export { default as VerbsContent } from "./verbs-content";
-// export { default as AdjectivesContent } from "./adjectives-content";
-// export { default as AdverbsContent } from "./adverbs-content";
-// export { default as PrepositionsContent } from "./prepositions-content";
-// export { default as ConjunctionsContent } from "./conjunctions-content";
-// export { default as InterjectionsContent } from "./interjections-content";
-// export { default as ArticlesContent } from "./articles-content";
+
 
 //@ts-nocheck
 export { default as NounsContent } from "./nouns-content.tsx";
