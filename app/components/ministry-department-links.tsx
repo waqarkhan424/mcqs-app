@@ -1,15 +1,28 @@
 "use client"
 import Link from "next/link"
 import Typography from "@/components/ui/typography"
-import { Department } from "@/lib/types/ministry"
 
-export default function MinistryDepartmentLinks({
-    slug,
-    departments,
-}: {
-    slug: string
-    departments: Department[]
-}) {
+
+interface Post {
+    id: string;
+    bs: string;
+    postName: string;
+    qualification: string;
+    ageLimit: string;
+}
+
+interface Department {
+    id: string;
+    name: string;
+    slug: string;
+    type: string;
+    posts: Post[];
+}
+
+
+
+export default function MinistryDepartmentLinks({ slug, departments, }: { slug: string, departments: Department[] }) {
+
     return (
         <div className="space-y-4">
             <Typography variant="p" affects="muted" size="sm">
