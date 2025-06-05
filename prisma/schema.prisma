@@ -61,12 +61,3 @@ model Post {
   departmentId String     @db.ObjectId
 }
 
-
-
-model GrammarTopic {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  level   String 
-  slug    String @unique
-  title   String
-  content String
-}
