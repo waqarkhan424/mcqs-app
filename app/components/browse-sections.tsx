@@ -11,14 +11,18 @@ const sections = [
         label: "Ministries",
         href: "/ministries",
         icon: Landmark,
-        color: "text-purple-600",
+        // color: "text-purple-600",
+        color: "text-primary", // Changed from hardcoded purple to theme-based
+
     },
 
     {
         label: "Vocabulary",
         href: "/vocabulary",
         icon: BookOpenText,
-        color: "text-rose-600",
+        // color: "text-rose-600",
+        color: "text-accent", // Changed from hardcoded rose to theme-based
+
     },
 
 ];
@@ -40,12 +44,15 @@ export default function BrowseSections() {
                     return (
                         <Card
                             key={section.href}
-                            className="bg-green-50 transition rounded-xl border-none shadow-sm"
+                            // className="bg-green-50 transition rounded-xl border-none shadow-sm"
+                            className="bg-muted transition rounded-xl border border-border shadow-sm"
                         >
                             <CardContent className="p-5">
                                 <Link
                                     href={section.href}
-                                    className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                    // className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                    className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
+
                                 >
                                     <Icon className={`w-5 h-5 ${section.color}`} />
                                     {section.label}

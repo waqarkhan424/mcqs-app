@@ -40,7 +40,8 @@ export default async function McqsByTopic(props: Props) {
 
         <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-5xl mx-auto space-y-6">
 
-            <div className="bg-muted p-4 text-left rounded-lg">
+            {/* <div className="bg-muted p-4 text-left rounded-lg"> */}
+            <div className="bg-muted p-4 text-left rounded-lg border border-border">
                 <Typography variant="h2" className="capitalize text-center">
                     {originalTopic || decodedTopic.replace(/-/g, " ")}
                 </Typography>
@@ -49,7 +50,8 @@ export default async function McqsByTopic(props: Props) {
 
 
             {questions.length === 0 ? (
-                <Card className="bg-yellow-50">
+                // <Card className="bg-yellow-50">
+                <Card className="bg-accent/10">
                     <CardContent className="text-center space-y-2">
                         <CardTitle > MCQs Coming Soon!</CardTitle>
                         <CardDescription >

@@ -74,11 +74,14 @@ export default function CategoryLinks() {
                         const Icon = cat.icon;
                         return (
 
-                            <Card key={cat.key} className="bg-yellow-50 transition rounded-xl border-none shadow-sm">
+                            // <Card key={cat.key} className="bg-yellow-50 transition rounded-xl border-none shadow-sm">
+                            <Card key={cat.key} className="bg-accent/10 transition rounded-xl border border-border shadow-sm">
                                 <CardContent className="p-5">
                                     <Link
                                         href={`/category/${cat.key}`}
-                                        className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                        // className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                        className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
+
                                     >
                                         <Icon className={`w-5 h-5 ${cat.color}`} />
                                         {cat.label} MCQs
@@ -101,11 +104,13 @@ export default function CategoryLinks() {
                         const Icon = paper.icon;
                         return (
 
-                            <Card key={paper.key} className="bg-blue-50 transition rounded-xl border-none shadow-sm">
+                            // <Card key={paper.key} className="bg-blue-50 transition rounded-xl border-none shadow-sm">
+                            <Card key={paper.key} className="bg-primary/10 transition rounded-xl border border-border shadow-sm">
                                 <CardContent className="p-5">
                                     <Link
                                         href={`/category/${paper.key}`}
-                                        className="flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2"
+                                        // className="flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2"
+                                        className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
                                     >
                                         <Icon className={`w-5 h-5 ${paper.color}`} />
                                         {paper.label}
