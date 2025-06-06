@@ -28,25 +28,54 @@ const config: Config = {
                     900: "#111827",
                 },
 
-                // ② now add shadcn’s semantic tokens, pointing to your CSS vars:
-                border: "var(--border)",
-                input: "var(--input)",
-                ring: "var(--ring)",
-                background: "var(--background)",
-                foreground: "var(--foreground)",
+                // // ② now add shadcn’s semantic tokens, pointing to your CSS vars:
+                // border: "var(--border)",
+                // input: "var(--input)",
+                // ring: "var(--ring)",
+                // background: "var(--background)",
+                // foreground: "var(--foreground)",
 
-                primaryForeground: "var(--primary-foreground)",
-                accentForeground: "var(--accent-foreground)",
+                // primaryForeground: "var(--primary-foreground)",
+                // accentForeground: "var(--accent-foreground)",
 
-                muted: "var(--muted)",
-                mutedForeground: "var(--muted-foreground)",
+                // muted: "var(--muted)",
+                // mutedForeground: "var(--muted-foreground)",
 
-                card: "var(--card)",
-                cardForeground: "var(--card-foreground)",
-                popover: "var(--popover)",
-                popoverForeground: "var(--popover-foreground)",
+                // card: "var(--card)",
+                // cardForeground: "var(--card-foreground)",
+                // popover: "var(--popover)",
+                // popoverForeground: "var(--popover-foreground)",
 
-                destructive: "var(--destructive)"
+                // destructive: "var(--destructive)"
+
+
+
+
+
+
+                // Semantic tokens with CSS var fallback (must use object with DEFAULT)
+                border: { DEFAULT: "var(--border)" },
+                input: { DEFAULT: "var(--input)" },
+                ring: { DEFAULT: "var(--ring)" },
+                background: { DEFAULT: "var(--background)" },
+                foreground: { DEFAULT: "var(--foreground)" },
+
+                primaryForeground: { DEFAULT: "var(--primary-foreground)" },
+                accentForeground: { DEFAULT: "var(--accent-foreground)" },
+
+                muted: { DEFAULT: "var(--muted)" },
+                mutedForeground: { DEFAULT: "var(--muted-foreground)" },
+
+                card: { DEFAULT: "var(--card)" },
+                cardForeground: { DEFAULT: "var(--card-foreground)" },
+                popover: { DEFAULT: "var(--popover)" },
+                popoverForeground: { DEFAULT: "var(--popover-foreground)" },
+
+                destructive: { DEFAULT: "var(--destructive)" },
+
+
+
+
             },
 
             // ③ keep your other customizations (radii, fontSize, spacing)
