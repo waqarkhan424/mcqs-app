@@ -21,6 +21,9 @@ module.exports = {
         accent: "var(--accent)",
         accentForeground: "var(--accent-foreground)",
 
+        secondary: "var(--secondary)",
+        secondaryForeground: "var(--secondary-foreground)",
+
         muted: "var(--muted)",
         mutedForeground: "var(--muted-foreground)",
 

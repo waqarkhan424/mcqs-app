@@ -4,63 +4,45 @@
 
 :root {
   /* Card / popover */
-  --card: #ffffff;
-  --card-foreground: #374151;
-  --popover: #ffffff;
-  --popover-foreground: #374151;
+  --card: #ffffff; /* White background for card elements */
+  --card-foreground: #374151; /* Dark gray text inside cards */
 
-  /* Primary / accent tokens */
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --accent: #fbbf24;
-  --accent-foreground: #1f2937;
+  --popover: #ffffff; /* White background for popups and tooltips */
+  --popover-foreground: #374151; /* Dark gray text inside popups */
+
+  /* Primary / accent colors */
+  --primary: #3b82f6; /* Blue color for main buttons, links, highlights */
+  --primary-foreground: #ffffff; /* White text on blue backgrounds */
+
+  --accent: #fbbf24; /* Yellow color for secondary buttons or highlights */
+  --accent-foreground: #1f2937; /* Dark gray text on yellow backgrounds */
 
   /* Secondary / muted / destructive / ring */
-  --secondary: #e5e7eb;
-  --secondary-foreground: #374151;
-  --muted: #f9fafb;
-  --muted-foreground: #374151;
-  --destructive: #dc2626;
-  --ring: #3b82f6;
-  --border: #e5e7eb;
-  --input: #ffffff;
+  --secondary: #e5e7eb; /* Light gray for secondary buttons or areas */
+  --secondary-foreground: #374151; /* Dark gray text on light gray backgrounds */
 
-  /* Other neutral shades (if used) */
-  --background: #ffffff;
-  --foreground: #374151;
-}
+  --muted: #f9fafb; /* Very light gray for disabled elements or placeholders */
+  --muted-foreground: #374151; /* Dark gray text on muted backgrounds */
 
-.dark {
-  /* Dark-mode overrides */
-  --card: #1f2937;
-  --card-foreground: #f9fafb;
-  --popover: #1f2937;
-  --popover-foreground: #f9fafb;
+  --destructive: #dc2626; /* Red color for errors or delete buttons */
 
-  --primary: #60a5fa;
-  --primary-foreground: #1f2937;
-  --accent: #d97706;
-  --accent-foreground: #f9fafb;
+  --ring: #3b82f6; /* Blue outline color when inputs or buttons are focused */
 
-  --secondary: #374151;
-  --secondary-foreground: #f9fafb;
-  --muted: #374151;
-  --muted-foreground: #f9fafb;
-  --destructive: #b91c1c;
-  --ring: #60a5fa;
-  --border: #374151;
-  --input: #374151;
+  --border: #e5e7eb; /* Light gray for borders */
 
-  --background: #1f2937;
-  --foreground: #f9fafb;
+  --input: #ffffff; /* White background for input fields */
+
+  /* Page background and text */
+  --background: #ffffff; /* White page background */
+  --foreground: #374151; /* Dark gray for regular text */
 }
 
 @layer base {
   * {
-    border-color: var(--border);
+    border-color: var(--border); /* All borders use the --border color */
   }
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--background); /* Page background uses --background */
+    color: var(--foreground); /* Page text uses --foreground */
   }
 }
