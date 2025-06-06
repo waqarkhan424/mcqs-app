@@ -9,6 +9,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+
+        primary: "var(--primary)",
+        primaryForeground: "var(--primary-foreground)",
+        accent: "var(--accent)",
+        accentForeground: "var(--accent-foreground)",
+        muted: "var(--muted)",
+        mutedForeground: "var(--muted-foreground)",
+        card: "var(--card)",
+        cardForeground: "var(--card-foreground)",
+        popover: "var(--popover)",
+        popoverForeground: "var(--popover-foreground)",
+        destructive: "var(--destructive)",
+
         primary: {
           DEFAULT: "#3B82F6",
           light: "#60A5FA",
@@ -25,26 +43,6 @@ module.exports = {
           700: "#374151",
           900: "#111827",
         },
-
-        // must be plain strings, not { DEFAULT: … }
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "var(--ring)",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-
-        primaryForeground: "var(--primary-foreground)",
-        accentForeground: "var(--accent-foreground)",
-
-        muted: "var(--muted)",
-        mutedForeground: "var(--muted-foreground)",
-
-        card: "var(--card)",
-        cardForeground: "var(--card-foreground)",
-        popover: "var(--popover)",
-        popoverForeground: "var(--popover-foreground)",
-
-        destructive: "var(--destructive)",
       },
       borderRadius: {
         md: "0.375rem",
