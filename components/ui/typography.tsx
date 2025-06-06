@@ -1,18 +1,16 @@
-import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
-import React from "react"
+import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
 
 export const typographyVariants = cva("text", {
     variants: {
         variant: {
             h1: "scroll-m-20 font-extrabold tracking-tight text-xl lg:text-2xl",
             h2: "scroll-m-20 pb-2 text-lg lg:text-xl font-semibold tracking-tight first:mt-0",
-            h3: "scroll-m-20 text-lg lg:text-md font-semibold tracking-tight",
-            h4: "scroll-m-20 text-md font-semibold tracking-tight",
+            h3: "scroll-m-20 text-base lg:text-lg font-semibold tracking-tight",
+            h4: "scroll-m-20 text-base font-semibold tracking-tight",
             p: "[&:not(:first-child)]:mt-1",
             label: "text-sm text-muted-foreground",
-            // blockquote: "mt-6 border-l-2 pl-6 italic",
-            // list: "my-6 ml-6 list-disc [&>li]:mt-2",
         },
         affects: {
             default: "",
@@ -26,12 +24,7 @@ export const typographyVariants = cva("text", {
         color: {
             default: "",
             primary: "text-primary",
-            secondary: "text-secondary",
             accent: "text-accent",
-            error: "text-error",
-            success: "text-success",
-            warning: "text-warning",
-            info: "text-info",
             muted: "text-muted",
             "muted-foreground": "text-muted-foreground",
             destructive: "text-destructive",
@@ -40,7 +33,7 @@ export const typographyVariants = cva("text", {
             default: "",
             xs: "text-xs",
             sm: "text-sm",
-            md: "text-md",
+            md: "text-base",
             lg: "text-lg",
             xl: "text-xl",
             "2xl": "text-2xl",
@@ -52,33 +45,32 @@ export const typographyVariants = cva("text", {
             "8xl": "text-8xl",
             "9xl": "text-9xl",
         },
-
     },
     defaultVariants: {
         variant: "p",
         affects: "default",
         color: "default",
     },
-})
+});
 
 export interface TypographyProps
     extends Omit<React.HTMLAttributes<HTMLElement>, "color" | "variant" | "affects">,
     VariantProps<typeof typographyVariants> { }
 
-const Typography = React.forwardRef<HTMLHeadingElement, TypographyProps>(
+const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     ({ className, variant, affects, size, color, ...props }, ref) => {
-        const Comp = variant || "p"
+        const Comp = variant || "p";
         return (
             <Comp
-                className={cn(typographyVariants({ variant, affects, size, color, className }))}
+                className={cn(
+                    typographyVariants({ variant, affects, size, color, className })
+                )}
                 ref={ref as any}
                 {...props}
             />
-        )
-    },
-)
-Typography.displayName = "H1"
+        );
+    }
+);
+Typography.displayName = "Typography";
 
-export default Typography
-
-
+export default Typography;
