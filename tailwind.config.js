@@ -17,25 +17,21 @@ module.exports = {
 
         primary: "var(--primary)",
         primaryForeground: "var(--primary-foreground)",
+
         accent: "var(--accent)",
         accentForeground: "var(--accent-foreground)",
+
         muted: "var(--muted)",
         mutedForeground: "var(--muted-foreground)",
+
         card: "var(--card)",
         cardForeground: "var(--card-foreground)",
+
         popover: "var(--popover)",
         popoverForeground: "var(--popover-foreground)",
+
         destructive: "var(--destructive)",
 
-        primary: {
-          DEFAULT: "#3B82F6",
-          light: "#60A5FA",
-          dark: "#1E40AF",
-        },
-        accent: {
-          DEFAULT: "#FBBF24",
-          dark: "#D97706",
-        },
         neutral: {
           50: "#F9FAFB",
           100: "#F3F4F6",
