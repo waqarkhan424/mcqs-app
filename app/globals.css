@@ -1,37 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --radius: 0.75rem;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
+  /* Card / popover */
   --card: #ffffff;
   --card-foreground: #374151;
   --popover: #ffffff;
   --popover-foreground: #374151;
 
+  /* Primary / accent tokens */
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-
   --accent: #fbbf24;
   --accent-foreground: #1f2937;
 
+  /* Secondary / muted / destructive / ring */
   --secondary: #e5e7eb;
   --secondary-foreground: #374151;
-
   --muted: #f9fafb;
   --muted-foreground: #374151;
-
   --destructive: #dc2626;
   --ring: #3b82f6;
-
   --border: #e5e7eb;
   --input: #ffffff;
+
+  /* Other neutral shades (if used) */
+  --background: #ffffff;
+  --foreground: #374151;
 }
 
 .dark {
+  /* Dark-mode overrides */
   --card: #1f2937;
   --card-foreground: #f9fafb;
   --popover: #1f2937;
@@ -39,21 +37,20 @@
 
   --primary: #60a5fa;
   --primary-foreground: #1f2937;
-
   --accent: #d97706;
   --accent-foreground: #f9fafb;
 
   --secondary: #374151;
   --secondary-foreground: #f9fafb;
-
   --muted: #374151;
   --muted-foreground: #f9fafb;
-
   --destructive: #b91c1c;
   --ring: #60a5fa;
-
   --border: #374151;
   --input: #374151;
+
+  --background: #1f2937;
+  --foreground: #f9fafb;
 }
 
 @layer base {
