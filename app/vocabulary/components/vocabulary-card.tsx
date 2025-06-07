@@ -8,6 +8,7 @@ import { delete_vocabulary_word } from "../actions/delete_vocabulary_word";
 import { update_vocabulary_word } from "../actions/update_vocabulary_word";
 import DeleteConfirmDialog from "./delete-confirm-dialog";
 import EditVocabularyDialog from "./edit-vocabulary-dialog";
+import Typography from "@/components/ui/typography";
 
 export default function VocabularyCard({ word }: { word: any }) {
     const [isPending, startTransition] = useTransition();
@@ -75,13 +76,13 @@ export default function VocabularyCard({ word }: { word: any }) {
 
 
 
-                {/* <Typography variant="p" size="lg" color="muted-foreground">
+                {/* <Typography variant="p" size="lg" className="text-foreground">
                     {word.definition}
                 </Typography>
-                <Typography variant="p" size="lg" color="success">
+                <Typography variant="p" size="lg" className="text-primary">
                     {word.urduMeaning}
                 </Typography>
-                <Typography variant="p" size="lg" color="primary" className="italic">
+                <Typography variant="p" size="lg" className="italic text-muted-foreground">
                     {word.example}
                 </Typography> */}
 
