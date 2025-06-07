@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
-import { Landmark, BookType, BookOpenText } from "lucide-react";
+import { Landmark, BookOpenText } from "lucide-react";
 import Link from "next/link";
 
 
@@ -11,8 +11,7 @@ const sections = [
         label: "Ministries",
         href: "/ministries",
         icon: Landmark,
-        // color: "text-purple-600",
-        color: "text-primary", // Changed from hardcoded purple to theme-based
+        color: "text-purple-600",
 
     },
 
@@ -20,8 +19,7 @@ const sections = [
         label: "Vocabulary",
         href: "/vocabulary",
         icon: BookOpenText,
-        // color: "text-rose-600",
-        color: "text-accent", // Changed from hardcoded rose to theme-based
+        color: "text-rose-600",
 
     },
 
