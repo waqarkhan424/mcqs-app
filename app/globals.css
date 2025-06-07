@@ -1,38 +1,40 @@
 @import "tailwindcss";
 
-:root {
-  /* Card / popover */
-  --card: #ffffff; /* White background for card elements */
-  --card-foreground: #374151; /* Dark gray text inside cards */
+@layer base {
+  :root {
+    /* Card / popover */
+    --card: #ffffff; /* White background for card elements */
+    --card-foreground: #374151; /* Dark gray text inside cards */
 
-  --popover: #ffffff; /* White background for popups and tooltips */
-  --popover-foreground: #374151; /* Dark gray text inside popups */
+    --popover: #ffffff; /* White background for popups and tooltips */
+    --popover-foreground: #374151; /* Dark gray text inside popups */
 
-  /* Primary / accent colors */
-  --primary: #3b82f6; /* Blue color for main buttons, links, highlights */
-  --primary-foreground: #ffffff; /* White text on blue backgrounds */
+    /* Primary / accent colors */
+    --primary: #3b82f6; /* Blue color for main buttons, links, highlights */
+    --primary-foreground: #ffffff; /* White text on blue backgrounds */
 
-  --accent: #fbbf24; /* Yellow color for secondary buttons or highlights */
-  --accent-foreground: #1f2937; /* Dark gray text on yellow backgrounds */
+    --accent: #fbbf24; /* Yellow color for secondary buttons or highlights */
+    --accent-foreground: #1f2937; /* Dark gray text on yellow backgrounds */
 
-  /* Secondary / muted / destructive / ring */
-  --secondary: #e5e7eb; /* Light gray for secondary buttons or areas */
-  --secondary-foreground: #374151; /* Dark gray text on light gray backgrounds */
+    /* Secondary / muted / destructive / ring */
+    --secondary: #e5e7eb; /* Light gray for secondary buttons or areas */
+    --secondary-foreground: #374151; /* Dark gray text on light gray backgrounds */
 
-  --muted: #f9fafb; /* Very light gray for disabled elements or placeholders */
-  --muted-foreground: #374151; /* Dark gray text on muted backgrounds */
+    --muted: #f9fafb; /* Very light gray for disabled elements or placeholders */
+    --muted-foreground: #374151; /* Dark gray text on muted backgrounds */
 
-  --destructive: #dc2626; /* Red color for errors or delete buttons */
+    --destructive: #dc2626; /* Red color for errors or delete buttons */
 
-  --ring: #3b82f6; /* Blue outline color when inputs or buttons are focused */
+    --ring: #3b82f6; /* Blue outline color when inputs or buttons are focused */
 
-  --border: #e5e7eb; /* Light gray for borders */
+    --border: #e5e7eb; /* Light gray for borders */
 
-  --input: #ffffff; /* White background for input fields */
+    --input: #ffffff; /* White background for input fields */
 
-  /* Page background and text */
-  --background: #ffffff; /* White page background */
-  --foreground: #374151; /* Dark gray for regular text */
+    /* Page background and text */
+    --background: #ffffff; /* White page background */
+    --foreground: #374151; /* Dark gray for regular text */
+  }
 }
 
 @layer base {
