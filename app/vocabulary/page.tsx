@@ -30,11 +30,18 @@ export default async function VocabularyPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                 {topicsWithCount.map(({ name, slug, icon: Icon, color, count }) => (
-                    <Card key={slug} className="bg-blue-50 transition rounded-xl border-none shadow-sm">
+                    <Card key={slug}
+                        // className="bg-blue-50 transition rounded-xl border-none shadow-sm"
+                        className="bg-muted transition rounded-xl border border-border shadow-sm"
+
+
+                    >
                         <CardContent className="p-5 space-y-1">
                             <Link
                                 href={`/vocabulary/${slug}`}
-                                className="flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2"
+                                // className="flex items-center gap-3 font-medium text-blue-700 underline underline-offset-2"
+                                className="flex items-center gap-3 font-medium text-primary underline underline-offset-2 hover:text-primary/90"
+
                             >
                                 <Icon className={`w-5 h-5 ${color}`} />
                                 {name}
