@@ -29,12 +29,17 @@ export default async function MinistriesPage() {
                         ministryData[m.slug] || { icon: ministryData["foreign-affairs"].icon, color: "text-gray-500" };
 
                     return (
-                        <Card key={m.slug} className="bg-green-50 transition rounded-xl border-none shadow-sm"
+                        <Card key={m.slug}
+                            //  className="bg-green-50 transition rounded-xl border-none shadow-sm"
+                            className="bg-muted transition rounded-xl border border-border shadow-sm"
+
                         >
                             <CardContent className="p-5">
                                 <Link
                                     href={`/ministries/${m.slug}`}
-                                    className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                    // className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
+                                    className="flex items-center gap-3 font-medium text-primary underline underline-offset-2 hover:text-primary/90"
+
                                 >
                                     <Icon className={`w-5 h-5 ${color}`} />
                                     {m.name}
