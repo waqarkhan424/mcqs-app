@@ -29,7 +29,7 @@ export default async function DepartmentPage(props: Props) {
 
 
     return (
-        <div className="px-4 pt-12 pb-20 max-w-3xl mx-auto space-y-6 text-[16px] leading-7 text-gray-800">
+        <div className="px-4 pt-12 pb-20 max-w-3xl mx-auto space-y-6 text-[16px] leading-7 text-foreground">
             <Typography variant="h2" className="text-center">
                 {dept.name}
             </Typography>
@@ -38,10 +38,10 @@ export default async function DepartmentPage(props: Props) {
                 Below is the list of posts under this department with required qualifications and age limits.
             </Typography>
 
-            <div className="overflow-x-auto mt-6 rounded-md shadow border border-gray-200">
+            <div className="overflow-x-auto mt-6 rounded-md shadow border">
                 <table className="w-full table-auto text-sm">
                     <thead>
-                        <tr className="bg-gray-100 text-gray-700 text-left">
+                        <tr className="bg-muted text-muted-foreground text-left">
                             <th className="border px-4 py-3 text-center">BPS</th>
                             <th className="border px-4 py-3">Post Name</th>
                             <th className="border px-4 py-3">Qualification</th>
@@ -52,7 +52,9 @@ export default async function DepartmentPage(props: Props) {
                         {dept.posts.map((post, index) => (
                             <tr
                                 key={index}
-                                className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                                // className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                                className={index % 2 === 0 ? "bg-background" : "bg-muted"}
+
                             >
                                 <td className="border px-4 py-3 text-center font-medium">{post.bs}</td>
                                 <td className="border px-4 py-3">{post.postName}</td>

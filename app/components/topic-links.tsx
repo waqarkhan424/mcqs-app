@@ -13,7 +13,9 @@ export default function TopicLinks({ category, topics }: { category: string, top
 
                         <Link
                             href={`/category/${category}/${slugify(topic, { lower: true, strict: true })}`}
-                            className="text-blue-700 underline font-medium hover:text-blue-900"
+                            // className="text-blue-700 underline font-medium hover:text-blue-900"
+                            className="text-primary underline font-medium hover:text-primary/90"
+
                         >
                             {topic}
                         </Link>
