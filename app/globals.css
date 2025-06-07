@@ -3,46 +3,47 @@
 @layer base {
   :root {
     /* Card / popover */
-    --card: #ffffff; /* White background for card elements */
-    --card-foreground: #374151; /* Dark gray text inside cards */
+    --card: #ffffff;
+    --card-foreground: #374151;
 
-    --popover: #ffffff; /* White background for popups and tooltips */
-    --popover-foreground: #374151; /* Dark gray text inside popups */
+    --popover: #ffffff;
+    --popover-foreground: #374151;
 
-    /* Primary / accent colors */
-    --primary: #3b82f6; /* Blue color for main buttons, links, highlights */
-    --primary-foreground: #ffffff; /* White text on blue backgrounds */
+    /* Primary / accent */
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
 
-    --accent: #fbbf24; /* Yellow color for secondary buttons or highlights */
-    --accent-foreground: #1f2937; /* Dark gray text on yellow backgrounds */
+    --accent: #fbbf24;
+    --accent-foreground: #1f2937;
 
     /* Secondary / muted / destructive / ring */
-    --secondary: #e5e7eb; /* Light gray for secondary buttons or areas */
-    --secondary-foreground: #374151; /* Dark gray text on light gray backgrounds */
+    --secondary: #e5e7eb;
+    --secondary-foreground: #374151;
 
-    --muted: #f9fafb; /* Very light gray for disabled elements or placeholders */
-    --muted-foreground: #374151; /* Dark gray text on muted backgrounds */
+    --muted: #f9fafb;
+    --muted-foreground: #374151;
 
-    --destructive: #dc2626; /* Red color for errors or delete buttons */
+    --destructive: #dc2626;
+    --ring: #3b82f6;
 
-    --ring: #3b82f6; /* Blue outline color when inputs or buttons are focused */
+    --border: #e5e7eb;
+    --input: #ffffff;
 
-    --border: #e5e7eb; /* Light gray for borders */
-
-    --input: #ffffff; /* White background for input fields */
-
-    /* Page background and text */
-    --background: #ffffff; /* White page background */
-    --foreground: #374151; /* Dark gray for regular text */
+    /* page background + default text */
+    --background: #ffffff;
+    --foreground: #374151;
   }
-}
 
-@layer base {
-  * {
-    border-color: var(--border); /* All borders use the --border color */
+  /* global border-colour reset */
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
   }
+
+  /* body background + text */
   body {
-    background-color: var(--background); /* Page background uses --background */
-    color: var(--foreground); /* Page text uses --foreground */
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
