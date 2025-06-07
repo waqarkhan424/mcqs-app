@@ -72,7 +72,7 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
 
                 {words.length === 0 ? (
                     <div className="text-center py-10">
-                        <Typography variant="h3">No results found.</Typography>
+                        <Typography variant="h3" className="text-muted-foreground">No results found.</Typography>
                     </div>
                 ) : (
                     <div className="space-y-6">
