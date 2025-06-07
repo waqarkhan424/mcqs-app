@@ -73,8 +73,8 @@ function EditDeleteMCQ({ q }: any) {
                             <span
                                 className={
                                     opt === correctAnswer
-                                        ? "text-green-700 font-semibold"
-                                        : ""
+                                        ? "text-primary font-semibold"
+                                        : "text-muted-foreground"
                                 }
                             >
                                 {opt}
