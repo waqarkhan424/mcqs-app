@@ -1,49 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  /* Card / popover */
+  --color-card: #ffffff;
+  --color-card-foreground: #374151;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #374151;
+
+  /* Primary / accent */
+  --color-primary: #3b82f6;
+  --color-primary-foreground: #ffffff;
+
+  --color-accent: #fbbf24;
+  --color-accent-foreground: #1f2937;
+
+  /* Secondary / muted / destructive / ring */
+  --color-secondary: #e5e7eb;
+  --color-secondary-foreground: #374151;
+
+  --color-muted: #f9fafb;
+  --color-muted-foreground: #374151;
+
+  --color-destructive: #dc2626;
+  --color-ring: #3b82f6;
+
+  --color-border: #e5e7eb;
+  --color-input: #ffffff;
+
+  /* Page background + default text */
+  --color-background: #ffffff;
+  --color-foreground: #374151;
+}
+
 @layer base {
-  :root {
-    /* Card / popover */
-    --card: #ffffff;
-    --card-foreground: #374151;
-
-    --popover: #ffffff;
-    --popover-foreground: #374151;
-
-    /* Primary / accent */
-    --primary: #3b82f6;
-    --primary-foreground: #ffffff;
-
-    --accent: #fbbf24;
-    --accent-foreground: #1f2937;
-
-    /* Secondary / muted / destructive / ring */
-    --secondary: #e5e7eb;
-    --secondary-foreground: #374151;
-
-    --muted: #f9fafb;
-    --muted-foreground: #374151;
-
-    --destructive: #dc2626;
-    --ring: #3b82f6;
-
-    --border: #e5e7eb;
-    --input: #ffffff;
-
-    /* page background + default text */
-    --background: #ffffff;
-    --foreground: #374151;
+  * {
+    border-color: var(--color-border);
   }
 
-  /* global border-colour reset */
-  *,
-  *::before,
-  *::after {
-    border-color: var(--border);
-  }
-
-  /* body background + text */
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }
