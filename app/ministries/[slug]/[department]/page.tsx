@@ -52,7 +52,6 @@ export default async function DepartmentPage(props: Props) {
                         {dept.posts.map((post, index) => (
                             <tr
                                 key={index}
-                                // className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
                                 className={index % 2 === 0 ? "bg-background" : "bg-muted"}
 
                             >

@@ -11,8 +11,6 @@ export default function VocabularySidebar({ activeTopic }: { activeTopic: string
                     <li key={t.slug}>
                         <Link
                             href={`/vocabulary/${t.slug}`}
-                            // className={`block px-3 py-1.5 rounded-md font-medium hover:bg-muted transition ${activeTopic === t.slug ? "bg-primary text-white" : "text-blue-600"
-                            //     }`}
                             className={`block px-3 py-1.5 rounded-md font-medium transition hover:bg-muted 
                                 ${activeTopic === t.slug
                                     ? "bg-primary text-primary-foreground"

@@ -42,13 +42,11 @@ export default function BrowseSections() {
                     return (
                         <Card
                             key={section.href}
-                            // className="bg-green-50 transition rounded-xl border-none shadow-sm"
                             className="bg-muted transition rounded-xl border border-border shadow-sm"
                         >
                             <CardContent className="p-5">
                                 <Link
                                     href={section.href}
-                                    // className="flex items-center gap-3 font-medium text-blue-600 underline underline-offset-2"
                                     className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
 
                                 >

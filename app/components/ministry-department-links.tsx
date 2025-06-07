@@ -36,7 +36,6 @@ export default function MinistryDepartmentLinks({ slug, departments, }: { slug: 
                         <div>
                             <Link
                                 href={`/ministries/${slug}/${dept.slug}`}
-                                // className="text-blue-700 underline font-medium hover:text-blue-900"
                                 className="text-primary underline font-medium hover:text-primary/90"
 
                             >
