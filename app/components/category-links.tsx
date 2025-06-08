@@ -1,13 +1,7 @@
+"use client"
 
-"use client";
-
-import { Card, CardContent } from "@/components/ui/card";
-import Typography from "@/components/ui/typography";
-import Link from "next/link";
-
-
-
-
+import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 import {
     BookOpenText,
     Monitor,
@@ -18,13 +12,8 @@ import {
     Atom,
     MoonStar,
     Newspaper,
-    BadgeCheck
-} from "lucide-react";
-
-
-
-
-
+    BadgeCheck,
+} from "lucide-react"
 
 const categories = [
     { key: "english", label: "English", icon: BookType, color: "text-pink-600" },
@@ -36,11 +25,7 @@ const categories = [
     { key: "everyday-science", label: "Everyday Science", icon: FlaskConical, color: "text-cyan-600" },
     { key: "computer", label: "Computer", icon: Monitor, color: "text-teal-600" },
     { key: "iq", label: "IQ / Logical Reasoning", icon: Atom, color: "text-indigo-600" },
-];
-
-
-
-
+]
 
 const pastPapers = [
     { key: "fia", label: "FIA", icon: BadgeCheck, color: "text-green-600" },
@@ -52,81 +37,29 @@ const pastPapers = [
     { key: "punjab-police", label: "Punjab Police", icon: BadgeCheck, color: "text-blue-600" },
     { key: "kpk-police", label: "KPK Police", icon: BadgeCheck, color: "text-purple-600" },
     { key: "nadra", label: "NADRA", icon: BadgeCheck, color: "text-cyan-600" },
-];
+]
 
-
-
-
-export default function CategoryLinks() {
+export default function CategoryLinks({ show = "subjects" }: { show: "subjects" | "past" }) {
+    const list = show === "subjects" ? categories : pastPapers
 
     return (
-
-
-        <div className="max-w-5xl mx-auto px-4 space-y-12">
-
-            <div>
-                <Typography variant="h2" className="mb-6 text-center">
-                    Choose a Subject to Begin
-                </Typography>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                    {categories.map((cat) => {
-                        const Icon = cat.icon;
-                        return (
-
-                            <Card key={cat.key} className="bg-accent/10 transition rounded-xl border border-border shadow-sm">
-                                <CardContent className="p-5">
-                                    <Link
-                                        href={`/category/${cat.key}`}
-                                        className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
-
-                                    >
-                                        <Icon className={`w-5 h-5 ${cat.color}`} />
-                                        {cat.label} MCQs
-                                    </Link>
-                                </CardContent>
-                            </Card>
-
-                        );
-                    })}
-                </div>
-            </div>
-
-            <div>
-                <Typography variant="h2" className="mb-6 text-center">
-                    Past Paper MCQs
-                </Typography>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                    {pastPapers.map((paper) => {
-                        const Icon = paper.icon;
-                        return (
-
-                            <Card key={paper.key} className="bg-primary/10 transition rounded-xl border border-border shadow-sm">
-                                <CardContent className="p-5">
-                                    <Link
-                                        href={`/category/${paper.key}`}
-                                        className="flex items-center gap-3 font-medium text-primary underline underline-offset-2"
-                                    >
-                                        <Icon className={`w-5 h-5 ${paper.color}`} />
-                                        {paper.label}
-                                    </Link>
-                                </CardContent>
-                            </Card>
-
-                        );
-                    })}
-                </div>
-            </div>
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {list.map((item) => {
+                const Icon = item.icon
+                return (
+                    <Card key={item.key} className={`${show === "past" ? "bg-primary/10" : "bg-accent/10"} border shadow-sm rounded-xl`}>
+                        <CardContent className="p-5">
+                            <Link
+                                href={`/category/${item.key}`}
+                                className="flex items-center gap-3 text-primary font-medium underline underline-offset-2"
+                            >
+                                <Icon className={`w-5 h-5 ${item.color}`} />
+                                {item.label} {show === "subjects" ? "MCQs" : ""}
+                            </Link>
+                        </CardContent>
+                    </Card>
+                )
+            })}
         </div>
-
-
-
-
-
-
-
-
-    );
+    )
 }
