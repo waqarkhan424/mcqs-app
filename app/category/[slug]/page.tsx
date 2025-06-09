@@ -2,6 +2,8 @@
 import Typography from "@/components/ui/typography";
 import TopicLinks from "@/app/components/topic-links";
 import { categoryTopics } from "@/lib/topics";
+import { pastPapers } from "@/lib/category-data";
+
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -13,6 +15,9 @@ export default async function McqsByCategory(props: Props) {
 
     const topics = categoryTopics[slug] || [];
 
+    const isPastPaper = pastPapers.some((p) => p.key === slug);
+
+
     return (
 
 
@@ -20,7 +25,7 @@ export default async function McqsByCategory(props: Props) {
 
             <div className="border-b border-border pb-4 space-y-2">
                 <Typography variant="h2" className="capitalize">
-                    {slug.replace(/-/g, " ")} MCQs
+                    {slug.replace(/-/g, " ")} {isPastPaper ? "Past Papers" : "MCQs"}
                 </Typography>
                 <Typography affects="muted" className="text-sm sm:text-base">
                     Select a topic below to start practicing. Each topic is packed with important and exam-relevant questions.
