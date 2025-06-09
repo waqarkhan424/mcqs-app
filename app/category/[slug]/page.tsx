@@ -5,6 +5,20 @@ import { categoryTopics } from "@/lib/topics";
 import { pastPapers } from "@/lib/category-data";
 
 
+//  Helper: Convert slug to proper title case
+function toTitleCase(slug: string) {
+    return slug
+        .replace(/-/g, " ")
+        .split(" ")
+        .map((word) => {
+            const acronymWords = ["IQ", "FIA", "NAB", "IB", "ASF", "NADRA", "KPK"]; // Add more acronyms if needed
+            const upper = word.toUpperCase();
+            return acronymWords.includes(upper) ? upper : word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(" ");
+}
+
+
 interface Props {
     params: Promise<{ slug: string }>;
 }
@@ -25,7 +39,7 @@ export default async function McqsByCategory(props: Props) {
 
             <div className="border-b border-border pb-4 space-y-2">
                 <Typography variant="h2" className="capitalize">
-                    {slug.replace(/-/g, " ")} {isPastPaper ? "Past Papers" : "MCQs"}
+                    {toTitleCase(slug)} {isPastPaper ? "Past Papers" : "MCQs"}
                 </Typography>
                 <Typography affects="muted" className="text-sm sm:text-base">
                     Select a topic below to start practicing. Each topic is packed with important and exam-relevant questions.
