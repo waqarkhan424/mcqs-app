@@ -1,55 +1,41 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { ministryData } from "@/lib/ministry-icons"
-import Typography from "@/components/ui/typography"
-import Link from "next/link"
-import { get_ministries } from "../actions/get_ministries"
+import { get_ministries } from "../actions/get_ministries";
+import Typography from "@/components/ui/typography";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import Link from "next/link";
 
 export default async function MinistriesPage() {
-
-
     const ministries = await get_ministries();
 
     return (
-        <div className="max-w-3xl mx-auto px-4 py-8">
-            <Typography variant="h2" className="text-center">
-                Ministries of Pakistan
-            </Typography>
-
-
-            <Typography variant="p" className="text-muted-foreground text-center mt-2 mb-6">
-                Select a ministry to explore departments and posts.
-            </Typography>
-
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                {ministries.map((m) => {
-
-                    const { icon: Icon, color } =
-                        ministryData[m.slug] || { icon: ministryData["foreign-affairs"].icon, color: "text-gray-500" };
-
-                    return (
-                        <Card key={m.slug}
-                            className="bg-muted transition rounded-xl border border-border shadow-sm"
-
-                        >
-                            <CardContent className="p-5">
-                                <Link
-                                    href={`/ministries/${m.slug}`}
-                                    className="flex items-center gap-3 font-medium text-primary underline underline-offset-2 hover:text-primary/90"
-
-                                >
-                                    <Icon className={`w-5 h-5 ${color}`} />
-                                    {m.name}
-                                </Link>
-                            </CardContent>
-                        </Card>
-
-                    )
-                })}
-
-
+        <div className="max-w-xl mx-auto px-4 py-8 space-y-8">
+            <div className="text-center space-y-2">
+                <Typography variant="h2">Ministries of Pakistan</Typography>
+                <Typography variant="p" className="text-muted-foreground">
+                    Tap a ministry to explore its departments and posts.
+                </Typography>
             </div>
+
+            <Accordion type="single" collapsible className="space-y-2">
+                {ministries.map((m) => (
+                    <AccordionItem
+                        key={m.slug}
+                        value={m.slug}
+                        className="border border-border rounded-md bg-muted"
+                    >
+                        <AccordionTrigger className="px-4 py-2 text-left font-medium text-sm text-primary">
+                            {m.name}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-4 text-sm">
+                            <Link
+                                href={`/ministries/${m.slug}`}
+                                className="underline text-blue-600 hover:text-blue-800"
+                            >
+                                View Departments →
+                            </Link>
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
         </div>
-    )
+    );
 }
