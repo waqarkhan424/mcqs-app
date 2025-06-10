@@ -11,20 +11,51 @@ export default function VocabularyUploadPage() {
     const [input, setInput] = useState("");
     const [topic, setTopic] = useState("");
     const [loading, setLoading] = useState(false);
+    const [errorBlocks, setErrorBlocks] = useState<{ block: string[]; lineStart: number }[]>([]);
     const [feedback, setFeedback] = useState<{
         inserted: number;
         insertedWords: string[];
         skipped: string[];
     } | null>(null);
 
+
     async function handleSubmit(formData: FormData) {
         setLoading(true);
+        setErrorBlocks([]);
+        setFeedback(null);
+
+        const raw = formData.get("bulkData") as string;
+        const lines = raw.split("\n").map((line) => line.trim());
+
+        // Filter out empty lines but track original index
+        const validLines = lines
+            .map((line, index) => ({ line, index }))
+            .filter((item) => item.line.length > 0);
+
+        const grouped: { block: string[]; lineStart: number }[] = [];
+        for (let i = 0; i < validLines.length; i += 4) {
+            const block = validLines.slice(i, i + 4);
+            if (block.length < 4) {
+                grouped.push({
+                    block: block.map((b) => b.line),
+                    lineStart: validLines[i].index + 1, // line number starts at 1
+                });
+            }
+        }
+
+        if (grouped.length > 0) {
+            setErrorBlocks(grouped);
+            setLoading(false);
+            return;
+        }
+
         const result = await add_bulk_vocabulary(formData);
         setLoading(false);
         setInput("");
         setTopic("");
         setFeedback(result);
     }
+
 
     return (
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
@@ -53,10 +84,32 @@ export default function VocabularyUploadPage() {
                     required
                 />
 
+
                 <Button type="submit" disabled={loading}>
                     {loading ? "Uploading..." : "Submit Vocabulary"}
                 </Button>
             </form>
+
+
+            {/* Error Display for Invalid Blocks */}
+            {errorBlocks.length > 0 && (
+                <div className="mt-6 space-y-4">
+                    <div className="text-red-600">
+                        <Typography variant="h4">Formatting Error Detected</Typography>
+                        <p className="text-sm">The following blocks are incomplete (must have exactly 4 lines):</p>
+                    </div>
+
+                    {errorBlocks.map((block, i) => (
+                        <div key={i} className="bg-red-50 border border-red-300 rounded p-3 space-y-1">
+                            <p className="text-red-700 text-sm font-semibold">Invalid Entry Starting at Line {block.lineStart}:</p>
+                            <pre className="text-sm text-red-800 whitespace-pre-wrap">
+                                {block.block.join("\n")}
+                            </pre>
+                        </div>
+                    ))}
+                </div>
+            )}
+
 
             {feedback && (
                 <div className="mt-6 space-y-4">
@@ -86,3 +139,9 @@ export default function VocabularyUploadPage() {
         </div>
     );
 }
+
+
+
+
+
+
