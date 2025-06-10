@@ -34,12 +34,10 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.onepaper.site/",
     title: "OnePaper – MCQs for Government Job Tests",
-    description:
-      "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
+    description: "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
     siteName: "OnePaper",
     images: [
       {
-        // url: "https://www.onepaper.site/onepaper.png",
         url: "https://www.onepaper.site/og-image.png",
         // width: 1200,
         // height: 630,
@@ -55,9 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "OnePaper – MCQs for Government Job Tests",
-    description:
-      "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
-    // images: ["https://www.onepaper.site/onepaper.png"],
+    description: "Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more.",
     images: ["https://www.onepaper.site/og-image.png"],
 
   },
@@ -82,6 +78,31 @@ export default function RootLayout({
         {/* favicon using your 28×28 PNG */}
 
         <link rel="icon" href="/onepaper.png" type="image/png" sizes="28x28" />
+
+
+
+
+
+
+        {/* Open Graph Meta Tags (for Facebook, WhatsApp) */}
+        <meta property="og:title" content="OnePaper – MCQs for Government Job Tests" />
+        <meta property="og:description" content="Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more." />
+        <meta property="og:image" content="https://www.onepaper.site/og-image.png" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:url" content="https://www.onepaper.site/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="OnePaper" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="OnePaper – MCQs for Government Job Tests" />
+        <meta name="twitter:description" content="Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more." />
+        <meta name="twitter:image" content="https://www.onepaper.site/og-image.png" />
+
+
+
+
 
         {/* Google Ads script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
