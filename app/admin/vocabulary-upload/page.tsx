@@ -92,7 +92,6 @@ export default function VocabularyUploadPage() {
             </form>
 
 
-            {/* Error Blocks (ShadCN Alert style) */}
             {errorBlocks.length > 0 && (
                 <div className="space-y-4 mt-6">
                     <div className="text-red-600">
