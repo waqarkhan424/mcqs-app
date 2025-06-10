@@ -34,7 +34,6 @@ export default async function McqsByCategory(props: Props) {
 
     return (
 
-
         <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-5xl mx-auto space-y-6">
 
             <div className="border-b border-border pb-4 space-y-2">
