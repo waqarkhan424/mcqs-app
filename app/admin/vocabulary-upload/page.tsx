@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/typography";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 export default function VocabularyUploadPage() {
     const [input, setInput] = useState("");
@@ -91,21 +92,23 @@ export default function VocabularyUploadPage() {
             </form>
 
 
-            {/* Error Display for Invalid Blocks */}
+            {/* Error Blocks (ShadCN Alert style) */}
             {errorBlocks.length > 0 && (
-                <div className="mt-6 space-y-4">
+                <div className="space-y-4 mt-6">
                     <div className="text-red-600">
                         <Typography variant="h4">Formatting Error Detected</Typography>
                         <p className="text-sm">The following blocks are incomplete (must have exactly 4 lines):</p>
                     </div>
 
                     {errorBlocks.map((block, i) => (
-                        <div key={i} className="bg-red-50 border border-red-300 rounded p-3 space-y-1">
-                            <p className="text-red-700 text-sm font-semibold">Invalid Entry Starting at Line {block.lineStart}:</p>
-                            <pre className="text-sm text-red-800 whitespace-pre-wrap">
-                                {block.block.join("\n")}
-                            </pre>
-                        </div>
+                        <Alert variant="destructive" key={i}>
+                            <AlertTitle>Invalid Entry Starting at Line {block.lineStart}</AlertTitle>
+                            <AlertDescription>
+                                <pre className="whitespace-pre-wrap text-sm mt-1">
+                                    {block.block.join("\n")}
+                                </pre>
+                            </AlertDescription>
+                        </Alert>
                     ))}
                 </div>
             )}
