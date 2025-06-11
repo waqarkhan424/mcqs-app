@@ -4,7 +4,6 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 import Link from "next/link";
 
 export default async function MinistriesPage() {
-
     const ministries = await get_ministries();
 
     return (
