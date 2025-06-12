@@ -14,7 +14,15 @@ function parseMcqBlock(block: string): any {
         else if (line.startsWith("correctAnswer:")) correctAnswer = line.replace("correctAnswer:", "").trim();
         else if (line.startsWith("explanationEnglish:")) explanationEnglish = line.replace("explanationEnglish:", "").trim();
         else if (line.startsWith("explanationUrdu:")) explanationUrdu = line.replace("explanationUrdu:", "").trim();
-        else if (line.match(/^[A-D]\./)) options.push(line.trim());
+        else if (
+            line &&
+            !line.includes(":") &&
+            !line.startsWith("question") &&
+            !line.startsWith("explanation") &&
+            !line.startsWith("correctAnswer")
+        ) {
+            options.push(line.trim());
+        }
     }
 
     return { question, questionUrdu, options, correctAnswer, explanationEnglish, explanationUrdu };
