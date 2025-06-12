@@ -34,7 +34,7 @@ export async function add_bulk_mcqs(formData: FormData) {
         const parsed = parseMcqBlock(block);
         if (!parsed.question || !parsed.correctAnswer || parsed.options.length < 2) continue;
 
-        const exists = await prisma.question.findFirst({
+        const exists = await prisma.question1.findFirst({
             where: {
                 question: parsed.question,
                 topic,
@@ -43,7 +43,7 @@ export async function add_bulk_mcqs(formData: FormData) {
         });
 
         if (!exists) {
-            await prisma.question.create({
+            await prisma.question1.create({
                 data: {
                     question: parsed.question,
                     questionUrdu: parsed.questionUrdu,
