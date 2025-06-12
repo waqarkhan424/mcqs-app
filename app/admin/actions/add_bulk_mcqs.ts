@@ -9,16 +9,18 @@ function parseMcqBlock(block: string): any {
     let question = "", questionUrdu = "", options: string[] = [], correctAnswer = "", explanationEnglish = "", explanationUrdu = "";
 
     for (let line of lines) {
-        if (line.startsWith("Question:")) question = line.replace("Question:", "").trim();
-        else if (line.startsWith("Urdu:")) questionUrdu = line.replace("Urdu:", "").trim();
-        else if (line.startsWith("Answer:")) correctAnswer = line.replace("Answer:", "").trim();
-        else if (line.startsWith("Explanation:")) explanationEnglish = line.replace("Explanation:", "").trim();
-        else if (line.startsWith("UrduExplanation:")) explanationUrdu = line.replace("UrduExplanation:", "").trim();
+        if (line.startsWith("question:")) question = line.replace("question:", "").trim();
+        else if (line.startsWith("questionUrdu:")) questionUrdu = line.replace("questionUrdu:", "").trim();
+        else if (line.startsWith("correctAnswer:")) correctAnswer = line.replace("correctAnswer:", "").trim();
+        else if (line.startsWith("explanationEnglish:")) explanationEnglish = line.replace("explanationEnglish:", "").trim();
+        else if (line.startsWith("explanationUrdu:")) explanationUrdu = line.replace("explanationUrdu:", "").trim();
         else if (line.match(/^[A-D]\./)) options.push(line.trim());
     }
 
     return { question, questionUrdu, options, correctAnswer, explanationEnglish, explanationUrdu };
 }
+
+
 
 export async function add_bulk_mcqs(formData: FormData) {
     const raw = formData.get("bulkData") as string;
