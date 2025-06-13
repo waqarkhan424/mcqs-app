@@ -48,7 +48,7 @@ export async function add_bulk_mcqs(formData: FormData) {
 
         const normalizedQuestion = parsed.question.trim().toLowerCase();
 
-        const exists = await prisma.question1.findFirst({
+        const exists = await prisma.question.findFirst({
             where: {
                 question: normalizedQuestion,
             },
@@ -56,7 +56,7 @@ export async function add_bulk_mcqs(formData: FormData) {
 
 
         if (!exists) {
-            await prisma.question1.create({
+            await prisma.question.create({
                 data: {
                     question: normalizedQuestion,
                     questionUrdu: parsed.questionUrdu,
