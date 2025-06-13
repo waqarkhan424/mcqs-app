@@ -175,7 +175,17 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                         </Button>
                     </>
                 ) : (
-                    <></>
+                    <>
+
+                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>
+                            Edit
+                        </Button>
+                        <Button size="sm" variant="destructive" onClick={handleDelete}>
+                            Delete
+                        </Button> */}
+
+
+                    </>
                 )}
             </CardFooter>
         </Card>
