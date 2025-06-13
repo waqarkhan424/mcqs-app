@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { delete_mcqs } from "@/app/actions/delete_mcqs";
 import { update_mcqs } from "@/app/actions/update_mcqs";
-
-import Typography from "@/components/ui/typography";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -170,12 +168,12 @@ function EditDeleteMCQ({ q }: any) {
                     </>
                 ) : (
                     <>
-                        <Button size="sm" onClick={() => setIsEditing(true)}>
+                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>
                             Edit
                         </Button>
                         <Button size="sm" variant="destructive" onClick={handleDelete}>
                             Delete
-                        </Button>
+                        </Button> */}
                     </>
                 )}
             </CardFooter>
