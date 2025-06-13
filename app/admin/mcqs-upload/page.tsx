@@ -21,15 +21,6 @@ export default function McqsUploadPage() {
         skipped: string[]
     } | null>(null);
 
-    // async function handleSubmit(formData: FormData) {
-    //     setLoading(true);
-    //     const result = await add_bulk_mcqs(formData);
-    //     setLoading(false);
-    //     setInput("");
-    //     setTopic("");
-    //     setCategory("");
-    //     setFeedback(result);
-    // }
 
 
     async function handleSubmit(formData: FormData) {
