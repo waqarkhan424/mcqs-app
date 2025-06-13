@@ -125,7 +125,7 @@ function EditDeleteMCQ({ q }: any) {
 
             {q.explanationEnglish && !isEditing && (
                 <div className="pt-2 text-sm text-muted-foreground">
-                    <strong>Explanation (English):</strong> {q.explanationEnglish}
+                    {q.explanationEnglish}
                 </div>
             )}
             {isEditing && (
@@ -140,7 +140,7 @@ function EditDeleteMCQ({ q }: any) {
 
             {q.explanationUrdu && !isEditing && (
                 <div className="pt-1 text-sm text-muted-foreground text-right">
-                    <strong>وضاحت:</strong> {q.explanationUrdu}
+                    {q.explanationUrdu}
                 </div>
             )}
             {isEditing && (
@@ -176,9 +176,9 @@ function EditDeleteMCQ({ q }: any) {
                     ) : (
                         <>
 
-                            {/* 
+
                             <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
-                            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button> */}
+                            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button>
 
 
                         </>
