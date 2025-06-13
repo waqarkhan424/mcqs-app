@@ -54,12 +54,11 @@ function EditDeleteMCQ({ q }: any) {
 
     return (
         <Card>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-3 pt-6">
                 {/* English Question */}
                 <CardTitle>
                     {isEditing ? (
-                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question"
-                        />
+                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question" />
                     ) : (
                         question
                     )}
@@ -74,14 +73,14 @@ function EditDeleteMCQ({ q }: any) {
                     />
                 ) : (
                     questionUrdu && (
-                        <CardDescription className="text-base">
+                        <CardDescription className="text-base text-green-700 font-medium">
                             {questionUrdu}
                         </CardDescription>
                     )
                 )}
 
                 {/* Options */}
-                <ul className="list-none pl-2 space-y-0.5">
+                <ul className="list-none pl-2 space-y-1 mt-1">
                     {options.map((opt: string, idx: number) => (
                         <li key={idx}>
                             {String.fromCharCode(65 + idx)}.{" "}
@@ -118,13 +117,13 @@ function EditDeleteMCQ({ q }: any) {
                         placeholder="Correct Answer"
                     />
                 ) : (
-                    <div className="pt-2 text-sm">
-                        <strong>Correct Answer:</strong>{" "}
+                    <div className="pt-2 text-sm font-semibold">
+                        Correct Answer:{" "}
                         <span className="text-primary">{correctAnswer}</span>
                     </div>
                 )}
 
-                {/* Explanation English */}
+                {/* Explanations */}
                 {isEditing ? (
                     <Input
                         value={explanationEnglish}
@@ -133,13 +132,12 @@ function EditDeleteMCQ({ q }: any) {
                     />
                 ) : (
                     explanationEnglish && (
-                        <div className="pt-2 text-sm text-muted-foreground">
+                        <div className="pt-4 text-sm text-muted-foreground">
                             {explanationEnglish}
                         </div>
                     )
                 )}
 
-                {/* Explanation Urdu */}
                 {isEditing ? (
                     <Input
                         value={explanationUrdu}
@@ -148,9 +146,7 @@ function EditDeleteMCQ({ q }: any) {
                     />
                 ) : (
                     explanationUrdu && (
-                        <div className="pt-1 text-sm text-muted-foreground">
-                            {explanationUrdu}
-                        </div>
+                        <div className="text-sm text-green-700">{explanationUrdu}</div>
                     )
                 )}
             </CardContent>
@@ -168,12 +164,8 @@ function EditDeleteMCQ({ q }: any) {
                     </>
                 ) : (
                     <>
-                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>
-                            Edit
-                        </Button>
-                        <Button size="sm" variant="destructive" onClick={handleDelete}>
-                            Delete
-                        </Button> */}
+                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
+            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button> */}
                     </>
                 )}
             </CardFooter>
