@@ -39,6 +39,8 @@ export async function add_bulk_mcqs(formData: FormData) {
 
     let inserted = 0;
     const insertedQuestions: string[] = [];
+    const skipped: string[] = [];
+
 
     for (const block of blocks) {
         const parsed = parseMcqBlock(block);
@@ -69,9 +71,17 @@ export async function add_bulk_mcqs(formData: FormData) {
 
             insertedQuestions.push(parsed.question);
             inserted++;
+        } else {
+            skipped.push(parsed.question);
         }
+
     }
 
     revalidatePath(`/category/${category}/${topic}`);
-    return { inserted, insertedQuestions };
+
+    return {
+        inserted,
+        insertedQuestions,
+        skipped,
+    };
 }

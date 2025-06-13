@@ -6,16 +6,59 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Typography from "@/components/ui/typography";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
 
 export default function McqsUploadPage() {
     const [input, setInput] = useState("");
     const [topic, setTopic] = useState("");
     const [category, setCategory] = useState("");
     const [loading, setLoading] = useState(false);
-    const [feedback, setFeedback] = useState<{ inserted: number; insertedQuestions: string[] } | null>(null);
+    const [errorBlocks, setErrorBlocks] = useState<{ block: string[]; lineStart: number }[]>([]);
+    const [feedback, setFeedback] = useState<{
+        inserted: number;
+        insertedQuestions: string[];
+        skipped: string[]
+    } | null>(null);
+
+    // async function handleSubmit(formData: FormData) {
+    //     setLoading(true);
+    //     const result = await add_bulk_mcqs(formData);
+    //     setLoading(false);
+    //     setInput("");
+    //     setTopic("");
+    //     setCategory("");
+    //     setFeedback(result);
+    // }
+
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
+        setFeedback(null);
+        setErrorBlocks([]);
+
+        const raw = formData.get("bulkData") as string;
+        const blocks = raw.split(/\n\s*\n/);
+        const errors: { block: string[]; lineStart: number }[] = [];
+
+        let lineIndex = 0;
+        for (let i = 0; i < blocks.length; i++) {
+            const lines = blocks[i].trim().split("\n").map(l => l.trim()).filter(Boolean);
+            if (lines.length < 4) {
+                errors.push({
+                    block: lines,
+                    lineStart: lineIndex + 1
+                });
+            }
+            lineIndex += lines.length + 1;
+        }
+
+        if (errors.length > 0) {
+            setErrorBlocks(errors);
+            setLoading(false);
+            return;
+        }
+
         const result = await add_bulk_mcqs(formData);
         setLoading(false);
         setInput("");
@@ -23,6 +66,7 @@ export default function McqsUploadPage() {
         setCategory("");
         setFeedback(result);
     }
+
 
     return (
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
@@ -43,14 +87,55 @@ export default function McqsUploadPage() {
                 <Button type="submit" disabled={loading}>{loading ? "Uploading..." : "Submit"}</Button>
             </form>
 
+
+            {errorBlocks.length > 0 && (
+                <div className="space-y-4 mt-6">
+                    <div className="text-red-600">
+                        <Typography variant="h4">Formatting Error Detected</Typography>
+                        <p className="text-sm">The following blocks are incomplete (must have at least 4 lines):</p>
+                    </div>
+
+                    {errorBlocks.map((block, i) => (
+                        <Alert variant="destructive" key={i}>
+                            <AlertTitle>Invalid Entry Starting at Line {block.lineStart}</AlertTitle>
+                            <AlertDescription>
+                                <pre className="whitespace-pre-wrap text-sm mt-1">{block.block.join("\n")}</pre>
+                            </AlertDescription>
+                        </Alert>
+                    ))}
+                </div>
+            )}
+
+
             {feedback && (
-                <div className="mt-4 space-y-2 text-green-700">
-                    <p>Inserted: {feedback.inserted}</p>
-                    <ul className="list-disc list-inside">
-                        {feedback.insertedQuestions.map((q, i) => <li key={i}>{q}</li>)}
-                    </ul>
+                <div className="mt-6 space-y-4">
+                    {feedback.inserted > 0 && (
+                        <div className="text-green-700 space-y-1">
+                            <Typography variant="h4">Successfully added {feedback.inserted} MCQs:</Typography>
+                            <ul className="list-disc list-inside">
+                                {feedback.insertedQuestions.map((q, i) => (
+                                    <li key={i}>{q}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+
+                    {feedback.skipped?.length > 0 && (
+                        <div className="text-red-600 space-y-1">
+                            <Typography variant="h4">Skipped {feedback.skipped.length} duplicate MCQs:</Typography>
+                            <ul className="list-disc list-inside">
+                                {feedback.skipped.map((q, i) => (
+                                    <li key={i}>{q}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
                 </div>
             )}
         </div>
+
+
     );
 }
