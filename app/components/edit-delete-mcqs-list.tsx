@@ -24,8 +24,11 @@ export default function EditDeleteMcqsList({ questions }: { questions: any[] }) 
 function EditDeleteMCQ({ q }: any) {
     const [isEditing, setIsEditing] = useState(false);
     const [question, setQuestion] = useState(q.question);
+    const [questionUrdu, setQuestionUrdu] = useState(q.questionUrdu || "");
     const [options, setOptions] = useState(q.options);
     const [correctAnswer, setCorrectAnswer] = useState(q.correctAnswer);
+    const [explanationEnglish, setExplanationEnglish] = useState(q.explanationEnglish || "");
+    const [explanationUrdu, setExplanationUrdu] = useState(q.explanationUrdu || "");
     const [deleted, setDeleted] = useState(false);
 
     if (deleted) return null;
@@ -38,8 +41,11 @@ function EditDeleteMCQ({ q }: any) {
     async function handleSave() {
         await update_mcqs(q.id, {
             question,
+            questionUrdu,
             options,
             correctAnswer,
+            explanationEnglish,
+            explanationUrdu,
         });
         setIsEditing(false);
     }
@@ -55,6 +61,22 @@ function EditDeleteMCQ({ q }: any) {
                     q.question
                 )}
             </Typography>
+
+
+
+            {q.questionUrdu && !isEditing && (
+                <Typography variant="p" className="text-right text-base text-muted-foreground font-medium">
+                    {q.questionUrdu}
+                </Typography>
+            )}
+            {isEditing && (
+                <>
+                    <Label className="block mt-2">Question Urdu</Label>
+                    <Input value={questionUrdu} onChange={(e) => setQuestionUrdu(e.target.value)} />
+                </>
+            )}
+
+
 
             <ul className="list-none pl-2 space-y-0.5">
                 {options.map((opt: string, idx: number) => (
@@ -94,6 +116,52 @@ function EditDeleteMCQ({ q }: any) {
                 </>
             )}
 
+
+
+
+
+
+
+
+            {q.explanationEnglish && !isEditing && (
+                <div className="pt-2 text-sm text-muted-foreground">
+                    <strong>Explanation (English):</strong> {q.explanationEnglish}
+                </div>
+            )}
+            {isEditing && (
+                <>
+                    <Label className="block mt-2">Explanation English</Label>
+                    <Input
+                        value={explanationEnglish}
+                        onChange={(e) => setExplanationEnglish(e.target.value)}
+                    />
+                </>
+            )}
+
+            {q.explanationUrdu && !isEditing && (
+                <div className="pt-1 text-sm text-muted-foreground text-right">
+                    <strong>وضاحت:</strong> {q.explanationUrdu}
+                </div>
+            )}
+            {isEditing && (
+                <>
+                    <Label className="block mt-2">Explanation Urdu</Label>
+                    <Input
+                        value={explanationUrdu}
+                        onChange={(e) => setExplanationUrdu(e.target.value)}
+                    />
+                </>
+            )}
+
+
+
+
+
+
+
+
+
+
             {process.env.NODE_ENV !== "production" && (
                 <div className="flex gap-4 mt-2">
                     {isEditing ? (
@@ -107,10 +175,12 @@ function EditDeleteMCQ({ q }: any) {
                         </>
                     ) : (
                         <>
-                            {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
-                            <Button size="sm" variant="destructive" onClick={handleDelete}>
-                                Delete
-                            </Button> */}
+
+                            {/* 
+                            <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
+                            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button> */}
+
+
                         </>
                     )}
                 </div>
