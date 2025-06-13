@@ -7,17 +7,21 @@ import { update_mcqs } from "@/app/actions/update_mcqs";
 import Typography from "@/components/ui/typography";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-
-
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardTitle,
+    CardDescription,
+} from "@/components/ui/card";
 
 export default function EditDeleteMcqsList({ questions }: { questions: any[] }) {
     return (
-        <>
+        <div className="space-y-6">
             {questions.map((q) => (
                 <EditDeleteMCQ key={q.id} q={q} />
             ))}
-        </>
+        </div>
     );
 }
 
@@ -51,144 +55,130 @@ function EditDeleteMCQ({ q }: any) {
     }
 
     return (
+        <Card>
+            <CardContent className="space-y-2">
+                {/* English Question */}
+                <CardTitle>
+                    {isEditing ? (
+                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question"
+                        />
+                    ) : (
+                        question
+                    )}
+                </CardTitle>
 
-
-        <div className="space-y-2 pb-6 border-b border-muted">
-            <Typography variant="h3">
+                {/* Urdu Question */}
                 {isEditing ? (
-                    <Input value={question} onChange={(e) => setQuestion(e.target.value)} />
-                ) : (
-                    q.question
-                )}
-            </Typography>
-
-
-
-            {q.questionUrdu && !isEditing && (
-                <Typography variant="p" className="text-right text-base text-muted-foreground font-medium">
-                    {q.questionUrdu}
-                </Typography>
-            )}
-            {isEditing && (
-                <>
-                    <Label className="block mt-2">Question Urdu</Label>
-                    <Input value={questionUrdu} onChange={(e) => setQuestionUrdu(e.target.value)} />
-                </>
-            )}
-
-
-
-            <ul className="list-none pl-2 space-y-0.5">
-                {options.map((opt: string, idx: number) => (
-                    <li key={idx}>
-                        {String.fromCharCode(65 + idx)}.{" "}
-                        {isEditing ? (
-                            <Input
-                                value={opt}
-                                onChange={(e) => {
-                                    const newOptions = [...options];
-                                    newOptions[idx] = e.target.value;
-                                    setOptions(newOptions);
-                                }}
-                            />
-                        ) : (
-                            <span
-                                className={
-                                    opt === correctAnswer
-                                        ? "text-primary font-semibold"
-                                        : "text-muted-foreground"
-                                }
-                            >
-                                {opt}
-                            </span>
-                        )}
-                    </li>
-                ))}
-            </ul>
-
-            {isEditing && (
-                <>
-                    <Label className="mt-2 block">Correct Answer:</Label>
                     <Input
+                        value={questionUrdu}
+                        onChange={(e) => setQuestionUrdu(e.target.value)}
+                        placeholder="Question Urdu"
+                    />
+                ) : (
+                    questionUrdu && (
+                        <CardDescription className="text-base">
+                            {questionUrdu}
+                        </CardDescription>
+                    )
+                )}
+
+                {/* Options */}
+                <ul className="list-none pl-2 space-y-0.5">
+                    {options.map((opt: string, idx: number) => (
+                        <li key={idx}>
+                            {String.fromCharCode(65 + idx)}.{" "}
+                            {isEditing ? (
+                                <Input
+                                    value={opt}
+                                    onChange={(e) => {
+                                        const newOptions = [...options];
+                                        newOptions[idx] = e.target.value;
+                                        setOptions(newOptions);
+                                    }}
+                                />
+                            ) : (
+                                <span
+                                    className={
+                                        opt === correctAnswer
+                                            ? "text-primary font-semibold"
+                                            : "text-muted-foreground"
+                                    }
+                                >
+                                    {opt}
+                                </span>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Correct Answer */}
+                {isEditing ? (
+                    <Input
+                        className="mt-2"
                         value={correctAnswer}
                         onChange={(e) => setCorrectAnswer(e.target.value)}
+                        placeholder="Correct Answer"
                     />
-                </>
-            )}
+                ) : (
+                    <div className="pt-2 text-sm">
+                        <strong>Correct Answer:</strong>{" "}
+                        <span className="text-primary">{correctAnswer}</span>
+                    </div>
+                )}
 
-
-
-
-
-
-
-
-            {q.explanationEnglish && !isEditing && (
-                <div className="pt-2 text-sm text-muted-foreground">
-                    {q.explanationEnglish}
-                </div>
-            )}
-            {isEditing && (
-                <>
-                    <Label className="block mt-2">Explanation English</Label>
+                {/* Explanation English */}
+                {isEditing ? (
                     <Input
                         value={explanationEnglish}
                         onChange={(e) => setExplanationEnglish(e.target.value)}
+                        placeholder="Explanation English"
                     />
-                </>
-            )}
+                ) : (
+                    explanationEnglish && (
+                        <div className="pt-2 text-sm text-muted-foreground">
+                            {explanationEnglish}
+                        </div>
+                    )
+                )}
 
-            {q.explanationUrdu && !isEditing && (
-                <div className="pt-1 text-sm text-muted-foreground text-right">
-                    {q.explanationUrdu}
-                </div>
-            )}
-            {isEditing && (
-                <>
-                    <Label className="block mt-2">Explanation Urdu</Label>
+                {/* Explanation Urdu */}
+                {isEditing ? (
                     <Input
                         value={explanationUrdu}
                         onChange={(e) => setExplanationUrdu(e.target.value)}
+                        placeholder="Explanation Urdu"
                     />
-                </>
-            )}
+                ) : (
+                    explanationUrdu && (
+                        <div className="pt-1 text-sm text-muted-foreground">
+                            {explanationUrdu}
+                        </div>
+                    )
+                )}
+            </CardContent>
 
-
-
-
-
-
-
-
-
-
-            {process.env.NODE_ENV !== "production" && (
-                <div className="flex gap-4 mt-2">
-                    {isEditing ? (
-                        <>
-                            <Button size="sm" onClick={handleSave}>
-                                Save
-                            </Button>
-                            <Button size="sm" variant="outline" onClick={() => setIsEditing(false)}>
-                                Cancel
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-
-
-                            <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
-                            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button>
-
-
-                        </>
-                    )}
-                </div>
-            )}
-        </div>
-
-
-
-
+            {/* Action Buttons */}
+            <CardFooter className="gap-4">
+                {isEditing ? (
+                    <>
+                        <Button size="sm" onClick={handleSave}>
+                            Save
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => setIsEditing(false)}>
+                            Cancel
+                        </Button>
+                    </>
+                ) : (
+                    <>
+                        <Button size="sm" onClick={() => setIsEditing(true)}>
+                            Edit
+                        </Button>
+                        <Button size="sm" variant="destructive" onClick={handleDelete}>
+                            Delete
+                        </Button>
+                    </>
+                )}
+            </CardFooter>
+        </Card>
     );
 }
