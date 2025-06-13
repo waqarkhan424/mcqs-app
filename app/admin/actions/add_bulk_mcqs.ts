@@ -44,18 +44,19 @@ export async function add_bulk_mcqs(formData: FormData) {
         const parsed = parseMcqBlock(block);
         if (!parsed.question || !parsed.correctAnswer || parsed.options.length < 2) continue;
 
+        const normalizedQuestion = parsed.question.trim().toLowerCase();
+
         const exists = await prisma.question1.findFirst({
             where: {
-                question: parsed.question,
-                topic,
-                category,
+                question: normalizedQuestion,
             },
         });
+
 
         if (!exists) {
             await prisma.question1.create({
                 data: {
-                    question: parsed.question,
+                    question: normalizedQuestion,
                     questionUrdu: parsed.questionUrdu,
                     options: parsed.options,
                     correctAnswer: parsed.correctAnswer,
