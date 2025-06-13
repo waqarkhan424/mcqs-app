@@ -16,14 +16,14 @@ import {
 export default function EditDeleteMcqsList({ questions }: { questions: any[] }) {
     return (
         <div className="space-y-6">
-            {questions.map((q) => (
-                <EditDeleteMCQ key={q.id} q={q} />
+            {questions.map((q, idx) => (
+                <EditDeleteMCQ key={q.id} q={q} index={idx + 1} />
             ))}
         </div>
     );
 }
 
-function EditDeleteMCQ({ q }: any) {
+function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
     const [isEditing, setIsEditing] = useState(false);
     const [question, setQuestion] = useState(q.question);
     const [questionUrdu, setQuestionUrdu] = useState(q.questionUrdu || "");
@@ -53,12 +53,21 @@ function EditDeleteMCQ({ q }: any) {
     }
 
     return (
-        <Card>
-            <CardContent className="space-y-3 pt-6">
+        <Card className="relative">
+            {/* Number badge */}
+            <div className="absolute -top-3 -left-3 bg-primary text-white text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center shadow">
+                {index}
+            </div>
+
+            <CardContent className="space-y-3 pt-8">
                 {/* English Question */}
                 <CardTitle>
                     {isEditing ? (
-                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question" />
+                        <Input
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                            placeholder={`Question ${index}`}
+                        />
                     ) : (
                         question
                     )}
@@ -123,7 +132,7 @@ function EditDeleteMCQ({ q }: any) {
                     </div>
                 )}
 
-                {/* Explanations */}
+                {/* Explanation English */}
                 {isEditing ? (
                     <Input
                         value={explanationEnglish}
@@ -138,6 +147,7 @@ function EditDeleteMCQ({ q }: any) {
                     )
                 )}
 
+                {/* Explanation Urdu */}
                 {isEditing ? (
                     <Input
                         value={explanationUrdu}
@@ -146,7 +156,9 @@ function EditDeleteMCQ({ q }: any) {
                     />
                 ) : (
                     explanationUrdu && (
-                        <div className="text-sm text-green-700">{explanationUrdu}</div>
+                        <div className="text-sm text-green-700">
+                            {explanationUrdu}
+                        </div>
                     )
                 )}
             </CardContent>
@@ -163,10 +175,7 @@ function EditDeleteMCQ({ q }: any) {
                         </Button>
                     </>
                 ) : (
-                    <>
-                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
-            <Button size="sm" variant="destructive" onClick={handleDelete}>Delete</Button> */}
-                    </>
+                    <></>
                 )}
             </CardFooter>
         </Card>
