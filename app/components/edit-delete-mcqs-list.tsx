@@ -4,6 +4,7 @@ import { useState } from "react";
 import { delete_mcqs } from "@/app/actions/delete_mcqs";
 import { update_mcqs } from "@/app/actions/update_mcqs";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -46,11 +47,9 @@ export default function EditDeleteMcqsList({
             {enableDelete && (
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center gap-2">
-                        <Input
-                            type="checkbox"
-                            onChange={toggleAll}
+                        <Checkbox
                             checked={selectedIds.length === questions.length}
-                            className="w-4 h-4"
+                            onCheckedChange={toggleAll}
                         />
                         <span className="text-sm font-medium">Select All</span>
                     </div>
@@ -98,8 +97,12 @@ function EditDeleteMCQ({
     const [questionUrdu, setQuestionUrdu] = useState(q.questionUrdu || "");
     const [options, setOptions] = useState(q.options);
     const [correctAnswer, setCorrectAnswer] = useState(q.correctAnswer);
-    const [explanationEnglish, setExplanationEnglish] = useState(q.explanationEnglish || "");
-    const [explanationUrdu, setExplanationUrdu] = useState(q.explanationUrdu || "");
+    const [explanationEnglish, setExplanationEnglish] = useState(
+        q.explanationEnglish || ""
+    );
+    const [explanationUrdu, setExplanationUrdu] = useState(
+        q.explanationUrdu || ""
+    );
     const [deleted, setDeleted] = useState(false);
 
     if (deleted) return null;
@@ -129,11 +132,9 @@ function EditDeleteMCQ({
 
             {enableDelete && (
                 <div className="absolute top-2 right-3">
-                    <Input
-                        type="checkbox"
+                    <Checkbox
                         checked={selected}
-                        onChange={() => toggleSelect?.(q.id)}
-                        className="w-4 h-4"
+                        onCheckedChange={() => toggleSelect?.(q.id)}
                     />
                 </div>
             )}
@@ -229,9 +230,7 @@ function EditDeleteMCQ({
                     />
                 ) : (
                     explanationUrdu && (
-                        <div className="text-sm text-green-700">
-                            {explanationUrdu}
-                        </div>
+                        <div className="text-sm text-green-700">{explanationUrdu}</div>
                     )
                 )}
             </CardContent>
@@ -242,7 +241,11 @@ function EditDeleteMCQ({
                         <Button size="sm" onClick={handleSave}>
                             Save
                         </Button>
-                        <Button size="sm" variant="outline" onClick={() => setIsEditing(false)}>
+                        <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setIsEditing(false)}
+                        >
                             Cancel
                         </Button>
                     </>
