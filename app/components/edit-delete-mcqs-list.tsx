@@ -288,9 +288,13 @@ function EditDeleteMCQ({
                     </>
                 ) : (
                     <>
-                        <Button size="sm" onClick={() => setIsEditing(true)}>
-                            Edit
-                        </Button>
+
+
+
+                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button> */}
+
+
+
 
                         {enableDelete && (
                             <Dialog open={openSingleDialog} onOpenChange={setOpenSingleDialog}>
