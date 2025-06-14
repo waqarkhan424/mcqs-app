@@ -58,11 +58,7 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                 {/* Related Topics Sidebar */}
                 {originalTopics.length > 0 && (
                     <div className="lg:w-[280px] w-full">
-                        <Accordion
-                            type="multiple"
-                            defaultValue={["related-topics"]}
-                            className="w-full"
-                        >
+                        <Accordion type="multiple" className="w-full">
                             <AccordionItem value="related-topics">
                                 <AccordionTrigger
                                     className={cn(
@@ -73,8 +69,8 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                                 </AccordionTrigger>
 
                                 <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
-                                    <ul className="space-y-1 text-sm sm:text-base">
-                                        {originalTopics.map((t) => {
+                                    <ol className="space-y-1 text-sm sm:text-base list-decimal list-inside">
+                                        {originalTopics.map((t, index) => {
                                             const topicSlug = slugify(t, { lower: true, strict: true });
                                             const isActive = topicSlug === decodedTopic;
 
@@ -85,16 +81,16 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                                                         className={cn(
                                                             "underline font-medium transition-colors",
                                                             isActive
-                                                                ? "text-primary font-semibold"
-                                                                : "text-muted-foreground hover:text-primary"
+                                                                ? "text-foreground font-semibold"
+                                                                : "text-primary hover:text-primary/90"
                                                         )}
                                                     >
-                                                        {isActive ? `👉 ${t}` : t}
+                                                        {t}
                                                     </Link>
                                                 </li>
                                             );
                                         })}
-                                    </ul>
+                                    </ol>
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
@@ -115,8 +111,7 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                         <>
                             <div className="flex items-center justify-between">
                                 <Typography variant="p" className="text-muted-foreground text-sm">
-                                    Showing {skip + 1} –{" "}
-                                    {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
+                                    Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
                                 </Typography>
 
                                 <MCQsPerPageSelect
