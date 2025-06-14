@@ -6,6 +6,7 @@ import { categoryTopics } from "@/lib/topics";
 import slugify from "slugify";
 import MCQsPagination from "@/app/components/mcqs-pagination";
 import MCQsPerPageSelect from "@/app/components/mcqs-per-page-select";
+import Link from "next/link";
 
 interface Props {
     params: Promise<{ slug: string; topic: string }>;
@@ -24,6 +25,10 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
     const originalTopics = categoryTopics[slug] || [];
     const originalTopic = originalTopics.find(
         (t) => slugify(t, { lower: true, strict: true }) === decodedTopic
+    );
+
+    const relatedTopics = originalTopics.filter(
+        (t) => slugify(t, { lower: true, strict: true }) !== decodedTopic
     );
 
     const [questions, totalCount] = await Promise.all([
@@ -77,6 +82,27 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                         perPage={perPageNumber}
                     />
                 </>
+            )}
+
+            {/* Related Topics Section */}
+            {relatedTopics.length > 0 && (
+                <div className="pt-10 space-y-2 border-t border-border mt-12">
+                    <Typography variant="h3" className="text-primary">
+                        Related Topics
+                    </Typography>
+                    <ul className="list-disc pl-6 text-muted-foreground space-y-1">
+                        {relatedTopics.map((t) => (
+                            <li key={t}>
+                                <Link
+                                    href={`/category/${slug}/${slugify(t, { lower: true, strict: true })}`}
+                                    className="hover:text-primary underline"
+                                >
+                                    {t}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </div>
     );
