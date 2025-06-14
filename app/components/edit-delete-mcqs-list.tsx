@@ -82,10 +82,11 @@ export default function EditDeleteMcqsList({
                                 </DialogDescription>
                             </DialogHeader>
                             <DialogFooter>
-                                <Button variant="outline" onClick={() => setOpenDialog(false)}>
+                                <Button size="sm" variant="outline" onClick={() => setOpenDialog(false)}>
                                     Cancel
                                 </Button>
                                 <Button
+                                    size="sm"
                                     variant="destructive"
                                     onClick={async () => {
                                         await handleDeleteSelected();
@@ -306,10 +307,11 @@ function EditDeleteMCQ({
                                         </DialogDescription>
                                     </DialogHeader>
                                     <DialogFooter>
-                                        <Button variant="outline" onClick={() => setOpenSingleDialog(false)}>
+                                        <Button size="sm" variant="outline" onClick={() => setOpenSingleDialog(false)}>
                                             Cancel
                                         </Button>
                                         <Button
+                                            size="sm"
                                             variant="destructive"
                                             onClick={async () => {
                                                 await handleDelete();
