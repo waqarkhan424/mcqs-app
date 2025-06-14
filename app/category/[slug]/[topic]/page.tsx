@@ -97,7 +97,7 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                         <AccordionItem value="related-topics">
                             <AccordionTrigger
                                 className={cn(
-                                    "bg-primary text-white w-full sm:max-w-md sm:mx-auto px-4 py-2 rounded-md font-semibold flex justify-between items-center"
+                                    "bg-muted text-primary w-full sm:max-w-md sm:mx-auto px-4 py-2 rounded-md font-semibold flex justify-between items-center"
                                 )}
                             >
                                 <span>Related Topics</span>
