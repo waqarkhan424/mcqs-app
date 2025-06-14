@@ -13,6 +13,15 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogFooter,
+} from "@/components/ui/dialog";
 
 export default function EditDeleteMcqsList({
     questions,
@@ -22,6 +31,7 @@ export default function EditDeleteMcqsList({
     enableDelete?: boolean;
 }) {
     const [selectedIds, setSelectedIds] = useState<string[]>([]);
+    const [openDialog, setOpenDialog] = useState(false);
 
     const toggleSelect = (id: string) => {
         setSelectedIds((prev) =>
@@ -53,21 +63,40 @@ export default function EditDeleteMcqsList({
                         />
                         <span className="text-sm font-medium">Select All</span>
                     </div>
-                    <Button
-                        variant="destructive"
-                        size="sm"
-                        disabled={selectedIds.length === 0}
-                        onClick={() => {
-                            const confirmDelete = window.confirm(
-                                `Are you sure you want to delete ${selectedIds.length} selected MCQ(s)?`
-                            );
-                            if (confirmDelete) {
-                                handleDeleteSelected();
-                            }
-                        }}
-                    >
-                        Delete ({selectedIds.length})
-                    </Button>
+
+                    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+                        <DialogTrigger asChild>
+                            <Button
+                                variant="destructive"
+                                size="sm"
+                                disabled={selectedIds.length === 0}
+                            >
+                                Delete ({selectedIds.length})
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle>Are you sure?</DialogTitle>
+                                <DialogDescription>
+                                    This will permanently delete {selectedIds.length} selected MCQ(s). This action cannot be undone.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <DialogFooter>
+                                <Button variant="outline" onClick={() => setOpenDialog(false)}>
+                                    Cancel
+                                </Button>
+                                <Button
+                                    variant="destructive"
+                                    onClick={async () => {
+                                        await handleDeleteSelected();
+                                        setOpenDialog(false);
+                                    }}
+                                >
+                                    Yes, delete
+                                </Button>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
                 </div>
             )}
 
@@ -110,15 +139,13 @@ function EditDeleteMCQ({
         q.explanationUrdu || ""
     );
     const [deleted, setDeleted] = useState(false);
+    const [openSingleDialog, setOpenSingleDialog] = useState(false);
 
     if (deleted) return null;
 
     async function handleDelete() {
-        const confirmed = window.confirm("Are you sure you want to delete this MCQ?");
-        if (confirmed) {
-            await delete_mcqs(q.id);
-            setDeleted(true);
-        }
+        await delete_mcqs(q.id);
+        setDeleted(true);
     }
 
     async function handleSave() {
@@ -263,14 +290,37 @@ function EditDeleteMCQ({
                         <Button size="sm" onClick={() => setIsEditing(true)}>
                             Edit
                         </Button>
+
                         {enableDelete && (
-                            <Button
-                                size="sm"
-                                variant="destructive"
-                                onClick={handleDelete}
-                            >
-                                Delete
-                            </Button>
+                            <Dialog open={openSingleDialog} onOpenChange={setOpenSingleDialog}>
+                                <DialogTrigger asChild>
+                                    <Button size="sm" variant="destructive">
+                                        Delete
+                                    </Button>
+                                </DialogTrigger>
+                                <DialogContent>
+                                    <DialogHeader>
+                                        <DialogTitle>Are you sure?</DialogTitle>
+                                        <DialogDescription>
+                                            This will permanently delete this MCQ.
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                    <DialogFooter>
+                                        <Button variant="outline" onClick={() => setOpenSingleDialog(false)}>
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={async () => {
+                                                await handleDelete();
+                                                setOpenSingleDialog(false);
+                                            }}
+                                        >
+                                            Yes, delete
+                                        </Button>
+                                    </DialogFooter>
+                                </DialogContent>
+                            </Dialog>
                         )}
                     </>
                 )}
