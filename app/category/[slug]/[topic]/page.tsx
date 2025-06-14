@@ -97,13 +97,13 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                         <AccordionItem value="related-topics">
                             <AccordionTrigger
                                 className={cn(
-                                    "bg-neutral-700 text-white px-4 py-3 rounded-md w-full hover:bg-neutral-800 font-semibold"
+                                    "bg-primary text-white w-full sm:max-w-md sm:mx-auto px-4 py-2 rounded-md font-semibold flex justify-between items-center"
                                 )}
                             >
-                                All Related Topics
+                                <span>Related Topics</span>
                             </AccordionTrigger>
 
-                            <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
+                            <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2 sm:max-w-md sm:mx-auto">
                                 <ul className="space-y-1 text-blue-600 text-sm sm:text-base">
                                     {relatedTopics.map((t) => (
                                         <li key={t}>
@@ -121,6 +121,7 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                     </Accordion>
                 </div>
             )}
+
         </div>
     );
 }
