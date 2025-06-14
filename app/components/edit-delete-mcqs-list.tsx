@@ -13,17 +13,86 @@ import {
     CardDescription,
 } from "@/components/ui/card";
 
-export default function EditDeleteMcqsList({ questions }: { questions: any[] }) {
+export default function EditDeleteMcqsList({
+    questions,
+    enableDelete = true,
+}: {
+    questions: any[];
+    enableDelete?: boolean;
+}) {
+    const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+    const toggleSelect = (id: string) => {
+        setSelectedIds((prev) =>
+            prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+        );
+    };
+
+    const toggleAll = () => {
+        if (selectedIds.length === questions.length) {
+            setSelectedIds([]);
+        } else {
+            setSelectedIds(questions.map((q) => q.id));
+        }
+    };
+
+    const handleDeleteSelected = async () => {
+        await Promise.all(selectedIds.map((id) => delete_mcqs(id)));
+        window.location.reload(); // or revalidate
+    };
+
     return (
         <div className="space-y-6">
+            {enableDelete && (
+                <div className="flex justify-between items-center mb-4">
+                    <div>
+                        <input
+                            type="checkbox"
+                            onChange={toggleAll}
+                            checked={selectedIds.length === questions.length}
+                            className="mr-2"
+                        />
+                        Select All
+                    </div>
+                    {selectedIds.length > 0 && (
+                        <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={handleDeleteSelected}
+                        >
+                            Delete Selected ({selectedIds.length})
+                        </Button>
+                    )}
+                </div>
+            )}
+
             {questions.map((q, idx) => (
-                <EditDeleteMCQ key={q.id} q={q} index={idx + 1} />
+                <EditDeleteMCQ
+                    key={q.id}
+                    q={q}
+                    index={idx + 1}
+                    enableDelete={enableDelete}
+                    selected={selectedIds.includes(q.id)}
+                    toggleSelect={toggleSelect}
+                />
             ))}
         </div>
     );
 }
 
-function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
+function EditDeleteMCQ({
+    q,
+    index,
+    enableDelete,
+    selected,
+    toggleSelect,
+}: {
+    q: any;
+    index: number;
+    enableDelete?: boolean;
+    selected?: boolean;
+    toggleSelect?: (id: string) => void;
+}) {
     const [isEditing, setIsEditing] = useState(false);
     const [question, setQuestion] = useState(q.question);
     const [questionUrdu, setQuestionUrdu] = useState(q.questionUrdu || "");
@@ -54,13 +123,22 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
 
     return (
         <Card className="relative">
-            {/* Number badge */}
             <div className="absolute -top-3 -left-3 bg-primary text-white text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center shadow">
                 {index}
             </div>
 
+            {enableDelete && (
+                <div className="absolute top-2 right-3">
+                    <input
+                        type="checkbox"
+                        checked={selected}
+                        onChange={() => toggleSelect?.(q.id)}
+                        className="w-4 h-4"
+                    />
+                </div>
+            )}
+
             <CardContent className="space-y-3 pt-8">
-                {/* English Question */}
                 <CardTitle>
                     {isEditing ? (
                         <Input
@@ -73,7 +151,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     )}
                 </CardTitle>
 
-                {/* Urdu Question */}
                 {isEditing ? (
                     <Input
                         value={questionUrdu}
@@ -88,7 +165,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     )
                 )}
 
-                {/* Options */}
                 <ul className="list-none pl-2 space-y-1 mt-1">
                     {options.map((opt: string, idx: number) => (
                         <li key={idx}>
@@ -117,7 +193,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     ))}
                 </ul>
 
-                {/* Correct Answer */}
                 {isEditing ? (
                     <Input
                         className="mt-2"
@@ -132,7 +207,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     </div>
                 )}
 
-                {/* Explanation English */}
                 {isEditing ? (
                     <Input
                         value={explanationEnglish}
@@ -147,7 +221,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     )
                 )}
 
-                {/* Explanation Urdu */}
                 {isEditing ? (
                     <Input
                         value={explanationUrdu}
@@ -163,7 +236,6 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                 )}
             </CardContent>
 
-            {/* Action Buttons */}
             <CardFooter className="gap-4">
                 {isEditing ? (
                     <>
@@ -176,15 +248,18 @@ function EditDeleteMCQ({ q, index }: { q: any; index: number }) {
                     </>
                 ) : (
                     <>
-
-                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>
+                        <Button size="sm" onClick={() => setIsEditing(true)}>
                             Edit
                         </Button>
-                        <Button size="sm" variant="destructive" onClick={handleDelete}>
-                            Delete
-                        </Button> */}
-
-
+                        {enableDelete && (
+                            <Button
+                                size="sm"
+                                variant="destructive"
+                                onClick={handleDelete}
+                            >
+                                Delete
+                            </Button>
+                        )}
                     </>
                 )}
             </CardFooter>

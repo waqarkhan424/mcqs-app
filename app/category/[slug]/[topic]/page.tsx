@@ -56,7 +56,7 @@ export default async function McqsByTopic(props: Props) {
                     </CardContent>
                 </Card>
             ) : (
-                <EditDeleteMcqsList questions={questions} />
+                <EditDeleteMcqsList questions={questions} enableDelete={true} />
             )}
 
         </div>
