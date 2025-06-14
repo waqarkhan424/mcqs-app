@@ -57,71 +57,80 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
     const totalPages = Math.ceil(totalCount / perPageNumber);
 
     return (
-        <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-5xl mx-auto space-y-6">
-            <Typography variant="h2" className="capitalize text-center">
-                {originalTopic || decodedTopic.replace(/-/g, " ")}
-            </Typography>
+        <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-6xl mx-auto">
+            <div className="flex flex-col-reverse lg:flex-row-reverse gap-10">
+                {/* Related Topics Sidebar */}
+                {relatedTopics.length > 0 && (
+                    <div className="lg:w-[280px] w-full">
+                        <Accordion type="single" collapsible className="w-full">
+                            <AccordionItem value="related-topics">
+                                <AccordionTrigger
+                                    className={cn(
+                                        "bg-muted text-primary w-full px-4 py-2 rounded-md font-semibold flex justify-between items-center"
+                                    )}
+                                >
+                                    <span>Related Topics</span>
+                                </AccordionTrigger>
 
-            {questions.length === 0 ? (
-                <div className="text-center text-muted-foreground text-sm">No MCQs available yet.</div>
-            ) : (
-                <>
-                    <div className="flex items-center justify-between">
-                        <Typography variant="p" className="text-muted-foreground text-sm">
-                            Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
-                        </Typography>
-
-                        <MCQsPerPageSelect
-                            slug={slug}
-                            topic={topic}
-                            currentPerPage={perPageNumber}
-                        />
+                                <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
+                                    <ul className="space-y-1 text-primary text-sm sm:text-base">
+                                        {relatedTopics.map((t) => (
+                                            <li key={t}>
+                                                <Link
+                                                    href={`/category/${slug}/${slugify(t, {
+                                                        lower: true,
+                                                        strict: true,
+                                                    })}`}
+                                                    className="text-primary underline font-medium hover:text-primary/90"
+                                                >
+                                                    {t}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
                     </div>
+                )}
 
-                    <EditDeleteMcqsList questions={questions} enableDelete={false} />
+                {/* Main MCQ Content */}
+                <div className="flex-1 space-y-6">
+                    <Typography variant="h2" className="capitalize text-center">
+                        {originalTopic || decodedTopic.replace(/-/g, " ")}
+                    </Typography>
 
-                    <MCQsPagination
-                        slug={slug}
-                        topic={topic}
-                        totalPages={totalPages}
-                        currentPage={pageNumber}
-                        perPage={perPageNumber}
-                    />
-                </>
-            )}
+                    {questions.length === 0 ? (
+                        <div className="text-center text-muted-foreground text-sm">
+                            No MCQs available yet.
+                        </div>
+                    ) : (
+                        <>
+                            <div className="flex items-center justify-between">
+                                <Typography variant="p" className="text-muted-foreground text-sm">
+                                    Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
+                                </Typography>
 
-            {/* Related Topics Styled Accordion */}
-            {relatedTopics.length > 0 && (
-                <div className="pt-10 border-t border-border mt-12">
-                    <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="related-topics">
-                            <AccordionTrigger
-                                className={cn(
-                                    "bg-muted text-primary w-full sm:max-w-md sm:mx-auto px-4 py-2 rounded-md font-semibold flex justify-between items-center"
-                                )}
-                            >
-                                <span>Related Topics</span>
-                            </AccordionTrigger>
+                                <MCQsPerPageSelect
+                                    slug={slug}
+                                    topic={topic}
+                                    currentPerPage={perPageNumber}
+                                />
+                            </div>
 
-                            <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2 sm:max-w-md sm:mx-auto">
-                                <ul className="space-y-1 text-primary text-sm sm:text-base">
-                                    {relatedTopics.map((t) => (
-                                        <li key={t}>
-                                            <Link
-                                                href={`/category/${slug}/${slugify(t, { lower: true, strict: true })}`}
-                                                className="text-primary underline font-medium hover:text-primary/90"
-                                            >
-                                                {t}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </AccordionContent>
-                        </AccordionItem>
-                    </Accordion>
+                            <EditDeleteMcqsList questions={questions} enableDelete={false} />
+
+                            <MCQsPagination
+                                slug={slug}
+                                topic={topic}
+                                totalPages={totalPages}
+                                currentPage={pageNumber}
+                                perPage={perPageNumber}
+                            />
+                        </>
+                    )}
                 </div>
-            )}
-
+            </div>
         </div>
     );
 }
