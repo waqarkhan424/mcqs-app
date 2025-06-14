@@ -1,4 +1,3 @@
-
 import prisma from "@/lib/prisma";
 import EditDeleteMcqsList from "@/app/components/edit-delete-mcqs-list";
 import Typography from "@/components/ui/typography";
@@ -7,6 +6,13 @@ import slugify from "slugify";
 import MCQsPagination from "@/app/components/mcqs-pagination";
 import MCQsPerPageSelect from "@/app/components/mcqs-per-page-select";
 import Link from "next/link";
+import {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionContent,
+} from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 interface Props {
     params: Promise<{ slug: string; topic: string }>;
@@ -84,24 +90,35 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                 </>
             )}
 
-            {/* Related Topics Section */}
+            {/* Related Topics Styled Accordion */}
             {relatedTopics.length > 0 && (
-                <div className="pt-10 space-y-2 border-t border-border mt-12">
-                    <Typography variant="h3" className="text-primary">
-                        Related Topics
-                    </Typography>
-                    <ul className="list-disc pl-6 text-muted-foreground space-y-1">
-                        {relatedTopics.map((t) => (
-                            <li key={t}>
-                                <Link
-                                    href={`/category/${slug}/${slugify(t, { lower: true, strict: true })}`}
-                                    className="hover:text-primary underline"
-                                >
-                                    {t}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <div className="pt-10 border-t border-border mt-12">
+                    <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="related-topics">
+                            <AccordionTrigger
+                                className={cn(
+                                    "bg-neutral-700 text-white px-4 py-3 rounded-md w-full hover:bg-neutral-800 font-semibold"
+                                )}
+                            >
+                                All Related Topics
+                            </AccordionTrigger>
+
+                            <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
+                                <ul className="space-y-1 text-blue-600 text-sm sm:text-base">
+                                    {relatedTopics.map((t) => (
+                                        <li key={t}>
+                                            <Link
+                                                href={`/category/${slug}/${slugify(t, { lower: true, strict: true })}`}
+                                                className="text-primary underline font-medium hover:text-primary/90"
+                                            >
+                                                {t}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
             )}
         </div>
