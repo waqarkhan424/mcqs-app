@@ -33,10 +33,6 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
         (t) => slugify(t, { lower: true, strict: true }) === decodedTopic
     );
 
-    const relatedTopics = originalTopics.filter(
-        (t) => slugify(t, { lower: true, strict: true }) !== decodedTopic
-    );
-
     const [questions, totalCount] = await Promise.all([
         prisma.question.findMany({
             where: {
@@ -60,9 +56,13 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
         <div className="px-4 pt-12 pb-20 sm:pt-16 sm:pb-28 max-w-6xl mx-auto">
             <div className="flex flex-col-reverse lg:flex-row-reverse gap-10">
                 {/* Related Topics Sidebar */}
-                {relatedTopics.length > 0 && (
+                {originalTopics.length > 0 && (
                     <div className="lg:w-[280px] w-full">
-                        <Accordion type="single" collapsible className="w-full">
+                        <Accordion
+                            type="multiple"
+                            defaultValue={["related-topics"]}
+                            className="w-full"
+                        >
                             <AccordionItem value="related-topics">
                                 <AccordionTrigger
                                     className={cn(
@@ -73,20 +73,27 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                                 </AccordionTrigger>
 
                                 <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
-                                    <ul className="space-y-1 text-primary text-sm sm:text-base">
-                                        {relatedTopics.map((t) => (
-                                            <li key={t}>
-                                                <Link
-                                                    href={`/category/${slug}/${slugify(t, {
-                                                        lower: true,
-                                                        strict: true,
-                                                    })}`}
-                                                    className="text-primary underline font-medium hover:text-primary/90"
-                                                >
-                                                    {t}
-                                                </Link>
-                                            </li>
-                                        ))}
+                                    <ul className="space-y-1 text-sm sm:text-base">
+                                        {originalTopics.map((t) => {
+                                            const topicSlug = slugify(t, { lower: true, strict: true });
+                                            const isActive = topicSlug === decodedTopic;
+
+                                            return (
+                                                <li key={t}>
+                                                    <Link
+                                                        href={`/category/${slug}/${topicSlug}`}
+                                                        className={cn(
+                                                            "underline font-medium transition-colors",
+                                                            isActive
+                                                                ? "text-primary font-semibold"
+                                                                : "text-muted-foreground hover:text-primary"
+                                                        )}
+                                                    >
+                                                        {isActive ? `👉 ${t}` : t}
+                                                    </Link>
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                 </AccordionContent>
                             </AccordionItem>
@@ -108,7 +115,8 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                         <>
                             <div className="flex items-center justify-between">
                                 <Typography variant="p" className="text-muted-foreground text-sm">
-                                    Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
+                                    Showing {skip + 1} –{" "}
+                                    {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
                                 </Typography>
 
                                 <MCQsPerPageSelect
