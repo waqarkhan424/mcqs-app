@@ -104,7 +104,7 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                             </AccordionTrigger>
 
                             <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2 sm:max-w-md sm:mx-auto">
-                                <ul className="space-y-1 text-blue-600 text-sm sm:text-base">
+                                <ul className="space-y-1 text-primary text-sm sm:text-base">
                                     {relatedTopics.map((t) => (
                                         <li key={t}>
                                             <Link
