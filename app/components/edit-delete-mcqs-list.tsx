@@ -53,15 +53,21 @@ export default function EditDeleteMcqsList({
                         />
                         <span className="text-sm font-medium">Select All</span>
                     </div>
-                    {selectedIds.length > 0 && (
-                        <Button
-                            variant="destructive"
-                            size="sm"
-                            onClick={handleDeleteSelected}
-                        >
-                            Delete Selected ({selectedIds.length})
-                        </Button>
-                    )}
+                    <Button
+                        variant="destructive"
+                        size="sm"
+                        disabled={selectedIds.length === 0}
+                        onClick={() => {
+                            const confirmDelete = window.confirm(
+                                `Are you sure you want to delete ${selectedIds.length} selected MCQ(s)?`
+                            );
+                            if (confirmDelete) {
+                                handleDeleteSelected();
+                            }
+                        }}
+                    >
+                        Delete ({selectedIds.length})
+                    </Button>
                 </div>
             )}
 
@@ -108,8 +114,11 @@ function EditDeleteMCQ({
     if (deleted) return null;
 
     async function handleDelete() {
-        await delete_mcqs(q.id);
-        setDeleted(true);
+        const confirmed = window.confirm("Are you sure you want to delete this MCQ?");
+        if (confirmed) {
+            await delete_mcqs(q.id);
+            setDeleted(true);
+        }
     }
 
     async function handleSave() {
