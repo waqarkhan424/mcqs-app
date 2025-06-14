@@ -38,21 +38,21 @@ export default function EditDeleteMcqsList({
 
     const handleDeleteSelected = async () => {
         await Promise.all(selectedIds.map((id) => delete_mcqs(id)));
-        window.location.reload(); // or revalidate
+        window.location.reload();
     };
 
     return (
         <div className="space-y-6">
             {enableDelete && (
                 <div className="flex justify-between items-center mb-4">
-                    <div>
-                        <input
+                    <div className="flex items-center gap-2">
+                        <Input
                             type="checkbox"
                             onChange={toggleAll}
                             checked={selectedIds.length === questions.length}
-                            className="mr-2"
+                            className="w-4 h-4"
                         />
-                        Select All
+                        <span className="text-sm font-medium">Select All</span>
                     </div>
                     {selectedIds.length > 0 && (
                         <Button
@@ -129,7 +129,7 @@ function EditDeleteMCQ({
 
             {enableDelete && (
                 <div className="absolute top-2 right-3">
-                    <input
+                    <Input
                         type="checkbox"
                         checked={selected}
                         onChange={() => toggleSelect?.(q.id)}
