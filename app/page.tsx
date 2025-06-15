@@ -1,13 +1,34 @@
 "use client"
 
-import { useState } from "react"
-import CategoryLinks from "./components/category-links"
+
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation"; import CategoryLinks from "./components/category-links"
 import BrowseSections from "./components/browse-sections"
 import Typography from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const tabParam = searchParams.get("tab");
+
+
   const [activeTab, setActiveTab] = useState<"subjects" | "past">("subjects")
+
+
+  useEffect(() => {
+    if (tabParam === "past" || tabParam === "subjects") {
+      setActiveTab(tabParam);
+    }
+  }, [tabParam]);
+
+
+  const handleTabChange = (tab: "subjects" | "past") => {
+    const newUrl = `/?tab=${tab}`;
+    router.push(newUrl);
+    setActiveTab(tab);
+  };
+
 
   return (
     <div className="px-4 py-8 max-w-5xl mx-auto space-y-10">
@@ -33,7 +54,7 @@ export default function Home() {
               ? "bg-primary text-white hover:bg-primary"
               : "text-foreground hover:bg-muted"
               }`}
-            onClick={() => setActiveTab("subjects")}
+            onClick={() => handleTabChange("subjects")}
           >
             Subjects
           </Button>
@@ -44,7 +65,7 @@ export default function Home() {
               ? "bg-primary text-white hover:bg-primary"
               : "text-foreground hover:bg-muted"
               }`}
-            onClick={() => setActiveTab("past")}
+            onClick={() => handleTabChange("past")}
           >
             Past Papers
           </Button>
