@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import SiteHeader from "./components/site-header";
 import SiteFooter from "./components/site-footer";
+import BackButton from "./components/back-button";
 import "./globals.css";
 
 
@@ -110,9 +111,10 @@ export default function RootLayout({
       </head>
 
       <body className="antialiased flex flex-col min-h-screen">
-
-
         <SiteHeader />
+
+        <BackButton />
+
         <main className="flex-grow">
           {children}
         </main>
