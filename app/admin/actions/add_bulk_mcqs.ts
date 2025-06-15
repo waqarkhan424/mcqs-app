@@ -6,9 +6,10 @@ import { revalidatePath } from "next/cache";
 // Parser for each MCQ block
 function parseMcqBlock(block: string): any {
     const lines = block.trim().split("\n");
-    let question = "", questionUrdu = "", options: string[] = [], correctAnswer = "", explanationEnglish = "", explanationUrdu = "";
+    let question = "", questionUrdu = "", correctAnswer = "", explanationEnglish = "", explanationUrdu = "";
+    const options: string[] = [];
 
-    for (let line of lines) {
+    for (const line of lines) {
         if (line.startsWith("question:")) question = line.replace("question:", "").trim();
         else if (line.startsWith("questionUrdu:")) questionUrdu = line.replace("questionUrdu:", "").trim();
         else if (line.startsWith("correctAnswer:")) correctAnswer = line.replace("correctAnswer:", "").trim();
@@ -27,6 +28,7 @@ function parseMcqBlock(block: string): any {
 
     return { question, questionUrdu, options, correctAnswer, explanationEnglish, explanationUrdu };
 }
+
 
 
 
