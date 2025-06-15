@@ -5,14 +5,7 @@ import { categoryTopics } from "@/lib/topics";
 import slugify from "slugify";
 import MCQsPagination from "@/app/components/mcqs-pagination";
 import MCQsPerPageSelect from "@/app/components/mcqs-per-page-select";
-import Link from "next/link";
-import {
-    Accordion,
-    AccordionItem,
-    AccordionTrigger,
-    AccordionContent,
-} from "@/components/ui/accordion";
-import { cn } from "@/lib/utils";
+import RelatedTopicsAccordion from "@/app/components/related-topics-accordion";
 
 interface Props {
     params: Promise<{ slug: string; topic: string }>;
@@ -58,42 +51,11 @@ export default async function McqsByTopic({ params, searchParams }: Props) {
                 {/* Related Topics Sidebar */}
                 {originalTopics.length > 0 && (
                     <div className="lg:w-[280px] w-full">
-                        <Accordion type="multiple" className="w-full">
-                            <AccordionItem value="related-topics">
-                                <AccordionTrigger
-                                    className={cn(
-                                        "bg-muted text-primary w-full px-4 py-2 rounded-md font-semibold flex justify-between items-center"
-                                    )}
-                                >
-                                    <span>Related Topics</span>
-                                </AccordionTrigger>
-
-                                <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
-                                    <ol className="space-y-1 text-sm sm:text-base list-decimal list-inside">
-                                        {originalTopics.map((t, index) => {
-                                            const topicSlug = slugify(t, { lower: true, strict: true });
-                                            const isActive = topicSlug === decodedTopic;
-
-                                            return (
-                                                <li key={t}>
-                                                    <Link
-                                                        href={`/category/${slug}/${topicSlug}`}
-                                                        className={cn(
-                                                            "underline font-medium transition-colors",
-                                                            isActive
-                                                                ? "text-foreground font-semibold"
-                                                                : "text-primary hover:text-primary/90"
-                                                        )}
-                                                    >
-                                                        {t}
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })}
-                                    </ol>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
+                        <RelatedTopicsAccordion
+                            slug={slug}
+                            decodedTopic={decodedTopic}
+                            originalTopics={originalTopics}
+                        />
                     </div>
                 )}
 
