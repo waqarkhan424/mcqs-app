@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import SiteHeader from "./components/site-header";
 import SiteFooter from "./components/site-footer";
-import BackButton from "./components/back-button";
+import BackButtonWrapper from "./components/back-button-wrapper";
 import "./globals.css";
 
 
@@ -114,9 +114,7 @@ export default function RootLayout({
         <SiteHeader />
 
 
-        <div className="px-4 pt-4">
-          <BackButton />
-        </div>
+        <BackButtonWrapper />
 
 
         <main className="flex-grow">
