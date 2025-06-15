@@ -25,6 +25,9 @@ export default function SiteFooter() {
                     <Link href="/about-us" className="hover:underline transition">
                         About Us
                     </Link>
+                    <Link href="/contact-us" className="hover:underline transition">
+                        Contact Us
+                    </Link>
                 </div>
             </div>
         </footer>
