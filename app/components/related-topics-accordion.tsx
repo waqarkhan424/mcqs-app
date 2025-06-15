@@ -39,7 +39,7 @@ export default function RelatedTopicsAccordion({
     return (
         <Accordion
             type="multiple"
-            className="w-full"
+            className="w-full mt-4 mb-4"
             value={open}
             onValueChange={handleValueChange}
         >
@@ -53,20 +53,22 @@ export default function RelatedTopicsAccordion({
                 </AccordionTrigger>
 
                 <AccordionContent className="bg-white rounded-md mt-2 border border-muted px-4 py-2">
-                    <ol className="space-y-1 text-sm sm:text-base list-decimal list-inside">
+                    <ol className="space-y-2 text-sm sm:text-base list-decimal pl-5">
                         {originalTopics.map((t) => {
                             const topicSlug = slugify(t, { lower: true, strict: true });
                             const isActive = topicSlug === decodedTopic;
 
                             return (
-                                <li key={t}>
+                                <li key={t} className="leading-relaxed">
                                     <Link
                                         href={`/category/${slug}/${topicSlug}`}
                                         className={cn(
-                                            "underline font-medium transition-colors",
+                                            "transition-colors hover:underline block",
                                             isActive
-                                                ? "text-foreground font-semibold"
-                                                : "text-primary hover:text-primary/90"
+                                                ? "text-black"
+                                                : "text-blue-600 hover:text-blue-700"
+                                            // ? "text-foreground"
+                                            // : "text-primary hover:text-primary/90"
                                         )}
                                     >
                                         {t}
