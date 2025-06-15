@@ -113,7 +113,11 @@ export default function RootLayout({
       <body className="antialiased flex flex-col min-h-screen">
         <SiteHeader />
 
-        <BackButton />
+
+        <div className="px-4 pt-4">
+          <BackButton />
+        </div>
+
 
         <main className="flex-grow">
           {children}
