@@ -1,55 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import Typography from "@/components/ui/typography";
+import { send_contact_message } from "../actions/send_contact_message";
 
 export default function ContactUsPage() {
-    const [subject, setSubject] = useState("");
-    const [message, setMessage] = useState("");
-    const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+    const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
+    const [isPending, startTransition] = useTransition();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus("sending");
-
-        // Replace this with actual API logic
-        await new Promise((res) => setTimeout(res, 1000));
-        setStatus("sent");
-        setSubject("");
-        setMessage("");
+    const handleSubmit = (formData: FormData) => {
+        setStatus("idle");
+        startTransition(async () => {
+            const result = await send_contact_message(formData);
+            if (result.success) {
+                setStatus("sent");
+            } else {
+                setStatus("error");
+            }
+        });
     };
 
     return (
         <div className="max-w-xl mx-auto px-4 py-10 space-y-6">
             <Typography variant="h2">Contact Us</Typography>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <Input
-                    placeholder="Email Subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    required
-                />
+            <form action={handleSubmit} className="space-y-4">
+                <Input type="email" name="email" placeholder="Your Email" required />
+                <Input name="subject" placeholder="Email Subject" required />
+                <Textarea name="message" placeholder="Your Message" rows={6} required />
 
-                <Textarea
-                    placeholder="Your Message"
-                    rows={6}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    required
-                />
-
-                <Button type="submit" disabled={status === "sending"}>
-                    {status === "sending" ? "Sending..." : "Send Message"}
+                <Button type="submit" disabled={isPending}>
+                    {isPending ? "Sending..." : "Send Message"}
                 </Button>
             </form>
 
-            {status === "sent" && (
-                <p className="text-green-600 font-medium">Message sent successfully!</p>
-            )}
+            {status === "sent" && <p className="text-green-600">Message sent!</p>}
+            {status === "error" && <p className="text-red-600">Failed to send message.</p>}
         </div>
     );
 }
