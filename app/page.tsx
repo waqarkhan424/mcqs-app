@@ -2,7 +2,8 @@
 
 
 import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation"; import CategoryLinks from "./components/category-links"
+import { useSearchParams, useRouter } from "next/navigation";
+import CategoryLinks from "./components/category-links"
 import BrowseSections from "./components/browse-sections"
 import Typography from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
