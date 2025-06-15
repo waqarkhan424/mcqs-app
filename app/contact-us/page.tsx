@@ -26,6 +26,9 @@ export default function ContactUsPage() {
     return (
         <div className="max-w-xl mx-auto px-4 py-10 space-y-6">
             <Typography variant="h2">Contact Us</Typography>
+            <p className="text-sm text-muted-foreground">
+                Have a question or feedback? Fill out the form below and we'll get back to you shortly.
+            </p>
 
             <form action={handleSubmit} className="space-y-4">
                 <Input type="email" name="email" placeholder="Your Email" required />
