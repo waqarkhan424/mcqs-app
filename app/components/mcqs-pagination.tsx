@@ -9,6 +9,10 @@ import {
     PaginationNext,
     PaginationEllipsis,
 } from "@/components/ui/pagination"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export default function MCQsPagination({
     slug,
@@ -23,6 +27,9 @@ export default function MCQsPagination({
     currentPage: number
     perPage: number
 }) {
+    const router = useRouter()
+    const [jumpTo, setJumpTo] = useState("")
+
     const generatePages = () => {
         const pages: (number | "...")[] = []
         const start = Math.max(1, currentPage - 1)
@@ -48,38 +55,60 @@ export default function MCQsPagination({
     const pages = generatePages()
     const baseHref = `/category/${slug}/${topic}`
 
+    const handleJump = () => {
+        const page = parseInt(jumpTo, 10)
+        if (!isNaN(page) && page >= 1 && page <= totalPages) {
+            router.push(`${baseHref}?page=${page}&perPage=${perPage}`)
+        }
+    }
+
     return (
-        <Pagination>
-            <PaginationContent>
-                {currentPage > 1 && (
-                    <PaginationItem>
-                        <PaginationPrevious href={`${baseHref}?page=${currentPage - 1}&perPage=${perPage}`} />
-                    </PaginationItem>
-                )}
-
-                {pages.map((pg, i) =>
-                    typeof pg === "number" ? (
-                        <PaginationItem key={i}>
-                            <PaginationLink
-                                href={`${baseHref}?page=${pg}&perPage=${perPage}`}
-                                isActive={pg === currentPage}
-                            >
-                                {pg}
-                            </PaginationLink>
+        <div className="space-y-4">
+            <Pagination>
+                <PaginationContent>
+                    {currentPage > 1 && (
+                        <PaginationItem>
+                            <PaginationPrevious href={`${baseHref}?page=${currentPage - 1}&perPage=${perPage}`} />
                         </PaginationItem>
-                    ) : (
-                        <PaginationItem key={i}>
-                            <PaginationEllipsis />
-                        </PaginationItem>
-                    )
-                )}
+                    )}
 
-                {currentPage < totalPages && (
-                    <PaginationItem>
-                        <PaginationNext href={`${baseHref}?page=${currentPage + 1}&perPage=${perPage}`} />
-                    </PaginationItem>
-                )}
-            </PaginationContent>
-        </Pagination>
+                    {pages.map((pg, i) =>
+                        typeof pg === "number" ? (
+                            <PaginationItem key={i}>
+                                <PaginationLink
+                                    href={`${baseHref}?page=${pg}&perPage=${perPage}`}
+                                    isActive={pg === currentPage}
+                                >
+                                    {pg}
+                                </PaginationLink>
+                            </PaginationItem>
+                        ) : (
+                            <PaginationItem key={i}>
+                                <PaginationEllipsis />
+                            </PaginationItem>
+                        )
+                    )}
+
+                    {currentPage < totalPages && (
+                        <PaginationItem>
+                            <PaginationNext href={`${baseHref}?page=${currentPage + 1}&perPage=${perPage}`} />
+                        </PaginationItem>
+                    )}
+                </PaginationContent>
+            </Pagination>
+
+            {/* Jump to Page Input */}
+            <div className="flex items-center gap-2">
+                <Input
+                    type="number"
+                    placeholder="Jump to page"
+                    className="w-36"
+                    value={jumpTo}
+                    onChange={(e) => setJumpTo(e.target.value)}
+                />
+                <Button onClick={handleJump}>Go</Button>
+                <span className="text-sm text-muted-foreground">of {totalPages} pages</span>
+            </div>
+        </div>
     )
 }
