@@ -60,7 +60,7 @@ export default async function VocabularyTopicPage({ params, searchParams }: Prop
 
                 <div className="flex items-center justify-between">
                     <Typography variant="p" className="text-muted-foreground text-sm">
-                        Showing {skip + 1} – {Math.min(skip + perPageNumber, totalCount)} of {totalCount}
+                        Showing {(skip + 1).toLocaleString()} – {Math.min(skip + perPageNumber, totalCount).toLocaleString()} of {totalCount.toLocaleString()}
                     </Typography>
 
                     <VocabularyPerPageSelect
