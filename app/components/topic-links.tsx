@@ -7,7 +7,8 @@ export default function TopicLinks({ category, topics }: { category: string, top
 
     return (
         <div className="space-y-3">
-            <ol className="list-decimal pl-5 space-y-1">
+            {/* <ol className="list-decimal pl-5 space-y-1"> */}
+            <ol className="list-decimal pl-5 space-y-3">
                 {topics.map((topic, idx) => (
                     <li key={idx}>
 
