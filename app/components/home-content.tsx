@@ -43,7 +43,7 @@ export default function HomeContent() {
                         variant="ghost"
                         className={`w-1/2 py-2 rounded-none text-sm font-medium transition-colors ${activeTab === "subjects"
                             ? "bg-primary text-white hover:bg-primary"
-                            : "text-foreground hover:bg-muted"
+                            : "text-foreground hover:bg-muted hover:text-primary"
                             }`}
                         onClick={() => handleTabChange("subjects")}
                     >
@@ -53,7 +53,7 @@ export default function HomeContent() {
                         variant="ghost"
                         className={`w-1/2 py-2 rounded-none text-sm font-medium transition-colors ${activeTab === "past"
                             ? "bg-primary text-white hover:bg-primary"
-                            : "text-foreground hover:bg-muted"
+                            : "text-foreground hover:bg-muted hover:text-primary"
                             }`}
                         onClick={() => handleTabChange("past")}
                     >
