@@ -9,6 +9,8 @@ import {
     PaginationPrevious,
     PaginationEllipsis,
 } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -53,7 +55,8 @@ export default function VocabularyPagination({
     const pagesToRender = generatePageNumbers();
 
     const createHref = (pageNum: number) =>
-        `/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}${searchTerm ? `&search=${searchTerm}` : ""}`;
+        `/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}${searchTerm ? `&search=${searchTerm}` : ""
+        }`;
 
     const handleJump = () => {
         const page = parseInt(jumpTo, 10);
@@ -97,22 +100,19 @@ export default function VocabularyPagination({
                 </PaginationContent>
             </Pagination>
 
-            {/* Jump to Page */}
+            {/* Jump to Page with ShadCN UI */}
             <div className="flex items-center gap-2">
-                <input
+                <Input
                     type="number"
                     placeholder="Jump to page"
-                    className="border px-2 py-1 rounded w-28"
+                    className="w-28"
                     value={jumpTo}
                     onChange={(e) => setJumpTo(e.target.value)}
                 />
-                <button
-                    onClick={handleJump}
-                    className="bg-primary text-white px-3 py-1 rounded"
-                >
-                    Go
-                </button>
-                <span className="text-sm text-muted-foreground">of {totalPages} pages</span>
+                <Button onClick={handleJump}>Go</Button>
+                <span className="text-sm text-muted-foreground">
+                    of {totalPages} pages
+                </span>
             </div>
         </div>
     );
