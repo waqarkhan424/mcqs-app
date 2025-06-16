@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import SiteHeader from "./components/site-header";
 import SiteFooter from "./components/site-footer";
 import BackButtonWrapper from "./components/back-button-wrapper";
@@ -7,13 +7,12 @@ import "./globals.css";
 
 
 
-
-const nunitoSans = Nunito_Sans({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
   variable: "--font-sans",
-  fallback: ["Nunito Sans", "ui-sans-serif"],
+  fallback: ["Inter", "ui-sans-serif"],
 });
 
 
@@ -71,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nunitoSans.className}>
+    <html lang="en" className={inter.className}>
 
 
       <head>
