@@ -105,7 +105,7 @@ export default function VocabularyPagination({
                 <Input
                     type="number"
                     placeholder="Jump to page"
-                    className="w-28"
+                    className="w-36"
                     value={jumpTo}
                     onChange={(e) => setJumpTo(e.target.value)}
                 />
