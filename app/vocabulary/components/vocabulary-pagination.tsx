@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Pagination,
     PaginationContent,
@@ -7,6 +9,8 @@ import {
     PaginationPrevious,
     PaginationEllipsis,
 } from "@/components/ui/pagination";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function VocabularyPagination({
     topic,
@@ -21,6 +25,9 @@ export default function VocabularyPagination({
     perPage: number;
     searchTerm: string;
 }) {
+    const router = useRouter();
+    const [jumpTo, setJumpTo] = useState("");
+
     const generatePageNumbers = () => {
         const pages: (number | "...")[] = [];
         const startPage = Math.max(1, currentPage - 1);
@@ -46,41 +53,67 @@ export default function VocabularyPagination({
     const pagesToRender = generatePageNumbers();
 
     const createHref = (pageNum: number) =>
-        `/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}${searchTerm ? `&search=${searchTerm}` : ""
-        }`;
+        `/vocabulary/${topic}?page=${pageNum}&perPage=${perPage}${searchTerm ? `&search=${searchTerm}` : ""}`;
+
+    const handleJump = () => {
+        const page = parseInt(jumpTo, 10);
+        if (!isNaN(page) && page >= 1 && page <= totalPages) {
+            router.push(createHref(page));
+        }
+    };
 
     return (
-        <Pagination>
-            <PaginationContent>
-                {currentPage > 1 && (
-                    <PaginationItem>
-                        <PaginationPrevious href={createHref(currentPage - 1)} />
-                    </PaginationItem>
-                )}
-
-                {pagesToRender.map((page, index) =>
-                    typeof page === "number" ? (
-                        <PaginationItem key={index}>
-                            <PaginationLink
-                                href={createHref(page)}
-                                isActive={currentPage === page}
-                            >
-                                {page}
-                            </PaginationLink>
+        <div className="space-y-4">
+            <Pagination>
+                <PaginationContent>
+                    {currentPage > 1 && (
+                        <PaginationItem>
+                            <PaginationPrevious href={createHref(currentPage - 1)} />
                         </PaginationItem>
-                    ) : (
-                        <PaginationItem key={index}>
-                            <PaginationEllipsis />
-                        </PaginationItem>
-                    )
-                )}
+                    )}
 
-                {currentPage < totalPages && (
-                    <PaginationItem>
-                        <PaginationNext href={createHref(currentPage + 1)} />
-                    </PaginationItem>
-                )}
-            </PaginationContent>
-        </Pagination>
+                    {pagesToRender.map((page, index) =>
+                        typeof page === "number" ? (
+                            <PaginationItem key={index}>
+                                <PaginationLink
+                                    href={createHref(page)}
+                                    isActive={currentPage === page}
+                                >
+                                    {page}
+                                </PaginationLink>
+                            </PaginationItem>
+                        ) : (
+                            <PaginationItem key={index}>
+                                <PaginationEllipsis />
+                            </PaginationItem>
+                        )
+                    )}
+
+                    {currentPage < totalPages && (
+                        <PaginationItem>
+                            <PaginationNext href={createHref(currentPage + 1)} />
+                        </PaginationItem>
+                    )}
+                </PaginationContent>
+            </Pagination>
+
+            {/* Jump to Page */}
+            <div className="flex items-center gap-2">
+                <input
+                    type="number"
+                    placeholder="Jump to page"
+                    className="border px-2 py-1 rounded w-28"
+                    value={jumpTo}
+                    onChange={(e) => setJumpTo(e.target.value)}
+                />
+                <button
+                    onClick={handleJump}
+                    className="bg-primary text-white px-3 py-1 rounded"
+                >
+                    Go
+                </button>
+                <span className="text-sm text-muted-foreground">of {totalPages} pages</span>
+            </div>
+        </div>
     );
 }
