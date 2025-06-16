@@ -69,7 +69,7 @@ export default function McqsUploadPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     rows={12}
-                    placeholder={`Example:\n\nquestion: A hater of knowledge and learning\nquestionUrdu: علم اور سیکھنے سے نفرت کرنے والا شخص\nBibliophile\nPhilologist\nMisogynist\nMisologist\ncorrectAnswer: Misologist\nexplanationEnglish: A misologist is someone who dislikes or hates reasoning, logic, or learning.\nexplanationUrdu: Misologist وہ شخص ہوتا ہے جو دلیل، منطق یا علم سے نفرت کرتا ہو۔`}
+                    placeholder={`Example:\n\nquestion: A hater of knowledge and learning\nquestionUrdu: علم اور سیکھنے سے نفرت کرنے والا شخص\nBibliophile\nPhilologist\nMisogynist\nMisologist\ncorrectAnswer: Misologist\nexplanationEnglish: A misologist is someone who dislikes or hates reasoning, logic, or learning.\nexplanationUrdu: Misologist وہ شخص ہوتا ہے جو دلیل، منطق یا علم سے نفرت کرتا ہو۔\n\nOR\n\nquestion: One who believes in the power of fate\nFatalist\nOptimist\nPessimist\nRealist\ncorrectAnswer: Fatalist`}
                     required
                 />
                 <Input name="category" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter category (e.g. english)" required />
