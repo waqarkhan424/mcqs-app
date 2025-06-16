@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://www.onepaper.site/og-image.png",
-        // width: 1200,
-        // height: 630,
-        width: 1024,
-        height: 1024,
+        width: 1200,
+        height: 630,
+        // width: 1024,
+        // height: 1024,
         alt: "OnePaper logo",
       },
     ],
@@ -88,8 +88,8 @@ export default function RootLayout({
         <meta property="og:title" content="OnePaper – MCQs for Government Job Tests" />
         <meta property="og:description" content="Practice One Paper MCQs for PPSC, FPSC, and other government job exams – English, General Knowledge, Math, Computer, Current Affairs, and more." />
         <meta property="og:image" content="https://www.onepaper.site/og-image.png" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:url" content="https://www.onepaper.site/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="OnePaper" />
