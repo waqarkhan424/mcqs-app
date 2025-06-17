@@ -3,46 +3,52 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
+// Type for parsed MCQ
+type ParsedMCQ = {
+    question: string;
+    options: string[];
+    correctAnswer: string;
+    explanation: string;
+};
+
 // Parser for each MCQ block
-function parseMcqBlock(block: string): any {
+function parseMcqBlock(block: string): ParsedMCQ {
     const lines = block.trim().split("\n");
-    let question = "", questionUrdu = "", correctAnswer = "", explanationEnglish = "", explanationUrdu = "";
+    let question = "", correctAnswer = "", explanation = "";
     const options: string[] = [];
 
     for (const line of lines) {
-        if (line.startsWith("question:")) question = line.replace("question:", "").trim();
-        else if (line.startsWith("questionUrdu:")) questionUrdu = line.replace("questionUrdu:", "").trim();
-        else if (line.startsWith("correctAnswer:")) correctAnswer = line.replace("correctAnswer:", "").trim();
-        else if (line.startsWith("explanationEnglish:")) explanationEnglish = line.replace("explanationEnglish:", "").trim();
-        else if (line.startsWith("explanationUrdu:")) explanationUrdu = line.replace("explanationUrdu:", "").trim();
-        else if (
+        if (line.startsWith("question:")) {
+            question = line.replace("question:", "").trim();
+        } else if (line.startsWith("correctAnswer:")) {
+            correctAnswer = line.replace("correctAnswer:", "").trim();
+        } else if (line.startsWith("explanation:")) {
+            explanation = line.replace("explanation:", "").trim();
+        } else if (
             line &&
             !line.includes(":") &&
             !line.startsWith("question") &&
-            !line.startsWith("explanation") &&
-            !line.startsWith("correctAnswer")
+            !line.startsWith("correctAnswer") &&
+            !line.startsWith("explanation")
         ) {
             options.push(line.trim());
         }
     }
 
-    return { question, questionUrdu, options, correctAnswer, explanationEnglish, explanationUrdu };
+    return { question, correctAnswer, explanation, options };
 }
 
-
-
-
+// Main function to handle bulk upload
 export async function add_bulk_mcqs(formData: FormData) {
     const raw = formData.get("bulkData") as string;
     const category = formData.get("category") as string;
     const topic = formData.get("topic") as string;
 
-    const blocks = raw.split(/\n\s*\n/); // split by empty line
+    const blocks = raw.split(/\n\s*\n/); // split by empty lines
 
     let inserted = 0;
     const insertedQuestions: string[] = [];
     const skipped: string[] = [];
-
 
     for (const block of blocks) {
         const parsed = parseMcqBlock(block);
@@ -56,16 +62,13 @@ export async function add_bulk_mcqs(formData: FormData) {
             },
         });
 
-
         if (!exists) {
             await prisma.question.create({
                 data: {
                     question: normalizedQuestion,
-                    questionUrdu: parsed.questionUrdu,
                     options: parsed.options,
                     correctAnswer: parsed.correctAnswer,
-                    explanationEnglish: parsed.explanationEnglish,
-                    explanationUrdu: parsed.explanationUrdu,
+                    explanation: parsed.explanation,
                     category,
                     topic,
                 },
@@ -76,7 +79,6 @@ export async function add_bulk_mcqs(formData: FormData) {
         } else {
             skipped.push(parsed.question);
         }
-
     }
 
     revalidatePath(`/category/${category}/${topic}`);
