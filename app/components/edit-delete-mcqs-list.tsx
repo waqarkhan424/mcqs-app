@@ -11,7 +11,6 @@ import {
     CardContent,
     CardFooter,
     CardTitle,
-    CardDescription,
 } from "@/components/ui/card";
 import {
     Dialog,
@@ -78,7 +77,7 @@ export default function EditDeleteMcqsList({
                             <DialogHeader>
                                 <DialogTitle>Are you sure?</DialogTitle>
                                 <DialogDescription>
-                                    This will permanently delete {selectedIds.length} selected MCQ(s). This action cannot be undone.
+                                    This will permanently delete {selectedIds.length} selected MCQ(s).
                                 </DialogDescription>
                             </DialogHeader>
                             <DialogFooter>
@@ -130,15 +129,9 @@ function EditDeleteMCQ({
 }) {
     const [isEditing, setIsEditing] = useState(false);
     const [question, setQuestion] = useState(q.question);
-    const [questionUrdu, setQuestionUrdu] = useState(q.questionUrdu || "");
     const [options, setOptions] = useState(q.options);
     const [correctAnswer, setCorrectAnswer] = useState(q.correctAnswer);
-    const [explanationEnglish, setExplanationEnglish] = useState(
-        q.explanationEnglish || ""
-    );
-    const [explanationUrdu, setExplanationUrdu] = useState(
-        q.explanationUrdu || ""
-    );
+    const [explanation, setExplanation] = useState(q.explanation || "");
     const [deleted, setDeleted] = useState(false);
     const [openSingleDialog, setOpenSingleDialog] = useState(false);
 
@@ -152,11 +145,9 @@ function EditDeleteMCQ({
     async function handleSave() {
         await update_mcqs(q.id, {
             question,
-            questionUrdu,
             options,
             correctAnswer,
-            explanationEnglish,
-            explanationUrdu,
+            explanation,
         });
         setIsEditing(false);
     }
@@ -189,24 +180,10 @@ function EditDeleteMCQ({
                     )}
                 </CardTitle>
 
-                {isEditing ? (
-                    <Input
-                        value={questionUrdu}
-                        onChange={(e) => setQuestionUrdu(e.target.value)}
-                        placeholder="Question Urdu"
-                    />
-                ) : (
-                    questionUrdu && (
-                        <CardDescription className="text-base text-green-700 font-medium">
-                            {questionUrdu}
-                        </CardDescription>
-                    )
-                )}
-
                 <ul className="list-none pl-2 space-y-1 mt-1">
                     {options.map((opt: string, idx: number) => (
                         <li key={idx}>
-                            {String.fromCharCode(65 + idx)}.{" "}
+                            {String.fromCharCode(65 + idx)}. {" "}
                             {isEditing ? (
                                 <Input
                                     value={opt}
@@ -240,34 +217,22 @@ function EditDeleteMCQ({
                     />
                 ) : (
                     <div className="pt-2 text-sm font-semibold">
-                        Correct Answer:{" "}
+                        Correct Answer: {" "}
                         <span className="text-primary">{correctAnswer}</span>
                     </div>
                 )}
 
                 {isEditing ? (
                     <Input
-                        value={explanationEnglish}
-                        onChange={(e) => setExplanationEnglish(e.target.value)}
-                        placeholder="Explanation English"
+                        value={explanation}
+                        onChange={(e) => setExplanation(e.target.value)}
+                        placeholder="Explanation"
                     />
                 ) : (
-                    explanationEnglish && (
+                    explanation && (
                         <div className="pt-4 text-sm text-muted-foreground">
-                            {explanationEnglish}
+                            {explanation}
                         </div>
-                    )
-                )}
-
-                {isEditing ? (
-                    <Input
-                        value={explanationUrdu}
-                        onChange={(e) => setExplanationUrdu(e.target.value)}
-                        placeholder="Explanation Urdu"
-                    />
-                ) : (
-                    explanationUrdu && (
-                        <div className="text-sm text-green-700">{explanationUrdu}</div>
                     )
                 )}
             </CardContent>
@@ -292,7 +257,6 @@ function EditDeleteMCQ({
 
 
                         {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button> */}
-
 
 
 
