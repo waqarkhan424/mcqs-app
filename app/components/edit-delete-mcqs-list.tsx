@@ -215,12 +215,7 @@ function EditDeleteMCQ({
                         onChange={(e) => setCorrectAnswer(e.target.value)}
                         placeholder="Correct Answer"
                     />
-                ) : (
-                    <div className="pt-2 text-sm font-semibold">
-                        Correct Answer: {" "}
-                        <span className="text-primary">{correctAnswer}</span>
-                    </div>
-                )}
+                ) : null}
 
                 {isEditing ? (
                     <Input
