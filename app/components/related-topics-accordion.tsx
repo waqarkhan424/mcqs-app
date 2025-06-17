@@ -65,8 +65,6 @@ export default function RelatedTopicsAccordion({
                                         className={cn(
                                             "transition-colors hover:underline block",
                                             isActive
-                                                // ? "text-black"
-                                                // : "text-blue-600 hover:text-blue-700"
                                                 ? "text-foreground"
                                                 : "text-primary hover:text-primary/90"
                                         )}
