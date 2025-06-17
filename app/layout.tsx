@@ -101,8 +101,8 @@ export default function RootLayout({
         <meta name="twitter:image" content="https://www.onepaper.site/og-image.png" />
 
 
-
-
+        {/* AdSense site verification meta tag */}
+        <meta name="google-adsense-account" content="ca-pub-4332720109955132" />
 
         {/* Google Ads script */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4332720109955132"
