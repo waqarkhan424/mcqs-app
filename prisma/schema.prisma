@@ -14,11 +14,9 @@ datasource db {
 model Question {
   id                   String   @id @default(auto()) @map("_id") @db.ObjectId
   question             String
-  questionUrdu         String? 
   options              String[]
-  correctAnswer        String
-  explanationEnglish   String?  
-  explanationUrdu      String?  
+  correctAnswer        String?
+  explanation          String?        
   category             String?
   topic                String?
 }
