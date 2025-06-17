@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import Typography from "@/components/ui/typography";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
-
 export default function McqsUploadPage() {
     const [input, setInput] = useState("");
     const [topic, setTopic] = useState("");
@@ -18,10 +17,8 @@ export default function McqsUploadPage() {
     const [feedback, setFeedback] = useState<{
         inserted: number;
         insertedQuestions: string[];
-        skipped: string[]
+        skipped: string[];
     } | null>(null);
-
-
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
@@ -35,7 +32,7 @@ export default function McqsUploadPage() {
         let lineIndex = 0;
         for (let i = 0; i < blocks.length; i++) {
             const lines = blocks[i].trim().split("\n").map(l => l.trim()).filter(Boolean);
-            if (lines.length < 4) {
+            if (lines.length < 2) {
                 errors.push({
                     block: lines,
                     lineStart: lineIndex + 1
@@ -58,7 +55,6 @@ export default function McqsUploadPage() {
         setFeedback(result);
     }
 
-
     return (
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
             <Typography variant="h2" className="text-center">Upload MCQs</Typography>
@@ -69,21 +65,34 @@ export default function McqsUploadPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     rows={12}
-                    placeholder={`Example:\n\nquestion: A hater of knowledge and learning\nquestionUrdu: علم اور سیکھنے سے نفرت کرنے والا شخص\nBibliophile\nPhilologist\nMisogynist\nMisologist\ncorrectAnswer: Misologist\nexplanationEnglish: A misologist is someone who dislikes or hates reasoning, logic, or learning.\nexplanationUrdu: Misologist وہ شخص ہوتا ہے جو دلیل، منطق یا علم سے نفرت کرتا ہو۔\n\nOR\n\nquestion: One who believes in the power of fate\nFatalist\nOptimist\nPessimist\nRealist\ncorrectAnswer: Fatalist`}
+                    placeholder={`Example:\n\nquestion: A person who renounces their religious beliefs is known as:\nApostate\nProstate\nProfane\nAgnostic\ncorrectAnswer: Apostate\nexplanation: An apostate is a person who leaves or gives up their religion. They no longer follow the beliefs or faith they once had. For example, if someone stops believing in their religion and decides not to follow it anymore, they are called an apostate. This word is used when someone turns away from their religion completely.\n\nOR\n\nquestion: One who believes in the power of fate\nFatalist\nOptimist\nPessimist\nRealist\ncorrectAnswer: Fatalist\n\nOR\n\nquestion: The Airline of Indonesia is:\ncorrectAnswer: Garuda`}
                     required
                 />
-                <Input name="category" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Enter category (e.g. english)" required />
-                <Input name="topic" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Enter topic slug (e.g. one-word-substitutes-mcqs)" required />
+                <Input
+                    name="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    placeholder="Enter category (e.g. english)"
+                    required
+                />
+                <Input
+                    name="topic"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    placeholder="Enter topic slug (e.g. one-word-substitutes-mcqs)"
+                    required
+                />
 
-                <Button type="submit" disabled={loading}>{loading ? "Uploading..." : "Submit"}</Button>
+                <Button type="submit" disabled={loading}>
+                    {loading ? "Uploading..." : "Submit"}
+                </Button>
             </form>
-
 
             {errorBlocks.length > 0 && (
                 <div className="space-y-4 mt-6">
                     <div className="text-red-600">
                         <Typography variant="h4">Formatting Error Detected</Typography>
-                        <p className="text-sm">The following blocks are incomplete (must have at least 4 lines):</p>
+                        <p className="text-sm">The following blocks are incomplete (must have at least 2 lines):</p>
                     </div>
 
                     {errorBlocks.map((block, i) => (
@@ -96,7 +105,6 @@ export default function McqsUploadPage() {
                     ))}
                 </div>
             )}
-
 
             {feedback && (
                 <div className="mt-6 space-y-4">
@@ -111,7 +119,6 @@ export default function McqsUploadPage() {
                         </div>
                     )}
 
-
                     {feedback.skipped?.length > 0 && (
                         <div className="text-red-600 space-y-1">
                             <Typography variant="h4">Skipped {feedback.skipped.length} duplicate MCQs:</Typography>
@@ -122,11 +129,8 @@ export default function McqsUploadPage() {
                             </ul>
                         </div>
                     )}
-
                 </div>
             )}
         </div>
-
-
     );
 }
