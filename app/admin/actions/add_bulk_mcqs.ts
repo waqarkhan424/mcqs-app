@@ -11,6 +11,11 @@ type ParsedMCQ = {
     explanation: string;
 };
 
+// Helper function to normalize question string
+function normalize(str: string) {
+    return str.trim().toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
+}
+
 // Parser for each MCQ block
 function parseMcqBlock(block: string): ParsedMCQ {
     const lines = block.trim().split("\n");
@@ -44,28 +49,29 @@ export async function add_bulk_mcqs(formData: FormData) {
     const category = formData.get("category") as string;
     const topic = formData.get("topic") as string;
 
-    const blocks = raw.split(/\n\s*\n/); // split by empty lines
+    const blocks = raw.split(/\n\s*\n/); // Split by empty lines
 
     let inserted = 0;
     const insertedQuestions: string[] = [];
     const skipped: string[] = [];
 
+    // Fetch all existing questions once
+    const existingQuestions = await prisma.question.findMany();
+    const normalizedExisting = existingQuestions.map((q) => normalize(q.question));
+
     for (const block of blocks) {
         const parsed = parseMcqBlock(block);
         if (!parsed.question || !parsed.correctAnswer || parsed.options.length < 2) continue;
 
-        const normalizedQuestion = parsed.question.trim().toLowerCase();
+        const normalizedQuestion = normalize(parsed.question);
 
-        const exists = await prisma.question.findFirst({
-            where: {
-                question: normalizedQuestion,
-            },
-        });
+        // Check if normalized version already exists
+        const isDuplicate = normalizedExisting.includes(normalizedQuestion);
 
-        if (!exists) {
+        if (!isDuplicate) {
             await prisma.question.create({
                 data: {
-                    question: normalizedQuestion,
+                    question: parsed.question,
                     options: parsed.options,
                     correctAnswer: parsed.correctAnswer,
                     explanation: parsed.explanation,
@@ -76,6 +82,7 @@ export async function add_bulk_mcqs(formData: FormData) {
 
             insertedQuestions.push(parsed.question);
             inserted++;
+            normalizedExisting.push(normalizedQuestion); // Add to local list to avoid re-checking DB
         } else {
             skipped.push(parsed.question);
         }
