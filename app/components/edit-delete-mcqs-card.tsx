@@ -6,9 +6,23 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+    DialogFooter,
+} from "@/components/ui/dialog";
 
-export default function EditDeleteMCQsCard({ q, index, enableDelete, selected, toggleSelect }: {
+export default function EditDeleteMCQsCard({
+    q,
+    index,
+    enableDelete,
+    selected,
+    toggleSelect,
+}: {
     q: any;
     index: number;
     enableDelete?: boolean;
@@ -37,10 +51,6 @@ export default function EditDeleteMCQsCard({ q, index, enableDelete, selected, t
 
     return (
         <Card className="relative">
-            <div className="absolute -top-3 -left-3 bg-primary text-white text-sm font-semibold w-8 h-8 rounded-full flex items-center justify-center shadow">
-                {index}
-            </div>
-
             {enableDelete && (
                 <div className="absolute top-2 right-3">
                     <Checkbox checked={selected} onCheckedChange={() => toggleSelect?.(q.id)} />
@@ -50,7 +60,7 @@ export default function EditDeleteMCQsCard({ q, index, enableDelete, selected, t
             <CardContent className="space-y-3 pt-8">
                 <CardTitle>
                     {isEditing ? (
-                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder={`Question ${index}`} />
+                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder={`Question`} />
                     ) : question}
                 </CardTitle>
 
@@ -78,23 +88,34 @@ export default function EditDeleteMCQsCard({ q, index, enableDelete, selected, t
 
                 {isEditing && (
                     <>
-                        <Input className="mt-2" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} placeholder="Correct Answer" />
-                        <Input value={explanation} onChange={(e) => setExplanation(e.target.value)} placeholder="Explanation" />
+                        <Input
+                            className="mt-2"
+                            value={correctAnswer}
+                            onChange={(e) => setCorrectAnswer(e.target.value)}
+                            placeholder="Correct Answer"
+                        />
+                        <Input
+                            value={explanation}
+                            onChange={(e) => setExplanation(e.target.value)}
+                            placeholder="Explanation"
+                        />
                     </>
                 )}
 
                 {!isEditing && explanation && (
-                    <div className="pt-4 text-sm text-muted-foreground">
-                        {explanation}
-                    </div>
+                    <div className="pt-4 text-sm text-muted-foreground">{explanation}</div>
                 )}
             </CardContent>
 
             <CardFooter className="gap-4">
                 {isEditing ? (
                     <>
-                        <Button size="sm" onClick={handleSave}>Save</Button>
-                        <Button size="sm" variant="outline" onClick={() => setIsEditing(false)}>Cancel</Button>
+                        <Button size="sm" onClick={handleSave}>
+                            Save
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => setIsEditing(false)}>
+                            Cancel
+                        </Button>
                     </>
                 ) : (
 
