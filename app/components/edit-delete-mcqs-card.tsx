@@ -50,35 +50,37 @@ export default function EditDeleteMCQsCard({
     }
 
     return (
-        <Card className="relative">
+        <Card className="relative px-5 py-5 space-y-4 shadow-sm border border-gray-200 bg-white">
             {enableDelete && (
-                <div className="absolute top-2 right-3">
+                <div className="absolute top-2 right-2">
                     <Checkbox checked={selected} onCheckedChange={() => toggleSelect?.(q.id)} />
                 </div>
             )}
 
-            <CardContent className="space-y-3 pt-8">
-                <CardTitle>
+            <CardContent className="space-y-4 px-0">
+                <CardTitle className="text-base md:text-lg font-semibold text-gray-800">
                     {isEditing ? (
-                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder={`Question`} />
-                    ) : question}
+                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question" />
+                    ) : (
+                        question
+                    )}
                 </CardTitle>
 
-                <ul className="list-none pl-2 space-y-1 mt-1">
+                <ul className="space-y-2">
                     {options.map((opt: string, idx: number) => (
-                        <li key={idx}>
-                            {String.fromCharCode(65 + idx)}.{" "}
+                        <li key={idx} className="text-sm md:text-base flex items-start gap-1.5">
+                            <span className="font-medium text-gray-800">{String.fromCharCode(65 + idx)}.</span>
                             {isEditing ? (
                                 <Input
                                     value={opt}
                                     onChange={(e) => {
-                                        const newOptions = [...options];
-                                        newOptions[idx] = e.target.value;
-                                        setOptions(newOptions);
+                                        const updated = [...options];
+                                        updated[idx] = e.target.value;
+                                        setOptions(updated);
                                     }}
                                 />
                             ) : (
-                                <span className={opt === correctAnswer ? "text-primary font-semibold" : "text-muted-foreground"}>
+                                <span className={opt === correctAnswer ? "text-blue-600 font-semibold" : "text-gray-600"}>
                                     {opt}
                                 </span>
                             )}
@@ -95,19 +97,20 @@ export default function EditDeleteMCQsCard({
                             placeholder="Correct Answer"
                         />
                         <Input
+                            className="mt-2"
                             value={explanation}
                             onChange={(e) => setExplanation(e.target.value)}
-                            placeholder="Explanation"
+                            placeholder="Explanation (optional)"
                         />
                     </>
                 )}
 
                 {!isEditing && explanation && (
-                    <div className="pt-4 text-sm text-muted-foreground">{explanation}</div>
+                    <div className="text-sm text-gray-500 mt-3 border-t pt-3">{explanation}</div>
                 )}
             </CardContent>
 
-            <CardFooter className="gap-4">
+            <CardFooter className="gap-3 px-0">
                 {isEditing ? (
                     <>
                         <Button size="sm" onClick={handleSave}>
@@ -118,14 +121,9 @@ export default function EditDeleteMCQsCard({
                         </Button>
                     </>
                 ) : (
-
-
                     <>
 
-
-
                         {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button> */}
-
 
 
                         {enableDelete && (
@@ -138,12 +136,14 @@ export default function EditDeleteMCQsCard({
                                 <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>Are you sure?</DialogTitle>
-                                        <DialogDescription>
-                                            This will permanently delete this MCQ.
-                                        </DialogDescription>
+                                        <DialogDescription>This will permanently delete this MCQ.</DialogDescription>
                                     </DialogHeader>
                                     <DialogFooter>
-                                        <Button size="sm" variant="outline" onClick={() => setOpenSingleDialog(false)}>
+                                        <Button
+                                            size="sm"
+                                            variant="outline"
+                                            onClick={() => setOpenSingleDialog(false)}
+                                        >
                                             Cancel
                                         </Button>
                                         <Button
