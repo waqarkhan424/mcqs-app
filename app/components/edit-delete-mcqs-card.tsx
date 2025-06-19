@@ -106,8 +106,12 @@ export default function EditDeleteMCQsCard({
                 )}
 
                 {!isEditing && explanation && (
-                    <div className="text-sm text-gray-500 mt-3 border-t pt-3">{explanation}</div>
+                    <div className="text-sm font-medium text-gray-700 mt-3 border-t pt-3">{explanation}</div>
                 )}
+
+
+
+
             </CardContent>
 
             <CardFooter className="gap-3 px-0">
