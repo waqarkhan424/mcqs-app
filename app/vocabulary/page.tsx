@@ -43,7 +43,7 @@ export default async function VocabularyPage() {
                                 {name}
                             </Link>
                             <Typography variant="p" className="text-sm text-muted-foreground">
-                                {count} word{count !== 1 ? "s" : ""}
+                                {count.toLocaleString()} word{count !== 1 ? "s" : ""}
                             </Typography>
                         </CardContent>
                     </Card>
