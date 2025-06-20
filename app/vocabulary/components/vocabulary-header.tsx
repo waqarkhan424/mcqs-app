@@ -3,7 +3,7 @@ import Typography from "@/components/ui/typography";
 export default function VocabularyHeader({ searchTerm, topic }: { searchTerm: string; topic: string }) {
     const formattedTopic = topic
         .replace(/-/g, " ")
-        .replace(/\bCss\b/i, "CSS"); // Fix 'Css' to 'CSS'
+        .replace(/\bCss\b/i, "CSS");
 
     const finalTitle = formattedTopic.toLowerCase().includes("vocabulary")
         ? formattedTopic
