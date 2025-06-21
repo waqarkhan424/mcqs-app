@@ -50,7 +50,7 @@ export default function EditDeleteMCQsCard({
     }
 
     return (
-        <Card className="relative px-5 py-5 space-y-4 shadow-sm border border-gray-200 bg-white">
+        <Card className="relative px-5 py-5 space-y-4 gap-0 shadow-sm border border-gray-200 bg-white">
             {enableDelete && (
                 <div className="absolute top-2 right-2">
                     <Checkbox checked={selected} onCheckedChange={() => toggleSelect?.(q.id)} />
