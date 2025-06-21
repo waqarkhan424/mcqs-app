@@ -8,7 +8,6 @@ type ParsedMCQ = {
     question: string;
     options: string[];
     correctAnswer: string;
-    explanation: string;
 };
 
 // Helper function to normalize question string
@@ -19,7 +18,7 @@ function normalize(str: string) {
 // Parser for each MCQ block
 function parseMcqBlock(block: string): ParsedMCQ {
     const lines = block.trim().split("\n");
-    let question = "", correctAnswer = "", explanation = "";
+    let question = "", correctAnswer = "";
     const options: string[] = [];
 
     for (const line of lines) {
@@ -27,20 +26,17 @@ function parseMcqBlock(block: string): ParsedMCQ {
             question = line.replace("question:", "").trim();
         } else if (line.startsWith("correctAnswer:")) {
             correctAnswer = line.replace("correctAnswer:", "").trim();
-        } else if (line.startsWith("explanation:")) {
-            explanation = line.replace("explanation:", "").trim();
         } else if (
             line &&
             !line.includes(":") &&
             !line.startsWith("question") &&
-            !line.startsWith("correctAnswer") &&
-            !line.startsWith("explanation")
+            !line.startsWith("correctAnswer")
         ) {
             options.push(line.trim());
         }
     }
 
-    return { question, correctAnswer, explanation, options };
+    return { question, correctAnswer, options };
 }
 
 // Main function to handle bulk upload
@@ -74,7 +70,6 @@ export async function add_bulk_mcqs(formData: FormData) {
                     question: parsed.question,
                     options: parsed.options,
                     correctAnswer: parsed.correctAnswer,
-                    explanation: parsed.explanation,
                     category,
                     topic,
                 },
