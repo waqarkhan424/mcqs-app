@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { delete_mcqs } from "@/app/actions/delete_mcqs";
 import { update_mcqs } from "@/app/actions/update_mcqs";
@@ -33,7 +34,6 @@ export default function EditDeleteMCQsCard({
     const [question, setQuestion] = useState(q.question);
     const [options, setOptions] = useState(q.options);
     const [correctAnswer, setCorrectAnswer] = useState(q.correctAnswer);
-    const [explanation, setExplanation] = useState(q.explanation || "");
     const [deleted, setDeleted] = useState(false);
     const [openSingleDialog, setOpenSingleDialog] = useState(false);
 
@@ -45,7 +45,7 @@ export default function EditDeleteMCQsCard({
     }
 
     async function handleSave() {
-        await update_mcqs(q.id, { question, options, correctAnswer, explanation });
+        await update_mcqs(q.id, { question, options, correctAnswer });
         setIsEditing(false);
     }
 
@@ -60,7 +60,11 @@ export default function EditDeleteMCQsCard({
             <CardContent className="space-y-4 px-0">
                 <CardTitle className="text-base md:text-lg font-semibold text-gray-800">
                     {isEditing ? (
-                        <Input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Question" />
+                        <Input
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                            placeholder="Question"
+                        />
                     ) : (
                         question
                     )}
@@ -89,29 +93,13 @@ export default function EditDeleteMCQsCard({
                 </ul>
 
                 {isEditing && (
-                    <>
-                        <Input
-                            className="mt-2"
-                            value={correctAnswer}
-                            onChange={(e) => setCorrectAnswer(e.target.value)}
-                            placeholder="Correct Answer"
-                        />
-                        <Input
-                            className="mt-2"
-                            value={explanation}
-                            onChange={(e) => setExplanation(e.target.value)}
-                            placeholder="Explanation (optional)"
-                        />
-                    </>
+                    <Input
+                        className="mt-2"
+                        value={correctAnswer}
+                        onChange={(e) => setCorrectAnswer(e.target.value)}
+                        placeholder="Correct Answer"
+                    />
                 )}
-
-                {!isEditing && explanation && (
-                    <div className="text-sm font-medium text-gray-700 mt-3 border-t pt-3">{explanation}</div>
-                )}
-
-
-
-
             </CardContent>
 
             <CardFooter className="gap-3 px-0">
