@@ -62,9 +62,6 @@ export default function VocabularyUploadPage() {
         <div className="max-w-2xl mx-auto px-4 py-10 space-y-6">
             <div className="text-center space-y-2">
                 <Typography variant="h2">Bulk Vocabulary Uploader</Typography>
-                <Typography affects="description">
-                    Paste multiple vocabulary entries with each block containing 4 lines: word, definition, Urdu meaning, and an example sentence.
-                </Typography>
             </div>
 
             <form action={handleSubmit} className="space-y-4">
