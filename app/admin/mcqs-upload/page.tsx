@@ -92,7 +92,7 @@ export default function McqsUploadPage() {
                 <div className="space-y-4 mt-6">
                     <div className="text-red-600">
                         <Typography variant="h4">Formatting Error Detected</Typography>
-                        <p className="text-sm">The following blocks are incomplete (must have at least 2 lines):</p>
+                        <p className="text-sm">  The following blocks are incomplete (each must include a question, options, and a correct answer).</p>
                     </div>
 
                     {errorBlocks.map((block, i) => (
