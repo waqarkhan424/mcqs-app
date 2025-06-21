@@ -65,7 +65,7 @@ export default function McqsUploadPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     rows={12}
-                    placeholder={`Example:\n\nquestion: A person who renounces their religious beliefs is known as:\nApostate\nProstate\nProfane\nAgnostic\ncorrectAnswer: Apostate\nexplanation: An apostate is a person who leaves or gives up their religion. They no longer follow the beliefs or faith they once had. For example, if someone stops believing in their religion and decides not to follow it anymore, they are called an apostate. This word is used when someone turns away from their religion completely.\n\nOR\n\nquestion: One who believes in the power of fate\nFatalist\nOptimist\nPessimist\nRealist\ncorrectAnswer: Fatalist`}
+                    placeholder={`Example:\n\nquestion: A person who renounces their religious beliefs is known as:\nApostate\nProstate\nProfane\nAgnostic\ncorrectAnswer: Apostate`}
                     required
                 />
                 <Input
