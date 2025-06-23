@@ -102,7 +102,7 @@ export default function EditDeleteMCQsCard({
                         className="mt-2"
                         value={correctAnswer}
                         onChange={(e) => setCorrectAnswer(e.target.value)}
-                        placeholder="Correct Answer (e.g., A, B, C)"
+                        placeholder="Correct Answer"
                     />
                 )}
             </CardContent>
@@ -120,7 +120,7 @@ export default function EditDeleteMCQsCard({
                 ) : (
                     <>
 
-                        <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
+                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button> */}
 
 
                         {enableDelete && (
