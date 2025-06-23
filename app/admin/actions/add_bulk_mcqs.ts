@@ -15,28 +15,27 @@ function normalize(str: string) {
     return str.trim().toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
 }
 
-// Parser for each MCQ block
+// Updated parser to support A.–E. format and correctAnswer: A–E
 function parseMcqBlock(block: string): ParsedMCQ {
     const lines = block.trim().split("\n");
-    let question = "", correctAnswer = "";
+    let question = "", correctLetter = "";
     const options: string[] = [];
 
     for (const line of lines) {
         if (line.startsWith("question:")) {
             question = line.replace("question:", "").trim();
         } else if (line.startsWith("correctAnswer:")) {
-            correctAnswer = line.replace("correctAnswer:", "").trim();
-        } else if (
-            line &&
-            !line.includes(":") &&
-            !line.startsWith("question") &&
-            !line.startsWith("correctAnswer")
-        ) {
-            options.push(line.trim());
+            correctLetter = line.replace("correctAnswer:", "").trim().toUpperCase();
+        } else if (/^[A-E]\.\s*/.test(line)) {
+            // Match A. B. C. D. E. format
+            options.push(line.replace(/^[A-E]\.\s*/, "").trim());
         }
     }
 
-    return { question, correctAnswer, options };
+    const correctIndex = correctLetter.charCodeAt(0) - 65; // 'A' = 65
+    const correctAnswer = options[correctIndex] || "";
+
+    return { question, options, correctAnswer };
 }
 
 // Main function to handle bulk upload
@@ -61,7 +60,6 @@ export async function add_bulk_mcqs(formData: FormData) {
 
         const normalizedQuestion = normalize(parsed.question);
 
-        // Check if normalized version already exists
         const isDuplicate = normalizedExisting.includes(normalizedQuestion);
 
         if (!isDuplicate) {
@@ -77,7 +75,7 @@ export async function add_bulk_mcqs(formData: FormData) {
 
             insertedQuestions.push(parsed.question);
             inserted++;
-            normalizedExisting.push(normalizedQuestion); // Add to local list to avoid re-checking DB
+            normalizedExisting.push(normalizedQuestion);
         } else {
             skipped.push(parsed.question);
         }
@@ -90,4 +88,4 @@ export async function add_bulk_mcqs(formData: FormData) {
         insertedQuestions,
         skipped,
     };
-}
+} 
