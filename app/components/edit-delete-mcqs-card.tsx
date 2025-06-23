@@ -83,7 +83,13 @@ export default function EditDeleteMCQsCard({
                                     }}
                                 />
                             ) : (
-                                <span className={opt === correctAnswer ? "text-blue-600 font-semibold" : "text-gray-600"}>
+                                <span
+                                    className={
+                                        opt.startsWith(correctAnswer + ".")
+                                            ? "text-blue-600 font-semibold"
+                                            : "text-gray-600"
+                                    }
+                                >
                                     {opt}
                                 </span>
                             )}
@@ -96,7 +102,7 @@ export default function EditDeleteMCQsCard({
                         className="mt-2"
                         value={correctAnswer}
                         onChange={(e) => setCorrectAnswer(e.target.value)}
-                        placeholder="Correct Answer"
+                        placeholder="Correct Answer (e.g., A, B, C)"
                     />
                 )}
             </CardContent>
@@ -114,7 +120,7 @@ export default function EditDeleteMCQsCard({
                 ) : (
                     <>
 
-                        {/* <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button> */}
+                        <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
 
 
                         {enableDelete && (
