@@ -65,7 +65,7 @@ export default function McqsUploadPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     rows={12}
-                    placeholder={`Example:\n\nquestion: A person who renounces their religious beliefs is known as:\nApostate\nProstate\nProfane\nAgnostic\ncorrectAnswer: Apostate`}
+                    placeholder={`Example:\n\nquestion: A person who renounces their religious beliefs is known as:\nA. Apostate\nB. Prostate\nC. Profane\nD. Agnostic\ncorrectAnswer: A`}
                     required
                 />
                 <Input
