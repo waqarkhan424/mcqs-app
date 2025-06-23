@@ -72,8 +72,7 @@ export default function EditDeleteMCQsCard({
 
                 <ul className="space-y-2">
                     {options.map((opt: string, idx: number) => (
-                        <li key={idx} className="text-sm md:text-base flex items-start gap-1.5">
-                            <span className="font-medium text-gray-800">{String.fromCharCode(65 + idx)}.</span>
+                        <li key={idx} className="text-sm md:text-base flex items-start">
                             {isEditing ? (
                                 <Input
                                     value={opt}
