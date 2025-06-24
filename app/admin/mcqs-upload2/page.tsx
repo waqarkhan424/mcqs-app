@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client";
 
 import { useState } from "react";
@@ -12,28 +13,38 @@ export default function UploadMCQsPage() {
         if (!file) return;
         setLoading(true);
 
-        const { data } = await Tesseract.recognize(file, "eng");
-        let text = data.text;
+        const { data } = await Tesseract.recognize(file, "eng", {
+            logger: m => console.log(m),
+        });
 
-        // Pre-clean the OCR text
+        let text = data.text;
+        console.log("OCR Result:", text);
+
+        // Fix common OCR mistakes
         const cleaned = text
             .replace(/\(8\)/g, "(B)")
             .replace(/\(0\)/g, "(D)")
-            .replace(/\(¥\)/g, "(C)")
+            .replace(/\(6\)/g, "(C)")
             .replace(/\(€\)/g, "(C)")
+            .replace(/[‘’“”]/g, '"')
+            .replace(/ +/g, " ") // multiple spaces to single
+            .replace(/[^\x20-\x7E\n]/g, "") // remove weird chars
             .replace(/\s+\./g, ".")
-            .replace(/\s+/g, " ")
-            .replace(/[^\w\s\(\)\?\.\-]/g, ""); // remove junk
+            .trim();
 
-        // Flexible MCQ regex
+        // Match questions with optional numbering and 4-5 options
         const mcqRegex =
-            /(?:\d+\.\s*)?(.+?)\s*\(A\)\s*([\s\S]+?)\s*\(B\)\s*([\s\S]+?)\s*\(C\)\s*([\s\S]+?)\s*\(D\)\s*([\s\S]+?)(?=(?:\d+\.\s)|$)/g;
+            /(?:^|\n)(\d+\.\s*)?(.+?)\s*\(A\)\s*([\s\S]*?)\s*\(B\)\s*([\s\S]*?)\s*\(C\)\s*([\s\S]*?)\s*\(D\)\s*([\s\S]*?)(?:\s*\(E\)\s*([\s\S]*?))?(?=(?:\n\d+\.\s)|$)/g;
 
         let resultsText = "";
         let match;
+
         while ((match = mcqRegex.exec(cleaned)) !== null) {
-            const [_, question, a, b, c, d] = match;
-            resultsText += `${question.trim()}\n(A) ${a.trim()}\n(B) ${b.trim()}\n(C) ${c.trim()}\n(D) ${d.trim()}\n\n`;
+            const [_, number, question, a, b, c, d, e] = match;
+            const questionLine = number ? `${number}${question.trim()}` : question.trim();
+            resultsText += `${questionLine}\n(A) ${a.trim()}\n(B) ${b.trim()}\n(C) ${c.trim()}\n(D) ${d.trim()}`;
+            if (e) resultsText += `\n(E) ${e.trim()}`;
+            resultsText += `\n\n`;
         }
 
         setParsedMCQs(resultsText.trim());
