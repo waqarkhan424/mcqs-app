@@ -1,9 +1,7 @@
-// app/admin/mcqs-upload2/page.tsx
 "use client";
 
 import { useState } from "react";
 import Tesseract from "tesseract.js";
-import { add_mcqs } from "../actions/add_mcqs";
 
 export default function UploadMCQsPage() {
     const [parsedMCQs, setParsedMCQs] = useState("");
@@ -15,35 +13,31 @@ export default function UploadMCQsPage() {
         setLoading(true);
 
         const { data } = await Tesseract.recognize(file, "eng");
-        const text = data.text;
+        let text = data.text;
 
-        // MCQ Regex Parse
+        // Pre-clean the OCR text
+        const cleaned = text
+            .replace(/\(8\)/g, "(B)")
+            .replace(/\(0\)/g, "(D)")
+            .replace(/\(¥\)/g, "(C)")
+            .replace(/\(€\)/g, "(C)")
+            .replace(/\s+\./g, ".")
+            .replace(/\s+/g, " ")
+            .replace(/[^\w\s\(\)\?\.\-]/g, ""); // remove junk
+
+        // Flexible MCQ regex
         const mcqRegex =
-            /(.+?)\?\s*A\.\s*(.+?)\s*B\.\s*(.+?)\s*C\.\s*(.+?)\s*D\.\s*(.+?)(?:\s*correctAnswer[:=]?\s*(\w))?/g;
+            /(?:\d+\.\s*)?(.+?)\s*\(A\)\s*([\s\S]+?)\s*\(B\)\s*([\s\S]+?)\s*\(C\)\s*([\s\S]+?)\s*\(D\)\s*([\s\S]+?)(?=(?:\d+\.\s)|$)/g;
 
-        const results = [];
+        let resultsText = "";
         let match;
-        while ((match = mcqRegex.exec(text)) !== null) {
-            const [_, question, a, b, c, d, correct] = match;
-            results.push({
-                question: question.trim(),
-                options: [a.trim(), b.trim(), c.trim(), d.trim()],
-                correctAnswer: correct?.trim() || "",
-                category: "General Knowledge",
-                topic: "OCR Upload",
-            });
+        while ((match = mcqRegex.exec(cleaned)) !== null) {
+            const [_, question, a, b, c, d] = match;
+            resultsText += `${question.trim()}\n(A) ${a.trim()}\n(B) ${b.trim()}\n(C) ${c.trim()}\n(D) ${d.trim()}\n\n`;
         }
 
-        setParsedMCQs(JSON.stringify(results, null, 2));
+        setParsedMCQs(resultsText.trim());
         setLoading(false);
-    };
-
-    const handleSubmit = async () => {
-        if (!parsedMCQs) return;
-        const data = JSON.parse(parsedMCQs);
-        await add_mcqs(data);
-        alert("✅ Saved to DB");
-        setParsedMCQs("");
     };
 
     return (
@@ -62,17 +56,10 @@ export default function UploadMCQsPage() {
             </button>
 
             <textarea
-                className="w-full h-80 border p-2 text-sm"
+                className="w-full h-96 border p-2 text-sm"
                 value={parsedMCQs}
                 onChange={(e) => setParsedMCQs(e.target.value)}
             />
-
-            <button
-                onClick={handleSubmit}
-                className="px-4 py-2 bg-green-600 text-white rounded"
-            >
-                Submit to DB
-            </button>
         </div>
     );
 }
