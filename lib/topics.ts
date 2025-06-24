@@ -1,17 +1,17 @@
 export const categoryTopics: Record<string, string[]> = {
+
     "english": [
-
-        "One Word Substitutes MCQs",
-        "Spelling Correction MCQs",
         "Active and Passive Voice MCQs",
+        "Antonym MCQs",
+        "Fill in the Blanks MCQs",
         "Idioms and Phrases MCQs",
-        "English Preposition MCQs",
-        "Abbreviations MCQs",
-        "FPSC English MCQs",
-        "English Grammar MCQs"
-
-
+        "Pair of Words MCQs",
+        "Prepositions MCQs",
+        "Synonyms MCQs",
+        "One Word Substitutes MCQs"
     ],
+
+
     "general-knowledge": [
 
         "Languages MCQs",
