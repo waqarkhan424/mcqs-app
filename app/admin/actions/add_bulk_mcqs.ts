@@ -7,15 +7,15 @@ import { revalidatePath } from "next/cache";
 type ParsedMCQ = {
     question: string;
     options: string[];
-    correctAnswer: string;
+    correctAnswer: string; // only the letter (e.g. "A", "B", "C")
 };
 
-// Helper function to normalize question string
+// Helper to normalize strings
 function normalize(str: string) {
     return str.trim().toLowerCase().replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
 }
 
-// Updated parser to support A.–E. format and correctAnswer: A–E
+// Updated parser
 function parseMcqBlock(block: string): ParsedMCQ {
     const lines = block.trim().split("\n");
     let question = "", correctLetter = "";
@@ -27,15 +27,11 @@ function parseMcqBlock(block: string): ParsedMCQ {
         } else if (line.startsWith("correctAnswer:")) {
             correctLetter = line.replace("correctAnswer:", "").trim().toUpperCase();
         } else if (/^[A-E]\.\s*/.test(line)) {
-            // Match A. B. C. D. E. format
-            options.push(line.replace(/^[A-E]\.\s*/, "").trim());
+            options.push(line.trim());
         }
     }
 
-    const correctIndex = correctLetter.charCodeAt(0) - 65; // 'A' = 65
-    const correctAnswer = options[correctIndex] || "";
-
-    return { question, options, correctAnswer };
+    return { question, options, correctAnswer: correctLetter };
 }
 
 // Main function to handle bulk upload
@@ -44,22 +40,21 @@ export async function add_bulk_mcqs(formData: FormData) {
     const category = formData.get("category") as string;
     const topic = formData.get("topic") as string;
 
-    const blocks = raw.split(/\n\s*\n/); // Split by empty lines
+    const blocks = raw.split(/\n\s*\n/);
 
     let inserted = 0;
     const insertedQuestions: string[] = [];
     const skipped: string[] = [];
 
-    // Fetch all existing questions once
     const existingQuestions = await prisma.question.findMany();
-    const normalizedExisting = existingQuestions.map((q) => normalize(q.question));
+    const normalizedExisting = existingQuestions.map(q => normalize(q.question));
 
     for (const block of blocks) {
         const parsed = parseMcqBlock(block);
+
         if (!parsed.question || !parsed.correctAnswer || parsed.options.length < 2) continue;
 
         const normalizedQuestion = normalize(parsed.question);
-
         const isDuplicate = normalizedExisting.includes(normalizedQuestion);
 
         if (!isDuplicate) {
@@ -67,7 +62,7 @@ export async function add_bulk_mcqs(formData: FormData) {
                 data: {
                     question: parsed.question,
                     options: parsed.options,
-                    correctAnswer: parsed.correctAnswer,
+                    correctAnswer: parsed.correctAnswer, //  Only the letter now
                     category,
                     topic,
                 },
@@ -88,4 +83,4 @@ export async function add_bulk_mcqs(formData: FormData) {
         insertedQuestions,
         skipped,
     };
-} 
+}
