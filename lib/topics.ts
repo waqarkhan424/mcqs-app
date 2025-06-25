@@ -9,22 +9,6 @@ export const categoryTopics: Record<string, string[]> = {
         "Prepositions MCQs",
         "Synonyms MCQs",
         "One Word Substitutes MCQs",
-
-        //////////////////////////////////////////////////////////////
-
-        "Spelling Correction MCQs",
-        "FPSC English MCQs",
-        "English Grammar MCQs",
-        "Analogous Pair MCQs",
-        "English Analogy MCQs",
-        "English Literature MCQs",
-        "Sentence Completion English MCQs",
-        "Analogy MCQs",
-        "Pedagogy MCQs",
-        "Choose The Correct Sentence MCQs",
-        "English Words Meaning MCQs",
-        "English MCQs",
-        "PPSC English MCQs"
     ],
 
 
