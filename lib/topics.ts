@@ -45,7 +45,9 @@ export const categoryTopics: Record<string, string[]> = {
         "Muhammad Ghori History MCQs",
         "Pakistan Government Institutions MCQs",
         "Natural Resources of Pakistan MCQs",
-        "MCQs on Political Parties"
+        "MCQs on Political Parties",
+        "Pakistan Studies MCQs One",
+        "Pakistan Studies MCQs Two"
 
     ],
     "islamic-studies": [
@@ -56,6 +58,8 @@ export const categoryTopics: Record<string, string[]> = {
         "MCQs in Previous Papers Five",
         "MCQs in Previous Papers Six",
         "MCQs in Previous Papers Seven",
+        "Islamic Studies MCQs One",
+        "Islamic Studies MCQs Two"
 
     ],
     "mathematics": [
@@ -65,7 +69,9 @@ export const categoryTopics: Record<string, string[]> = {
         "Partnership MCQs with Answers",
         "Time and Work MCQs",
         "Time and Distance MCQs",
-        "Ratio and Proportion Questions"
+        "Ratio and Proportion Questions",
+        "Mathematics MCQs One",
+        "Mathematics MCQs Two"
 
 
     ],
@@ -73,6 +79,8 @@ export const categoryTopics: Record<string, string[]> = {
         "Planets MCQs with Answers",
         "Vitamins MCQs with Answers",
         "Everyday Science Questions Answers",
+        "Everyday Science MCQs One",
+        "Everyday Science MCQs Two"
 
     ],
     "computer": [
@@ -89,6 +97,8 @@ export const categoryTopics: Record<string, string[]> = {
         "Computer Graphics MCQs",
         "Parallel and Distributed Computing MCQs",
         "Basic Computer MCQs",
+        "Computer MCQs One",
+        "Computer MCQs Two"
 
     ],
     "iq": [
