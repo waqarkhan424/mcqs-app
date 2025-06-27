@@ -10,46 +10,46 @@ export default function CopyrightPage() {
                 Last updated: June 9, 2025
             </Typography>
 
-            <Typography variant="h3">Content Ownership</Typography>
+            <Typography variant="h3">Our Content</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                All materials on{" "}
+                Everything you see on{" "}
                 <Link
                     href="https://www.onepaper.site/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary underline hover:text-primary/80"
                 >
-                    https://www.onepaper.site/
+                    www.onepaper.site
                 </Link>{" "}
-                including text, images, MCQs, and explanations, are the property of OnePaper or its contributors. These resources are protected by copyright and intellectual property laws. Any unauthorized copying, distribution, or use is strictly prohibited.
-
+                — including MCQs, explanations, text, and images — is either created by the OnePaper team or shared by contributors. This content is protected by copyright and intellectual property laws.
+                Please don’t copy, share, or reuse anything from our site without permission.
             </Typography>
 
             <Typography variant="h3">How to Report a Copyright Issue</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                If you believe that any content on our site violates your copyright, you can report it by contacting us with the following details:
+                If you believe that something on our website violates your copyright, you can let us know. Please send us the following details so we can look into it quickly:
             </Typography>
             <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>
-                    <strong>Description of the copyrighted content:</strong> Describe what has been infringed.
+                    <strong>What’s been copied:</strong> A short description of the content that you believe is infringing your rights.
                 </li>
                 <li>
-                    <strong>Location of the material:</strong> Include the exact link or section where the material appears on our site.
+                    <strong>Where it appears:</strong> Share the exact link or page where the content is located.
                 </li>
                 <li>
-                    <strong>Your contact information:</strong> Full name, address, phone number, and email address.
+                    <strong>Your contact info:</strong> Please include your full name, email, address, and phone number.
                 </li>
                 <li>
-                    <strong>Good faith statement:</strong> A statement that you believe the use is not permitted by the copyright owner.
+                    <strong>Statement of good faith:</strong> A note saying you believe this content wasn’t authorized by you or the copyright holder.
                 </li>
                 <li>
-                    <strong>Authority confirmation:</strong> A declaration that the information provided is accurate and that you are authorized to act on behalf of the copyright holder.
+                    <strong>Authorization confirmation:</strong> Confirm that the information you provided is accurate and that you have the right to act on behalf of the copyright owner.
                 </li>
             </ul>
 
-            <Typography variant="h3">Contact Us</Typography>
+            <Typography variant="h3">Reach Out</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                If you need to report a copyright violation, feel free to contact us.
+                If you have any copyright-related questions or want to report an issue, feel free to contact us anytime. We’re here to help.
             </Typography>
         </div>
     );
