@@ -10,56 +10,58 @@ export default function PrivacyPolicyPage() {
             </Typography>
 
             <Typography variant="p" className="text-muted-foreground">
-                At OnePaper, we value your privacy. This page explains how we collect, use, and protect your information when you use our website.
+                Hi there — thanks for stopping by OnePaper. This page explains how we handle the information you share with us while using our site. We believe in keeping things clear and straightforward.
             </Typography>
 
-            <Typography variant="h3">What We Collect</Typography>
+            <Typography variant="h3">What We Learn From You</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                We may collect basic details like your device type, IP address, and pages you visit. This helps us improve our website and services.
+                When you use our website, a few basic things are automatically collected — like your IP address, device type, and the pages you browse. This gives us a better idea of how people use OnePaper and what we can improve.
             </Typography>
 
-            <Typography variant="h3">How We Use Your Data</Typography>
+            <Typography variant="h3">Why It Matters</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                We use the data to provide and improve your experience. For example:
-                - To show content properly on your device.
-                - To manage your account if you're logged in.
-                - To respond to your messages or feedback.
-                - To understand what users find helpful and improve our content.
+                We use this info to make OnePaper work better for you. Here's what that looks like in practice:
+            </Typography>
+            <ul className="list-disc pl-6 text-muted-foreground space-y-1">
+                <li>Making sure the site fits your screen and device.</li>
+                <li>Remembering your preferences when you're logged in.</li>
+                <li>Responding if you send us a message.</li>
+                <li>Learning which topics or pages help people the most.</li>
+            </ul>
+
+            <Typography variant="h3">Do We Share Your Info?</Typography>
+            <Typography variant="p" className="text-muted-foreground">
+                We don’t sell or trade your data. Sometimes we use trusted services to help us keep things running — like hosting or website analytics. They only see what they need to, and they follow strong privacy rules just like we do.
             </Typography>
 
-            <Typography variant="h3">Data Sharing</Typography>
+            <Typography variant="h3">Your Choices</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                We do not sell your data. We may share it with trusted partners who help us run our website. These partners follow strict privacy rules.
+                You can always contact us if you want your personal information corrected or removed. In some situations, we may need to hang on to a bit of information for legal reasons, but we’ll always let you know why.
             </Typography>
 
-            <Typography variant="h3">Your Rights</Typography>
+            <Typography variant="h3">Keeping Your Info Safe</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                You can contact us if you want to delete or correct your personal information. We may need to keep some data if required by law.
+                We take steps to protect your data, using security tools and best practices. Still, no system is perfect — so while we do everything we can, we can’t promise absolute security.
             </Typography>
 
-            <Typography variant="h3">Security</Typography>
+            <Typography variant="h3">For Parents and Kids</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                We take care to keep your data safe. But no method online is 100% secure, so we cannot guarantee complete safety.
+                OnePaper isn’t meant for children under 13. We don’t knowingly collect any info from young users. If you think your child has shared something with us, let us know and we’ll take care of it quickly.
             </Typography>
 
-            <Typography variant="h3">Children’s Privacy</Typography>
+            <Typography variant="h3">Other Sites</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                Our site is not made for children under 13. We do not knowingly collect data from them.
-            </Typography>
-
-            <Typography variant="h3">External Links</Typography>
-            <Typography variant="p" className="text-muted-foreground">
-                Our website may have links to other sites. We are not responsible for their content or privacy rules.
+                You might find links to outside websites on OnePaper. We include them for extra info, but we don’t control their privacy policies. It’s a good idea to check their policies if you visit.
             </Typography>
 
             <Typography variant="h3">Changes to This Policy</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                We may update this Privacy Policy. If we do, we will update the date at the top. We suggest you check this page from time to time.
+                If we ever update this privacy policy, we’ll change the date at the top so you’ll know. Feel free to revisit this page now and then to stay in the know.
             </Typography>
 
-            <Typography variant="h3">Contact Us</Typography>
+            <Typography variant="h3">Talk to Us</Typography>
             <Typography variant="p" className="text-muted-foreground">
-                For any questions or concerns about this Privacy Policy, feel free to contact us.
+                If you ever have a question about how we handle your info, reach out to us. You can contact us and we’ll get back to you as soon as we can.
             </Typography>
         </div>
     )
