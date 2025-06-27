@@ -27,7 +27,8 @@ export default function ContactUsPage() {
         <div className="max-w-xl mx-auto px-4 py-10 space-y-6">
             <Typography variant="h2">Contact Us</Typography>
             <p className="text-sm text-muted-foreground">
-                Have a question or feedback? Fill out the form below and we'll get back to you shortly.
+                Got a question, suggestion, or just want to say hello? We'd love to hear from you.
+                Just fill out the form below and we'll try to get back to you as soon as possible.
             </p>
 
             <form action={handleSubmit} className="space-y-4">
@@ -40,8 +41,12 @@ export default function ContactUsPage() {
                 </Button>
             </form>
 
-            {status === "sent" && <p className="text-green-600">Message sent!</p>}
-            {status === "error" && <p className="text-red-600">Failed to send message.</p>}
+            {status === "sent" && (
+                <p className="text-green-600">Thanks for reaching out! Your message has been sent.</p>
+            )}
+            {status === "error" && (
+                <p className="text-red-600">Oops! Something went wrong. Please try again.</p>
+            )}
         </div>
     );
 }
