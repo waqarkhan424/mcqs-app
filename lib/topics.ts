@@ -76,12 +76,6 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "everyday-science": [
-        "Planets MCQs with Answers",
-        "Vitamins MCQs with Answers",
-        "Everyday Science Questions Answers",
-        "Everyday Science MCQs One",
-        "Everyday Science MCQs Two",
-
 
         "Everyday Science Most Important MCQs One",
         "Everyday Science Most Important MCQs Two",
@@ -89,9 +83,6 @@ export const categoryTopics: Record<string, string[]> = {
         "Everyday Science Most Important MCQs Four",
         "Everyday Science Most Important MCQs Five",
         "Everyday Science Most Important MCQs Six",
-        "Everyday Science Most Important MCQs Seven",
-        "Everyday Science Most Important MCQs Eight",
-        "Everyday Science Most Important MCQs Nine"
 
     ],
     "computer": [
