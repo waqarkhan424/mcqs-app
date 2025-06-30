@@ -14,62 +14,31 @@ export const categoryTopics: Record<string, string[]> = {
 
     "general-knowledge": [
 
-        "Languages MCQs",
-        "Environmental Science MCQs",
-        "Olympic Games MCQs",
-        "Cricket MCQs with Answers",
-        "Vitamins MCQs with Answers",
-        "Pakistan General Knowledge MCQs",
         "General Knowledge MCQs One",
         "General Knowledge MCQs Two",
-        "Airline MCQs"
 
     ],
     "current-affairs": [
-        "Pakistan Current Affairs MCQs November 2024",
-        "Pakistan Current Affairs MCQs October 2024",
-        "Pakistan Current Affairs September 2024",
-        "World Current Affairs November 2024",
-        "International Current Affairs MCQs October 2024",
-        "World Current Affairs September 2024",
-        "International Current Affairs MCQs August 2024",
+
         "Current Affairs MCQs One",
         "Current Affairs MCQs Two"
 
     ],
     "pakistan-studies": [
 
-        "Pakistan Universities MCQs",
-        "History of Khilji Dynasty MCQs",
-        "Indus Valley Civilization MCQs",
-        "Muhammad Ghori History MCQs",
-        "Pakistan Government Institutions MCQs",
-        "Natural Resources of Pakistan MCQs",
-        "MCQs on Political Parties",
+
         "Pakistan Studies MCQs One",
         "Pakistan Studies MCQs Two"
 
     ],
     "islamic-studies": [
-        "MCQs in Previous Papers One",
-        "MCQs in Previous Papers Two",
-        "MCQs in Previous Papers Three",
-        "MCQs in Previous Papers Four",
-        "MCQs in Previous Papers Five",
-        "MCQs in Previous Papers Six",
-        "MCQs in Previous Papers Seven",
+
         "Islamic Studies MCQs One",
         "Islamic Studies MCQs Two"
 
     ],
     "mathematics": [
-        "Geometry MCQs with Answers",
-        "Discount MCQs",
-        "Simple and Compound Interest MCQs",
-        "Partnership MCQs with Answers",
-        "Time and Work MCQs",
-        "Time and Distance MCQs",
-        "Ratio and Proportion Questions",
+
         "Mathematics MCQs One",
         "Mathematics MCQs Two"
 
@@ -86,19 +55,7 @@ export const categoryTopics: Record<string, string[]> = {
 
     ],
     "computer": [
-        "Artificial Intelligence MCQs with Answers",
-        "Machine Learning MCQs with Answers",
-        "Basic Internet MCQs with Answers",
-        "Computer Hardware MCQs",
-        "Computer Abbreviations A to Z PDF MCQs",
-        "IT MCQs",
-        "MS PowerPoint MCQs",
-        "MS Excel MCQs",
-        "MS Word MCQs",
-        "MS Office MCQs",
-        "Computer Graphics MCQs",
-        "Parallel and Distributed Computing MCQs",
-        "Basic Computer MCQs",
+
         "Computer MCQs One",
         "Computer MCQs Two"
 
