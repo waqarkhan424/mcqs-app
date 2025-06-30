@@ -107,7 +107,8 @@ export const categoryTopics: Record<string, string[]> = {
 
         "Blood Relation Test MCQs",
         "Common Sense Test MCQs",
-        "Direction Sense Test MCQs"
+        "Direction Sense Test MCQs",
+        "Sequence Test MCQs"
 
     ],
 
