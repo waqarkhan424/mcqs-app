@@ -71,16 +71,11 @@ export const categoryTopics: Record<string, string[]> = {
 
     "fia": [
 
-        "Assistant Director FIA Past Papers",
-        "FIA Inspector Past Paper 26 7 2022 BATCH-1 MCQs",
-        "FIA Inspector Past Paper 2019 BATCH-1 MCQs",
-        "FIA Inspector Past Paper 20 August 2023(BATCH - 1) MCQs",
-        "FIA UDC Solved paper Held ON 15.12.2021 MCQs",
-        "FIA LDC past Papers Held ON 14.12.2021 MCQs",
-        "Assistant Director FIA (2020) MCQs"
-
-
-
+        "FIA Inspector Past Paper 2009 MCQs",
+        "FIA Inspector Past Paper 2010 MCQs",
+        "FIA Inspector Past Paper 2011 MCQs",
+        "FIA Inspector Past Paper 2012 MCQs",
+        "FIA Inspector Past Paper 2015 MCQs"
     ],
 
 
