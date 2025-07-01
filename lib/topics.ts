@@ -92,13 +92,13 @@ export const categoryTopics: Record<string, string[]> = {
 
 
     "ib": [
-        "IB Tech Past Paper 2022",
-        "Stenotypist IB Past Paper 26th July 2022",
-        "Assistant Director IB Past Papers",
-        "IB GD-7 Past Paper Held On 15 09 2019 MCQs",
-        "IB OM 7 Past Paper Held On 28 07 2022 MCQs",
-        "IB Data Entry Operators Syllabus 2022 Held On 26 07 2022 MCQs",
-        "IB GD 11 Past Papers 2019 MCQs"
+
+        "Assistant Director IB Past Paper 2000 MCQs",
+        "Assistant Director IB Past Paper 2002 MCQs",
+        "Assistant Director IB Past Paper 2003 MCQs",
+        "Assistant Director IB Past Paper 2004 MCQs"
+
+
     ],
 
     "nab": [
