@@ -103,6 +103,12 @@ export const categoryTopics: Record<string, string[]> = {
         "FPSC AD NAB Past Paper 2020 BATCH - II Solved MCQs",
         "FPSC AD NAB Past Paper 2020 BATCH - I Solved MCQs",
         "Assistant Director NAB Past paper 24 -09 - 2020(BATCH-04) Test Solved MCQs"
+
+
+        // "Assistant Director NAB Fully Solved Original Model Paper-1",
+        // "Assistant Director NAB Fully Solved Original Model Paper-2",
+        // "Assistant Director NAB Fully Solved Original Model Paper-3"
+
     ],
 
 
