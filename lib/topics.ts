@@ -106,36 +106,36 @@ export const categoryTopics: Record<string, string[]> = {
     ],
 
 
-    "tehsildar": [
-        "English PPSC Tehsildar Past Papers Morning and Evening",
-        "GK Past Papers of Tehsildar PPSC – Morning and Evening"
-    ],
+    // "tehsildar": [
+    //     "English PPSC Tehsildar Past Papers Morning and Evening",
+    //     "GK Past Papers of Tehsildar PPSC – Morning and Evening"
+    // ],
 
-    "naib-tehsildar": [
-        "Naib Tehsildar Past Paper English – Morning and Evening",
-        "Naib Tehsildar Past Paper GK – Morning Evening Paper"
-    ],
+    // "naib-tehsildar": [
+    //     "Naib Tehsildar Past Paper English – Morning and Evening",
+    //     "Naib Tehsildar Past Paper GK – Morning Evening Paper"
+    // ],
 
-    "punjab-police": [
-        "Punjab Highway Patrolling Police Paper 23 -06-2024",
-        "Punjab Police Constable Past Paper 2020 Download PDF MCQs",
-        "ASI Punjab Police Paper 2021(Service Quota) MCQs",
-        "Punjab Police Wireless Operator Past Paper 2022 MCQs",
-        "Punjab Police Junior Clerk Past Paper 2022 MCQs",
-        "Traffic Assistant Punjab Police Paper 2020 MCQs",
-        "Punjab Police Sub Inspector Past Papers"
-    ],
+    // "punjab-police": [
+    //     "Punjab Highway Patrolling Police Paper 23 -06-2024",
+    //     "Punjab Police Constable Past Paper 2020 Download PDF MCQs",
+    //     "ASI Punjab Police Paper 2021(Service Quota) MCQs",
+    //     "Punjab Police Wireless Operator Past Paper 2022 MCQs",
+    //     "Punjab Police Junior Clerk Past Paper 2022 MCQs",
+    //     "Traffic Assistant Punjab Police Paper 2020 MCQs",
+    //     "Punjab Police Sub Inspector Past Papers"
+    // ],
 
-    "kpk-police": [
-        "KPK Police Constable ETEA Solved MCQs Paper 2023",
-        "ETEA KPK Police Constable Past Paper 2022",
-        "KPK Police Constable Past Paper 2021"
-    ],
+    // "kpk-police": [
+    //     "KPK Police Constable ETEA Solved MCQs Paper 2023",
+    //     "ETEA KPK Police Constable Past Paper 2022",
+    //     "KPK Police Constable Past Paper 2021"
+    // ],
 
-    "nadra": [
-        "NADRA Data Entry Operator Past Papers 2023",
-        "NADRA Junior Executive Past Paper"
-    ],
+    // "nadra": [
+    //     "NADRA Data Entry Operator Past Papers 2023",
+    //     "NADRA Junior Executive Past Paper"
+    // ],
 
 
 
