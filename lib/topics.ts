@@ -57,7 +57,8 @@ export const categoryTopics: Record<string, string[]> = {
     "computer": [
 
         "Computer MCQs One",
-        "Computer MCQs Two"
+        "Computer MCQs Two",
+        "Computer MCQs Three"
 
     ],
     "iq": [
