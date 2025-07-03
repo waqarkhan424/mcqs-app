@@ -81,7 +81,8 @@ export const categoryTopics: Record<string, string[]> = {
 
     "asf": [
 
-        "ASF ASI Past Paper 2024"
+        "ASF ASI Past Paper 2024",
+        "Inspector ASF Past Paper Batch-3 MCQs",
 
     ],
 
