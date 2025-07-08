@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import CategoryLinks from "./category-links";
-// import BrowseSections from "./browse-sections";
+import BrowseSections from "./browse-sections";
 import Typography from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 
@@ -63,7 +63,7 @@ export default function HomeContent() {
             </div>
 
             <CategoryLinks show={activeTab} />
-            {/* <BrowseSections /> */}
+            <BrowseSections />
         </div>
     );
 }
